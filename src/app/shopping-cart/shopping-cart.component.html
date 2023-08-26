@@ -1,0 +1,40 @@
+<div class="empty-cart"*ngIf="services.getCartItems().length === 0">
+    <img class="empty-cart-img" src="../../assets/images/empty-cart.jpg">
+    <div class="empty-cart-desc">A kosara üres!</div>
+    <div class="empty-cart-button" [routerLink]="['/products']">Vissza a termékekhez!</div>
+</div>
+<div class="shopping-cart-component" *ngIf="services.getCartItems().length > 0">
+
+    <div class="shopping-cart-card-container">
+        <div class="shopping-cart-card">
+            <div *ngFor="let cartItem of services.getCartItems()" class="cart-item">
+                <img class="product-image" [src]="cartItem.product.imagePath">
+                <div class="shopping-cart-head">{{ cartItem.product.description }}</div>
+                <div class="decreaseQuantity"(click)="decreaseQuantity(cartItem)" [ngClass]="{ 'disabled-button': cartItem.quantity === 1 }">-</div>            
+                <div class="product-quantity">{{ cartItem.quantity }}</div>
+                <div class="increaseQuantity" (click)="increaseQuantity(cartItem)"[ngClass]="{ 'disabled-button': cartItem.quantity === 5 }">+</div>
+                <div class="shopping-cart-price">{{ (cartItem.product.price * cartItem.quantity) }}</div>
+                <div class="removeFromCart" (click)="removeFromCart(cartItem)">X</div>
+            </div>
+        </div>
+    </div>
+    <div class="checkout-container">
+        <div class="insurance"><mat-slide-toggle [(ngModel)]="insuranceIsChecked"></mat-slide-toggle><h3 [ngClass]="{'active': insuranceIsChecked}">500 Ft</h3> Küldemény biztosítása
+            <p class="checkout-container-desc">A küldemény megsérülése vagy elvesztése esetén nem kell várnia a helyzet törvényileg előírt határidőn belüli rendezésére. Elég, ha bejelenti nekünk és dokumentálja a küldemény megsérülését vagy elvesztését, és mi postafordultával teljesen új árut küldünk önnek.
+            </p>
+        </div>
+        <div class="gift"><mat-slide-toggle [(ngModel)]="giftIsChecked"></mat-slide-toggle><h3 [ngClass]="{'active': giftIsChecked}">1590 Ft</h3> Luxus csomagolás
+            <p class="checkout-container-desc">Szívesen luxus kivitelű ajándékcsomagolásba csomagolunk önnek mindent.
+            </p>
+        </div>
+        <div class="shipping" [ngStyle]="{'opacity' :getTotalPrice() < 50000 ? 1 : 0.5  }">Házhoz szállítás <h3>1390 Ft</h3></div>
+        <div class="bonus" [ngStyle]="{'opacity': getTotalPrice() > 49999 ? 1 : 0.5}">100% Kedvezmény a kiszállításra!
+            <p class="bonus-desc">50.000 Forint vásárlás esetén ingyenesen házhoz szállítjuk!
+        </div>
+        <div class="checkout-card">
+        <div class="total-price"><h3>Összesen fizetendő: <p>{{calculateShippingPrice() + getTotalPrice() + (insuranceIsChecked ? 500 : 0) + (giftIsChecked ? 1590 : 0) }} Ft</p></h3>
+        </div>
+    </div>
+    <button class="btn-hover color-8" [disabled]="services.getCartItems().length === 0">Tovább a szállításra!</button>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+.sunglasses {
+    padding: 10px;
+    width: auto;
+    border-radius: 1rem;
+}
+
+h1 {
+    font-weight: 100;
+}
+
+.product-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* A flexbox elemeket új sorban helyezi el, ha nincs elég hely egy sorban */
+
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: .5rem;
+        background-color: #fff;
+        margin: 1.25rem 0 1.25rem 0;
+        box-shadow: 0 .25rem .5rem #e6edef;
+        width: calc(33.33% - 20px);
+        /* Három elem egymás mellett (33.33% oszlopszélesség) és 20px margó */
+        margin: 10px;
+        /* Margó a termékek között */
+
+        .product-card-head {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #edf1f7;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        .product-card-body {
+            padding: 1rem 1.5rem;
+            font-weight: 300;
+        }
+        .product-card-price{
+            display: flex;
+            align-items: center; /* Vízszintesen középre igazítás */
+            padding-top: 25px;
+            p{
+                font-size: 30px;
+                font-weight: 100;
+                padding: 10px;
+            }
+            .add-to-cart{
+                font-size: 15px;
+                padding: 10px;
+                margin-left: auto;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+.product-card-price {
+    padding-top: 25px;
+}
+
+@media screen and (max-width: 1200px) {
+    .product-card-container {
+        .product-card {
+            width: calc(50% - 20px);
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product-card-container {
+        .product-card {
+            width: calc(95%);
+        }
+    }
+}
