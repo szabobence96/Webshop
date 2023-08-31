@@ -29,3 +29,9 @@
         margin-left: 3rem;
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .body {
+        padding: 1rem 0.5rem 0.25rem 0.25rem;
+    }
+}

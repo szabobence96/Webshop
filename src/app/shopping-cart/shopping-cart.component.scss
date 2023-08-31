@@ -9,11 +9,12 @@
     .shopping-cart-card {
         padding: 10px; // Kártya belső térköz
 
-        /* .shopping-cart-head {
+        .shopping-cart-head {
             color: aliceblue;
             font-size: 15px;
             margin-bottom: 5px;
             display: flex;
+            flex: 1;
         }
 
         .shopping-cart-price {
@@ -21,7 +22,7 @@
             font-size: 18px;
             flex: 0 0 100px;
         }
-*/
+
         .cart-item {
             color: aliceblue;
             border-radius: 10px;
@@ -151,7 +152,7 @@
                 }
 
                 .product-image {
-                    @media screen and (max-width: 365px) {
+                    @media screen and (max-width: 300px) {
                         display: none;
                     }
 
