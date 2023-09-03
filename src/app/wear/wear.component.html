@@ -1,13 +1,20 @@
-<h1>sadas</h1>
 <div class="product-card-container">
     <!-- Itt vannak a product-card elemek -->
     <div class="product-card" *ngFor="let nikeAzur of nikeAzur">
         <div class="product-card-head">{{nikeAzur.description}}</div>
-        <img class="shirt" [src]="nikeAzur.imagePath">
+        <img class="shirt-img" [src]="nikeAzur.imagePath">
         <div class="product-card-body">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias distinctio animi repellat eaque
             consequuntur,
             <div class="product-card-price">
+                <div class="wear-size">
+                    <!-- Méretopciók gombok formájában -->
+                    <i class="size-button" [class.selected]="selectedSize === 'S'" (click)="selectSize('S')">S</i>
+                    <i class="size-button" [class.selected]="selectedSize === 'M'" (click)="selectSize('M')">M</i>
+                    <i class="size-button" [class.selected]="selectedSize === 'L'" (click)="selectSize('L')">L</i>
+                    <i class="size-button" [class.selected]="selectedSize === 'XL'" (click)="selectSize('XL')">XL</i>
+                    <i class="size-button" [class.selected]="selectedSize === 'XXL'" (click)="selectSize('XXL')">XXL</i>
+                </div>
                 <my-button [currentPrice]="nikeAzur.price" (click)="addToCart(nikeAzur)"
                     class="add-to-cart"></my-button>
             </div>

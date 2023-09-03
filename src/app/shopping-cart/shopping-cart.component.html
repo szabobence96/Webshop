@@ -1,7 +1,7 @@
 <div class="empty-cart" *ngIf="services.getCartItems().length === 0">
     <img class="empty-cart-img" src="./assets/images/empty-cart.jpg">
-    <div class="empty-cart-desc">A kosara üres!</div>
-    <div class="empty-cart-button" [routerLink]="['/products']">Vissza a termékekhez!</div>
+    <div class="empty-cart-desc">A kosara üres!<p class="empty-cart-button" [routerLink]="['/products']">Vissza a
+            termékekhez!</div>
 </div>
 <div class="shopping-cart-component" *ngIf="services.getCartItems().length > 0">
 
@@ -10,6 +10,7 @@
             <div *ngFor="let cartItem of services.getCartItems()" class="cart-item">
                 <img class="product-image" [src]="cartItem.product.imagePath">
                 <div class="shopping-cart-head">{{ cartItem.product.description }}</div>
+                <div class="size">{{cartItem.product.selectedSize}}</div>
                 <div class="decreaseQuantity" (click)="decreaseQuantity(cartItem)"
                     [ngClass]="{ 'disabled-button': cartItem.quantity === 1 }">-</div>
                 <div class="product-quantity">{{ cartItem.quantity }}</div>

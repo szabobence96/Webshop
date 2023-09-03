@@ -16,7 +16,7 @@ interface SideNavToggle {
     trigger('fadeInOut', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('90ms',
+        animate('90ms 300ms',
           style({ opacity: 1 })
         )
       ]),

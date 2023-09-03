@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
 export class ProductsComponent {
   constructor(private services: SharedService) { }
   cartItems: any[] = [];
-  maxQuantityReached: boolean = false;
 
   hawkers: any = [];
   hawkersWarwick: any = [];
@@ -36,10 +35,11 @@ export class ProductsComponent {
 
     //console.log("hawkers tartalma:", this.hawkers); ellenőrzés hogy valóban feltötte-e a tömböt
   }
-  selectedProducts: any[] = [];
+
   navbarData = navbarData;
-  
+
   addToCart(product: any) {
+
     const cartItems = this.services.getCartItems();
     const existingCartItem = cartItems.find(item => item.product.id === product.id);
 

@@ -5,21 +5,21 @@ import { navbarData } from '../sidenav/nav-data';
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.scss' ]
+  styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
   cartItems: any[] = [];
   selectedProducts: any[] = [];
 
   navbarData = navbarData;
-  insuranceIsChecked = true; 
+  insuranceIsChecked = true;
   giftIsChecked = false;
   shippingPrice = 1390;
 
   constructor(public services: SharedService) { }
 
   ngOnInit() {
-      this.cartItems = this.services.getCartItems();
+    this.cartItems = this.services.getCartItems();
   }
 
   addToCart() {
@@ -29,6 +29,9 @@ export class ShoppingCartComponent implements OnInit {
     }
   }
 
+  selectedSize(cartItem: any) {
+
+  }
   increaseQuantity(cartItem: any) {
     cartItem.quantity++;
     const kosarElem = this.navbarData.find(item => item.routerLink === 'shopping-cart');
@@ -50,16 +53,16 @@ export class ShoppingCartComponent implements OnInit {
   removeFromCart(cartItem: any) {
     const index = this.services.getCartItems().indexOf(cartItem);
     if (index !== -1) {
-        const numRemoved = cartItem.quantity;
-        this.services.getCartItems().splice(index, 1);
-        
-        const kosarElem = this.navbarData.find(item => item.routerLink === 'shopping-cart');
-        if (kosarElem) {
-            kosarElem.badge = Math.max((kosarElem.badge || 0) - numRemoved, 0);
-        }
+      const numRemoved = cartItem.quantity;
+      this.services.getCartItems().splice(index, 1);
+
+      const kosarElem = this.navbarData.find(item => item.routerLink === 'shopping-cart');
+      if (kosarElem) {
+        kosarElem.badge = Math.max((kosarElem.badge || 0) - numRemoved, 0);
       }
+    }
   }
-  
+
   calculateShippingPrice() {
     const totalPrice = this.getTotalPrice();
 
@@ -69,11 +72,11 @@ export class ShoppingCartComponent implements OnInit {
       return this.shippingPrice = 1390; // Alapértelmezett szállítási díj
     }
   }
-    getTotalPrice() {
-      let totalPrice = 0;
-      for (const cartItem of this.services.getCartItems()) {
-        totalPrice += cartItem.product.price * cartItem.quantity;
-      }
-        return totalPrice;
+  getTotalPrice() {
+    let totalPrice = 0;
+    for (const cartItem of this.services.getCartItems()) {
+      totalPrice += cartItem.product.price * cartItem.quantity;
     }
+    return totalPrice;
+  }
 }

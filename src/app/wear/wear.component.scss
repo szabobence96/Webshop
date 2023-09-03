@@ -1,5 +1,29 @@
-.shirt {
+.shirt-img {
     padding: 10px;
     width: auto;
     border-radius: 1rem;
+}
+
+.wear-size {
+    display: flex;
+    gap: 5px; // A kívánt térköz mérete pixelben
+
+    .size-button {
+        padding: 5px 10px; // Példa: belső térköz a gombon
+        background-color: #ccc; // Példa: háttérszín
+        color: #333; // Példa: szövegszín
+        cursor: pointer; // Példa: mutató kurzor az interaktivitás jelzéséhez
+
+        &:not(.selected) {
+            transition: background-color 0.3s; // Animáció a háttérszín változásához
+        }
+
+        // Kattintott vagy fókuszban lévő méret
+        &:active,
+        &:focus,
+        &.selected {
+            background-color: #333; // Sötétebb háttérszín
+            color: #fff; // Sötétebb szövegszín
+        }
+    }
 }

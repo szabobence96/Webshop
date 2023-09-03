@@ -42,16 +42,17 @@ export class SharedService {
   }
   private cartItems: any[] = [];
 
-    addToCart(item: any) {
-      const existingItem = this.cartItems.find(cartItem => cartItem.product.id === item.id);
-      if (existingItem) {
-          existingItem.quantity++;
-      } else {
-          this.cartItems.push({ product: item, quantity: 1 });
-      }
-    }
+  addToCart(item: any) {
 
-    getCartItems() {
-        return this.cartItems;
+    const existingItem = this.cartItems.find(cartItem => cartItem.product.id === item.id && cartItem.selectedSize === item.selectedSize);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      this.cartItems.push({ product: item, quantity: 1 });
     }
+  }
+
+  getCartItems() {
+    return this.cartItems;
+  }
 }
