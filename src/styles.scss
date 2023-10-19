@@ -1,3 +1,4 @@
+@use 'node_modules/@ngneat/hot-toast/src/styles/styles.scss';
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
@@ -43,7 +44,9 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #eceff1 !important;
+}
 .mat-mdc-slide-toggle.mat-accent {
     --mdc-switch-selected-focus-state-layer-color: #092c3d;
     --mdc-switch-selected-handle-color: #092c3d;
@@ -56,4 +59,35 @@ body {
     --mdc-switch-selected-hover-track-color: #092c3d;
     --mdc-switch-selected-pressed-track-color: #092c3d;
     --mdc-switch-selected-track-color: #092c3d;
+}
+.form-container{
+    display: block;
+    max-width: 600px;
+    margin: auto;
+
+    background: #eceff1;
+    padding: 48px;
+    border-radius: 16px;
+    mat-form-field{
+        width: 100%;
+        background: #eceff1;
+        
+    }
+}
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+     background-color: #eceff1;
+}
+
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.margin-top{
+    margin-top: 16px;
+}
+
+.text-center{
+    text-align: center;
 }

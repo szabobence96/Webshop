@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,12 @@ export class SharedService {
   getCollectionData(collectionName: string) {
     let collectionRef = collection(this.fs, collectionName);
     return collectionData(collectionRef, { idField: 'id' });
+  }
+
+  refreshData(dataGetter: () => Observable<any[]>, targetArray: any[]) {
+    dataGetter().subscribe((res) => {
+      targetArray.push(...res);
+    });
   }
 
   getHawkers() {
@@ -40,8 +47,20 @@ export class SharedService {
   getNikeAzur() {
     return this.getCollectionData('nikeAzur');
   }
-  private cartItems: any[] = [];
 
+  getNikeBlack() {
+    return this.getCollectionData('nikeBlack');
+  }
+
+  getOrders() {
+    return this.getCollectionData('*orders');
+  }
+
+  getUsers() {
+    return this.getCollectionData('*users');
+  }
+
+  private cartItems: any[] = [];
   addToCart(item: any) {
 
     const existingItem = this.cartItems.find(cartItem => cartItem.product.id === item.id && cartItem.selectedSize === item.selectedSize);
@@ -55,4 +74,9 @@ export class SharedService {
   getCartItems() {
     return this.cartItems;
   }
+
+  exit() {
+    window.location.reload();
+  }
+
 }

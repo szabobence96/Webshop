@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pelda-4422f": {
+      "hosting": {
+        "webshop": [
+          "pelda-4422f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pelda-4422f"
+  }
+}

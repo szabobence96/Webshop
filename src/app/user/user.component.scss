@@ -1,0 +1,50 @@
+mat-toolbar {
+    justify-content: space-between;
+}
+
+.conent {
+    padding: 32px;
+}
+
+.profile-image-toolbar {
+    border-radius: 100%;
+    margin-right: 8px;
+    margin-top: 10px;
+}
+
+.order-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+
+    .order-row {
+        display: table-row;
+        background-color: #f0f0f0;
+
+        .order-data {
+            display: table-cell;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .item-container {
+            display: table-cell;
+            padding: 10px;
+            border: 1px solid #ccc;
+            vertical-align: top;
+
+            .product-image {
+                width: 150px;
+            }
+
+            .description {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.splide__slide img {
+    width: 150px;
+    height: auto;
+}

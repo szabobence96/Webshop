@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { navbarData } from '../sidenav/nav-data';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,6 +9,9 @@ import { navbarData } from '../sidenav/nav-data';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
+  
+  constructor(public services: SharedService, public shoppingService: ShoppingCartService) { }
+  
   cartItems: any[] = [];
   selectedProducts: any[] = [];
 
@@ -15,8 +19,6 @@ export class ShoppingCartComponent implements OnInit {
   insuranceIsChecked = true;
   giftIsChecked = false;
   shippingPrice = 1390;
-
-  constructor(public services: SharedService) { }
 
   ngOnInit() {
     this.cartItems = this.services.getCartItems();
@@ -29,9 +31,7 @@ export class ShoppingCartComponent implements OnInit {
     }
   }
 
-  selectedSize(cartItem: any) {
 
-  }
   increaseQuantity(cartItem: any) {
     cartItem.quantity++;
     const kosarElem = this.navbarData.find(item => item.routerLink === 'shopping-cart');
@@ -72,11 +72,20 @@ export class ShoppingCartComponent implements OnInit {
       return this.shippingPrice = 1390; // Alapértelmezett szállítási díj
     }
   }
+
   getTotalPrice() {
     let totalPrice = 0;
     for (const cartItem of this.services.getCartItems()) {
       totalPrice += cartItem.product.price * cartItem.quantity;
     }
     return totalPrice;
+  }
+
+  calculateTotalPayment(): number {
+    const totalPrice = this.calculateShippingPrice() + this.getTotalPrice();
+    const insuranceFee = this.insuranceIsChecked ? 500 : 0;
+    const giftFee = this.giftIsChecked ? 1590 : 0;
+    
+    return totalPrice + insuranceFee + giftFee;
   }
 }

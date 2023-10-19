@@ -6,8 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./my-button.component.scss']
 })
 export class MyButtonComponent {
-
-  @Input() currentPrice: number = 0;
-
+  @Input() currentPrice: number = 2;
 }
-

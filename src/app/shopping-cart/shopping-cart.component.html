@@ -22,15 +22,15 @@
         </div>
     </div>
     <div class="checkout-container">
-        <div class="insurance"><mat-slide-toggle [(ngModel)]="insuranceIsChecked"></mat-slide-toggle>
-            <h3 [ngClass]="{'active': insuranceIsChecked}">500 Ft</h3> Küldemény biztosítása
+        <div class="insurance"><mat-slide-toggle [(ngModel)]="shoppingService.insuranceIsChecked"></mat-slide-toggle>
+            <h3 [ngClass]="{'active': shoppingService.insuranceIsChecked}">500 Ft</h3> Küldemény biztosítása
             <p class="checkout-container-desc">A küldemény megsérülése vagy elvesztése esetén nem kell várnia a helyzet
                 törvényileg előírt határidőn belüli rendezésére. Elég, ha bejelenti nekünk és dokumentálja a küldemény
                 megsérülését vagy elvesztését, és mi postafordultával teljesen új árut küldünk önnek.
             </p>
         </div>
-        <div class="gift"><mat-slide-toggle [(ngModel)]="giftIsChecked"></mat-slide-toggle>
-            <h3 [ngClass]="{'active': giftIsChecked}">1590 Ft</h3> Luxus csomagolás
+        <div class="gift"><mat-slide-toggle [(ngModel)]="shoppingService.giftIsChecked"></mat-slide-toggle>
+            <h3 [ngClass]="{'active': shoppingService.giftIsChecked}">1590 Ft</h3> Luxus csomagolás
             <p class="checkout-container-desc">Szívesen luxus kivitelű ajándékcsomagolásba csomagolunk önnek mindent.
             </p>
         </div>
@@ -42,12 +42,12 @@
         </div>
         <div class="checkout-card">
             <div class="total-price">
-                <h3>Összesen fizetendő: <p>{{calculateShippingPrice() + getTotalPrice() + (insuranceIsChecked ? 500 : 0)
-                        + (giftIsChecked ? 1590 : 0) }} Ft</p>
+                <h3>Összesen fizetendő: <p>{{ calculateShippingPrice() + getTotalPrice() + (shoppingService.insuranceIsChecked ? 500 : 0)
+                        + (shoppingService.giftIsChecked ? 1590 : 0) }} Ft</p>
                 </h3>
             </div>
         </div>
-        <button class="btn-hover color-8" [disabled]="services.getCartItems().length === 0">Tovább a
+        <button class="btn-hover color-8" routerLink="/shipping" [disabled]="services.getCartItems().length === 0">Tovább a
             szállításra!</button>
     </div>
 </div>

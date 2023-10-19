@@ -1,38 +1,45 @@
 import { Component, Input } from '@angular/core';
 import { SharedService } from '../shared.service';
-import { navbarData } from '../sidenav/nav-data';
 import { Observable } from 'rxjs';
+import { navbarData } from '../sidenav/nav-data';
 
 @Component({
   selector: 'app-statistics',
   templateUrl: './wear.component.html',
-  styleUrls: ['../products/products.component.scss', './wear.component.scss']
+  styleUrls: [ './wear.component.scss']
 })
 export class WearComponent {
   constructor(private services: SharedService) { }
   cartItems: any[] = [];
   selectedSize: string = 'M'; // A kiválasztott méret tárolásához szükséges változó
 
+  nikeBlack: any = [];
+  nikeAzur: any = [];
+  isExpanded = false;
+
+  // ...
+
+  toggleCard() {
+    this.isExpanded = !this.isExpanded;
+  }
   // Metódus a méret kiválasztására
   selectSize(size: string) {
     this.selectedSize = size;
     console.log('selectedSize changed to:', this.selectedSize);
-
   }
-
-  nikeAzur: any = [];
 
   refreshData(dataGetter: () => Observable<any[]>, targetArray: any[]) {
     dataGetter().subscribe((res) => {
       targetArray.push(...res);
     });
   }
-
+  
+  
   ngOnInit() {
     this.refreshData(() => this.services.getNikeAzur(), this.nikeAzur);
-    //console.log("hawkers tartalma:", this.hawkers); ellenőrzés hogy valóban feltötte-e a tömböt
-    this.cartItems = this.services.getCartItems();
+    this.refreshData(() => this.services.getNikeBlack(), this.nikeBlack);
 
+    //console.log("hawkers tartalma:", this.hawkers); ellenőrzés hogy valóban feltötte-e a tömböt
   }
 
   addToCart(product: any) {
@@ -61,6 +68,5 @@ export class WearComponent {
       kosarElem.badge = cartItemCount;
     }
   }
-
 
 }

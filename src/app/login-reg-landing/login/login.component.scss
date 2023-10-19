@@ -1,0 +1,31 @@
+.form-container{
+    display: block;
+    max-width: 600px;
+    margin: auto;
+
+    background: #eceff1;
+    padding: 48px;
+    border-radius: 16px;
+    mat-form-field{
+        width: 100%;
+        background: #eceff1;
+        
+    }
+}
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+     background-color: #eceff1;
+}
+
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.margin-top{
+    margin-top: 16px;
+}
+
+.text-center{
+    text-align: center;
+}

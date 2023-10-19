@@ -11,12 +11,12 @@ interface SideNavToggle {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'web';
+  title = 'webshop';
 
   isSideNavCollapsed = false;
   screenWidth = 0;
 
-  onToggleSideNav(data: SideNavToggle):void{
+  onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenwidth;
     this.isSideNavCollapsed = data.collapsed;
   }

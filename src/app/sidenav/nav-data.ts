@@ -39,6 +39,13 @@ export const navbarData = [
         badge: 0
     },
     {
+        routerLink:'user',
+        icon: 'fal fa-user',
+        label: 'Profil',
+        badge: 0
+        
+    },
+    {
         routerLink: 'shopping-cart',
         icon: 'fal fa-cart-shopping',
         label: 'Kosár',

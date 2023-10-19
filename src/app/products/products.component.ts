@@ -18,19 +18,15 @@ export class ProductsComponent {
   hawkersCD: any = [];
   hawkersDL: any = [];
   hawkersOneRaw: any = [];
-  refreshData(dataGetter: () => Observable<any[]>, targetArray: any[]) {
-    dataGetter().subscribe((res) => {
-      targetArray.push(...res);
-    });
-  }
+
 
   ngOnInit() {
-    this.refreshData(() => this.services.getHawkers(), this.hawkers);
-    this.refreshData(() => this.services.getHawkersWarwick(), this.hawkersWarwick);
-    this.refreshData(() => this.services.getHawkersCS(), this.hawkersCS);
-    this.refreshData(() => this.services.getHawkersCD(), this.hawkersCD);
-    this.refreshData(() => this.services.getHawkersDL(), this.hawkersDL);
-    this.refreshData(() => this.services.getHawkersOneRaw(), this.hawkersOneRaw);
+    this.services.refreshData(() => this.services.getHawkers(), this.hawkers);
+    this.services.refreshData(() => this.services.getHawkersWarwick(), this.hawkersWarwick);
+    this.services.refreshData(() => this.services.getHawkersCS(), this.hawkersCS);
+    this.services.refreshData(() => this.services.getHawkersCD(), this.hawkersCD);
+    this.services.refreshData(() => this.services.getHawkersDL(), this.hawkersDL);
+    this.services.refreshData(() => this.services.getHawkersOneRaw(), this.hawkersOneRaw);
     this.cartItems = this.services.getCartItems();
 
     //console.log("hawkers tartalma:", this.hawkers); ellenőrzés hogy valóban feltötte-e a tömböt

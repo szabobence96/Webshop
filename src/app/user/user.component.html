@@ -1,0 +1,68 @@
+<mat-toolbar color="primary">
+    <h1 *ngIf="!(user$ | async)">
+        Előbb jelentkezzen be!</h1>
+    <h1 *ngIf="user$ | async as user">
+        Üdvözöljük, {{user.displayName}}!</h1>
+
+    <ng-container *ngIf="user$ | async as user; else loginButton">
+        <button mat-button [matMenuTriggerFor]="userMenu">
+            <img class="profile-image-toolbar" width="30" height="30"
+                [src]="user.photoURL ?? 'assets/image-placeholder.png'" />
+            <mat-icon>expand_more</mat-icon>
+        </button>
+    </ng-container>
+    <ng-template #loginButton>
+        <button mat-button routerLink="login">
+            <mat-icon>login</mat-icon>
+            Bejelentkezés
+        </button>
+    </ng-template>
+</mat-toolbar>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
+
+<mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="/home">Rendelések</button>
+    <button mat-menu-item routerLink="/user/profile">Profil</button>
+    <button mat-menu-item (click)="logout()">Kijelentkezés</button>
+</mat-menu>
+
+<!--<div class="orders" *ngFor="let orders of items">{{orders.email}}</div>
+<div class="orders" *ngFor="let users of users">{{users.email}}</div>
+<div *ngFor="let email of findMatchingEmails()">
+    {{ email }}
+</div>
+<div *ngIf="userEmail">
+    Bejelentkezett email cím: {{ userEmail }}
+</div>
+<div class="order-container" *ngFor="let order of userOrders">
+    <p>{{ order.price }}</p>
+    <p>{{ order.gift }}</p>
+    <p>{{ order.insurance }}</p>
+    <div class="item-container" *ngFor="let item of order.items">
+        {{ item.product.description }}
+        <p>{{ item.product.imagePath }}</p>
+        <p>{{ item.quantity }}</p>
+    </div>
+</div>
+-->
+
+<div class="order-table">
+    <div class="order-row" *ngFor="let order of userOrders">
+        <div class="item-container" *ngFor="let item of order.items">
+            <img class="product-image" [src]="item.product.imagePath">
+            <p>{{ item.quantity }}</p>
+            <div class="description">{{ item.product.description }}</div>
+        </div>
+        <div class="order-data">Ajándékcsomagolás
+            <p>{{ order.gift }}</p>
+        </div>
+        <div class="order-data">Küldemény biztosítás
+            <p>{{ order.insurance }}</p>
+        </div>
+        <div class="order-data">Rendelés összege
+            <p>{{ order.price }} Ft</p>
+        </div>
+    </div>
+</div>

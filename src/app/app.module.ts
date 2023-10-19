@@ -1,9 +1,13 @@
+import { HotToastModule } from '@ngneat/hot-toast';
+import { CommonModule } from '@angular/common';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +24,19 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { MyButtonComponent } from './my-button/my-button.component';
-
+import { ProdCardComponent } from './prod-card/prod-card.component';
+import { WearSizeComponent } from './wear-size/wear-size.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login-reg-landing/login/login.component';
+import { SignUpComponent } from './login-reg-landing/sign-up/sign-up.component';
+import { LandingComponent } from './login-reg-landing/landing/landing.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { HomeComponent } from './login-reg-landing/home/home.component';
+import { ProfileComponent } from './login-reg-landing/profile/profile.component';
+import { ShippingComponent } from './shipping/shipping.component';
+import { FirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -44,17 +60,33 @@ const firebaseConfig = {
     MediaComponent,
     ShoppingCartComponent,
     MyButtonComponent,
+    ProdCardComponent,
+    WearSizeComponent,
+    UserComponent,
+    LoginComponent,
+    SignUpComponent,
+    LandingComponent,
+    HomeComponent,
+    ProfileComponent,
+    ShippingComponent,
+
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    HotToastModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
     FormsModule,
+    MatFormFieldModule,
+    FirestoreModule,
+    CommonModule,
+    provideAuth(() => getAuth()),
   ],
-  providers: [SharedService],
+  providers: [SharedService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
