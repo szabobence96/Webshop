@@ -52,7 +52,6 @@ export class UserComponent implements OnInit {
       if (users && users.email) {
         this.userEmail = users.email;
         this.userOrders = this.findUserOrders(users.email);
-
       }
     });
   }

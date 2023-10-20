@@ -43,7 +43,7 @@ export class ProductsComponent {
       if (existingCartItem.quantity < 5) {
         existingCartItem.quantity++;
       }
-    } else if (cartItems.length < 5) {
+    } else {
       this.services.addToCart(product);
     }
     const kosarElem = navbarData.find(item => item.routerLink === 'shopping-cart');

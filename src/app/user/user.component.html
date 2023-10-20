@@ -51,18 +51,18 @@
 <div class="order-table">
     <div class="order-row" *ngFor="let order of userOrders">
         <div class="item-container" *ngFor="let item of order.items">
-            <img class="product-image" [src]="item.product.imagePath">
-            <p>{{ item.quantity }}</p>
+            <div class="product-image">
+                <img [src]="item.product.imagePath">
+            </div>
             <div class="description">{{ item.product.description }}</div>
+            <div class="quantity">{{ item.quantity }} db</div>
+            <div class="product-price">{{ item.product.price }} Ft/db</div>
         </div>
-        <div class="order-data">Ajándékcsomagolás
-            <p>{{ order.gift }}</p>
-        </div>
-        <div class="order-data">Küldemény biztosítás
-            <p>{{ order.insurance }}</p>
-        </div>
-        <div class="order-data">Rendelés összege
-            <p>{{ order.price }} Ft</p>
+        <div class="order-data">
+            <p>Ajándékcsomagolás {{ order.gift ? 'Igen' : 'Nem' }}</p>
+            <p>Küldemény biztosítása {{ order.insurance ? 'Igen' : 'Nem' }}</p>
+            <p>Rendelve {{ order.orderDate.toDate() | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+            <p>Összesen {{ order.price }} Ft</p>
         </div>
     </div>
 </div>
