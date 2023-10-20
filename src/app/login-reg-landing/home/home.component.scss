@@ -1,0 +1,46 @@
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-weight: 100;
+
+
+    .order-row {
+        background-color: #fff;
+        margin: 20px 0px 50px 0;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 1rem;
+        overflow: hidden;
+
+        border: transparent;
+
+        .order-data {
+            padding: 10px 10px 40px 10px;
+
+            .total-price {
+                width: 300px;
+                padding-top: 10px;
+                text-align: center;
+                border-top: 1px solid #edf1f7;
+                float: right;
+                font-size: 16px;
+            }
+        }
+
+        .item-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #edf1f7;
+
+            >* {
+                flex: 1;
+                text-align: center;
+            }
+
+            .product-image img {
+                max-width: 120px;
+                float: left;
+            }
+        }
+    }
+}

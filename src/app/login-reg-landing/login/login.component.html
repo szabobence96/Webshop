@@ -3,14 +3,14 @@
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <mat-form-field>
             <mat-label>E-mail cím</mat-label>
-            <input matInput formControlName="email"/>
+            <input matInput formControlName="email" />
             <mat-error *ngIf="email?.errors?.['required']">
                 E-mail szükséges
             </mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Jelszó</mat-label>
-            <input matInput formControlName="password" type="password"/>
+            <input matInput formControlName="password" type="password" />
             <mat-error *ngIf="email?.errors?.['email']">
                 Jelszó szükséges
             </mat-error>
@@ -20,6 +20,7 @@
                 Bejelentkezés
             </button>
         </div>
-        <span class="center margin-top">Új az oldalunkon? <a class="sign-up-link" routerLink="/user/sign-up">Regisztráljon!</a></span>
+        <span class="center margin-top">Új az oldalunkon? <a class="sign-up-link"
+                routerLink="/user/sign-up">Regisztráljon!</a></span>
     </form>
 </div>

@@ -47,9 +47,10 @@
     </div>
 </div>
 -->
+<!--
 
-<div class="order-table">
-    <div class="order-row" *ngFor="let order of userOrders">
+    <div class="order-table" *ngIf="user$ | async as user">
+        <div class="order-row" *ngFor="let order of userOrders">
         <div class="item-container" *ngFor="let item of order.items">
             <div class="product-image">
                 <img [src]="item.product.imagePath">
@@ -62,9 +63,10 @@
             <p class="gift">Ajándékcsomagolás: {{ order.gift ? 'Igen, +1590 Ft' : 'Nem' }}</p>
             <p class="insurance">Küldemény biztosítása: {{ order.insurance ? 'Igen, +500 Ft' : 'Nem' }}</p>
             <p class="shipping-price">Szállítás díja: {{ order.shippingPrice }} Ft</p>
-
+            
             <p class="order-date">Rendelés dátuma: {{ order.orderDate.toDate() | date: 'yyyy-MM-dd' }}</p>
             <p class="total-price">Összesen: {{ order.price }} Ft</p>
         </div>
     </div>
 </div>
+-->

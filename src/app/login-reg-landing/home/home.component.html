@@ -1,7 +1,24 @@
 <app-user></app-user>
 <div class="orders-container" *ngIf="user$ | async as user">
     <div class="orders-head">Korábbi rendelések</div>
-    <ul>
+    <div class="order-table" *ngIf="user$ | async as user">
+        <div class="order-row" *ngFor="let order of userOrders">
+            <div class="item-container" *ngFor="let item of order.items">
+                <div class="product-image">
+                    <img [src]="item.product.imagePath">
+                </div>
+                <div class="description">{{ item.product.description }}</div>
+                <div class="quantity">{{ item.quantity }} db</div>
+                <div class="product-price">{{ item.product.price }} Ft/db</div>
+            </div>
+            <div class="order-data">
+                <p class="gift">Ajándékcsomagolás: {{ order.gift ? 'Igen, +1590 Ft' : 'Nem' }}</p>
+                <p class="insurance">Küldemény biztosítása: {{ order.insurance ? 'Igen, +500 Ft' : 'Nem' }}</p>
+                <p class="shipping-price">Szállítás díja: {{ order.shippingPrice }} Ft</p>
 
-    </ul>
+                <p class="order-date">Rendelés dátuma: {{ order.orderDate.toDate() | date: 'yyyy-MM-dd' }}</p>
+                <p class="total-price">Összesen: {{ order.price }} Ft</p>
+            </div>
+        </div>
+    </div>
 </div>

@@ -29,12 +29,16 @@ const routes: Routes = [
   { path: 'media', component: MediaComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'shipping', component: ShippingComponent },
-
   {
     path: 'user', component: UserComponent, children: [
       { path: 'profile', component: ProfileComponent, ...canActivate(redirectToLogin) },
     ]
   },
+  /*
+  {path: 'user', component: UserComponent},
+  {path: 'profile', component: ProfileComponent, ...canActivate(redirectToLogin) },
+  
+  */
   { path: 'user/login', component: LoginComponent, ...canActivate(redirectToHome) },
   { path: 'user/sign-up', component: SignUpComponent, ...canActivate(redirectToHome) },
   { path: 'home', component: HomeComponent, ...canActivate(redirectToLogin) },
