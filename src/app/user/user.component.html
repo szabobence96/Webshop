@@ -59,10 +59,12 @@
             <div class="product-price">{{ item.product.price }} Ft/db</div>
         </div>
         <div class="order-data">
-            <p>Ajándékcsomagolás {{ order.gift ? 'Igen' : 'Nem' }}</p>
-            <p>Küldemény biztosítása {{ order.insurance ? 'Igen' : 'Nem' }}</p>
-            <p>Rendelve {{ order.orderDate.toDate() | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
-            <p>Összesen {{ order.price }} Ft</p>
+            <p class="gift">Ajándékcsomagolás: {{ order.gift ? 'Igen, +1590 Ft' : 'Nem' }}</p>
+            <p class="insurance">Küldemény biztosítása: {{ order.insurance ? 'Igen, +500 Ft' : 'Nem' }}</p>
+            <p class="shipping-price">Szállítás díja: {{ order.shippingPrice }} Ft</p>
+
+            <p class="order-date">Rendelés dátuma: {{ order.orderDate.toDate() | date: 'yyyy-MM-dd' }}</p>
+            <p class="total-price">Összesen: {{ order.price }} Ft</p>
         </div>
     </div>
 </div>
