@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
+  images = [
+    {
+      imageSrc: './assets/images/commercial/scandal_commercial.jpg',
+      imageAlt: 'scandal'
+    },
+    {
+      imageSrc: './assets/images/commercial/sauvage_commercial.jpg',
+      imageAlt: 'sauvage'
+    },
+  ]
 }

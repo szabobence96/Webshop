@@ -24,26 +24,6 @@ export class SharedService {
     return this.getCollectionData('hawkers');
   }
 
-  getHawkersWarwick() {
-    return this.getCollectionData('hawkersWarwick');
-  }
-
-  getHawkersCS() {
-    return this.getCollectionData('hawkersCS');
-  }
-
-  getHawkersCD() {
-    return this.getCollectionData('hawkersCD');
-  }
-
-  getHawkersDL() {
-    return this.getCollectionData('hawkersDL');
-  }
-
-  getHawkersOneRaw() {
-    return this.getCollectionData('hawkersOneRaw');
-  }
-
   getNikeAzur() {
     return this.getCollectionData('nikeAzur');
   }

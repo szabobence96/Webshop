@@ -7,71 +7,11 @@
 </div>
 <div class="product-card-container">
     <div class="product-card" *ngFor="let hawkers of hawkers">
-        <div class="product-card-head">{{ hawkers.description }}</div>
+        <div class="product-card-head">{{ hawkers.productName }}</div>
         <img class="sunglasses" [src]="hawkers.imagePath">
-        <div class="product-card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias distinctio animi repellat eaque
-            consequuntur,
-        </div>
+        <div class="product-card-body">{{hawkers.description}}</div>
         <div class="product-card-price">
             <my-button [currentPrice]="hawkers.price" (click)="addToCart(hawkers)" class="add-to-cart"></my-button>
-        </div>
-    </div>
-    <div class="product-card" *ngFor="let hawkersDL of hawkersDL">
-        <div class="product-card-head">{{ hawkersDL.description }}</div>
-        <img class="sunglasses" [src]="hawkersDL.imagePath">
-        <div class="product-card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias distinctio animi repellat eaque
-            consequuntur,
-        </div>
-        <div class="product-card-price">
-            <my-button [currentPrice]="hawkersDL.price" (click)="addToCart(hawkersDL)" class="add-to-cart"></my-button>
-        </div>
-    </div>
-    <div class="product-card" *ngFor="let hawkersWarwick of hawkersWarwick">
-        <div class="product-card-head">{{ hawkersWarwick.description }}</div>
-        <img class="sunglasses" [src]="hawkersWarwick.imagePath">
-        <div class="product-card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias distinctio animi repellat eaque
-            consequuntur,
-        </div>
-        <div class="product-card-price">
-            <my-button [currentPrice]="hawkersWarwick.price" (click)="addToCart(hawkersWarwick)"
-                class="add-to-cart"></my-button>
-        </div>
-    </div>
-    <div class="product-card" *ngFor="let hawkersCS of hawkersCS">
-        <div class="product-card-head">{{ hawkersCS.description }}</div>
-        <img class="sunglasses" [src]="hawkersCS.imagePath">
-        <div class="product-card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias distinctio animi repellat eaque
-            consequuntur,
-        </div>
-        <div class="product-card-price">
-            <my-button [currentPrice]="hawkersCS.price" (click)="addToCart(hawkersCS)" class="add-to-cart"></my-button>
-        </div>
-    </div>
-    <div class="product-card" *ngFor="let hawkersCD of hawkersCD">
-        <div class="product-card-head">{{ hawkersCD.description }}</div>
-        <img class="sunglasses" [src]="hawkersCD.imagePath">
-        <div class="product-card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias distinctio animi repellat eaque
-            consequuntur,
-        </div>
-        <div class="product-card-price">
-            <my-button [currentPrice]="hawkersCD.price" (click)="addToCart(hawkersCD)" class="add-to-cart"></my-button>
-        </div>
-    </div>
-    <div class="product-card" *ngFor="let hawkersOneRaw of hawkersOneRaw">
-        <div class="product-card-head">{{ hawkersOneRaw.description }}</div>
-        <img class="sunglasses" [src]="hawkersOneRaw.imagePath">
-        <div class="product-card-body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias distinctio animi repellat eaque
-            consequuntur,
-        </div>
-        <div class="product-card-price">
-            <my-button [currentPrice]="hawkersOneRaw.price" (click)="addToCart(hawkersOneRaw)"
-                class="add-to-cart"></my-button>
         </div>
     </div>
 </div>

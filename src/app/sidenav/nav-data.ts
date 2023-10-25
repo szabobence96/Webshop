@@ -14,19 +14,6 @@ export const navbarData = [
         badge: 0
     },
     {
-        routerLink: 'wear',
-        icon: 'fal fa-shirt',
-        label: 'Ruházat',
-        badge: 0
-
-    },
-    {
-        routerLink: 'shoes',
-        icon: 'fal fa-boot',
-        label: 'Cipők',
-        badge: 0
-    },
-    {
         routerLink: 'accessories',
         icon: 'fal fa-gem',
         label: 'Kiegészítők',
@@ -39,11 +26,11 @@ export const navbarData = [
         badge: 0
     },
     {
-        routerLink:'user',
+        routerLink: 'user',
         icon: 'fal fa-user',
         label: 'Profil',
         badge: 0
-        
+
     },
     {
         routerLink: 'shopping-cart',

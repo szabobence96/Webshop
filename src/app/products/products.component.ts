@@ -10,23 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class ProductsComponent {
   constructor(private services: SharedService) { }
+
   cartItems: any[] = [];
-
-  hawkers: any = [];
-  hawkersWarwick: any = [];
-  hawkersCS: any = [];
-  hawkersCD: any = [];
-  hawkersDL: any = [];
-  hawkersOneRaw: any = [];
-
+  hawkers: any[] = [];
 
   ngOnInit() {
     this.services.refreshData(() => this.services.getHawkers(), this.hawkers);
-    this.services.refreshData(() => this.services.getHawkersWarwick(), this.hawkersWarwick);
-    this.services.refreshData(() => this.services.getHawkersCS(), this.hawkersCS);
-    this.services.refreshData(() => this.services.getHawkersCD(), this.hawkersCD);
-    this.services.refreshData(() => this.services.getHawkersDL(), this.hawkersDL);
-    this.services.refreshData(() => this.services.getHawkersOneRaw(), this.hawkersOneRaw);
     this.cartItems = this.services.getCartItems();
 
     //console.log("hawkers tartalma:", this.hawkers); ellenőrzés hogy valóban feltötte-e a tömböt

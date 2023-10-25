@@ -44,9 +44,11 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: #eceff1 !important;
 }
+
 .mat-mdc-slide-toggle.mat-accent {
     --mdc-switch-selected-focus-state-layer-color: #092c3d;
     --mdc-switch-selected-handle-color: #092c3d;
@@ -60,7 +62,8 @@ body {
     --mdc-switch-selected-pressed-track-color: #092c3d;
     --mdc-switch-selected-track-color: #092c3d;
 }
-.form-container{
+
+.form-container {
     display: block;
     max-width: 600px;
     margin: auto;
@@ -68,26 +71,26 @@ body {
     background: #eceff1;
     padding: 48px;
     border-radius: 16px;
-    mat-form-field{
+
+    mat-form-field {
         width: 100%;
-        background: #eceff1;
-        
     }
 }
+
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-     background-color: #eceff1;
+    background-color: #eceff1;
 }
 
 
-.center{
+.center {
     display: flex;
     justify-content: center;
 }
 
-.margin-top{
+.margin-top {
     margin-top: 16px;
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
