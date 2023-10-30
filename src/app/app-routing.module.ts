@@ -13,6 +13,7 @@ import { HomeComponent } from './login-reg-landing/home/home.component';
 import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
 import { ProfileComponent } from './login-reg-landing/profile/profile.component';
 import { ShippingComponent } from './shipping/shipping.component';
+import { FragrancesComponent } from './fragrances/fragrances.component';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['user']);
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'accessories', component: AccessoriesComponent },
+  { path: 'fragrances', component: FragrancesComponent },
   { path: 'media', component: MediaComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'shipping', component: ShippingComponent },

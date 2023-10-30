@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 export class SharedService {
 
   constructor(private fs: Firestore) { }
+  private cartItems: any[] = [];
+  private currentProduct: any[] = [];
 
   getCollectionData(collectionName: string) {
     let collectionRef = collection(this.fs, collectionName);
@@ -24,12 +26,8 @@ export class SharedService {
     return this.getCollectionData('hawkers');
   }
 
-  getNikeAzur() {
-    return this.getCollectionData('nikeAzur');
-  }
-
-  getNikeBlack() {
-    return this.getCollectionData('nikeBlack');
+  getJPG() {
+    return this.getCollectionData('JPG')
   }
 
   getOrders() {
@@ -40,7 +38,6 @@ export class SharedService {
     return this.getCollectionData('*users');
   }
 
-  private cartItems: any[] = [];
   addToCart(item: any) {
 
     const existingItem = this.cartItems.find(cartItem => cartItem.product.id === item.id && cartItem.selectedSize === item.selectedSize);
@@ -51,6 +48,11 @@ export class SharedService {
     }
   }
 
+  getCurrentProduct(item: any) {
+    this.currentProduct.push([item]);
+    return this.currentProduct;
+  }
+
   getCartItems() {
     return this.cartItems;
   }
@@ -58,5 +60,4 @@ export class SharedService {
   exit() {
     window.location.reload();
   }
-
 }

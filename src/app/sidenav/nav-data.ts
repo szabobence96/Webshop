@@ -20,6 +20,12 @@ export const navbarData = [
         badge: 0
     },
     {
+        routerLink: 'fragrances',
+        icon: ' fa fa-spray-can-sparkles',
+        label: 'Parfümök',
+        badge: 0
+    },
+    {
         routerLink: 'media',
         icon: 'fal fa-camera',
         label: 'Media',

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
   images = [
     {
-      imageSrc: './assets/images/commercial/scandal_commercial.jpg',
+      imageSrc: './assets/images/commercial/scandal_commercial_ps_copy.jpg',
       imageAlt: 'scandal'
     },
     {

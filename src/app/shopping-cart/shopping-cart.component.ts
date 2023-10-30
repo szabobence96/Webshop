@@ -9,9 +9,9 @@ import { ShoppingCartService } from './shopping-cart.service';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-  
+
   constructor(public services: SharedService, public shoppingService: ShoppingCartService) { }
-  
+
   cartItems: any[] = [];
   selectedProducts: any[] = [];
 
@@ -85,7 +85,7 @@ export class ShoppingCartComponent implements OnInit {
     const totalPrice = this.calculateShippingPrice() + this.getTotalPrice();
     const insuranceFee = this.insuranceIsChecked ? 500 : 0;
     const giftFee = this.giftIsChecked ? 1590 : 0;
-    
+
     return totalPrice + insuranceFee + giftFee;
   }
 }

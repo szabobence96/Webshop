@@ -36,6 +36,8 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CarouselModule } from './carousel/carousel.module';
+import { FragrancesComponent } from './fragrances/fragrances.component';
+import { ModalComponent } from './modal/modal.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -56,6 +58,7 @@ const firebaseConfig = {
     DashboardComponent,
     ProductsComponent,
     AccessoriesComponent,
+    FragrancesComponent,
     MediaComponent,
     ShoppingCartComponent,
     MyButtonComponent,
@@ -68,6 +71,7 @@ const firebaseConfig = {
     HomeComponent,
     ProfileComponent,
     ShippingComponent,
+    ModalComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
