@@ -1,11 +1,20 @@
-<div class="modal">
+<!--<div class="modal">
     <div class="modal-content">
         <div class="product-details">
-            <h2>Név: {{ productName }}</h2> <!-- Termék neve -->
-            <p> {{ productPath }} </p> <!-- Termék ára -->
-            <p>Ár: {{ productPrice }}</p> <!-- Termék ára -->
+            <div class="product-card-price">{{productPrice}}</div>
             <button>Kosárba helyezés</button>
         </div>
         <button (click)="closeModal()">Bezárás</button>
     </div>
 </div>
+-->
+<div class="modal-container">
+    <div class="modal-content">
+      <p> {{product.productName}}</p>
+      <p>Ár: {{product.price}}  </p>
+      <p>Leírás: {{product.description}} </p>
+      <img class="modal-image" [src]="product.imagePath">
+      <button (click)="closeModal()">Bezárás</button>
+    </div>
+  </div>
+  

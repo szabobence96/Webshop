@@ -1,29 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
+import { AngularFirestoreModule, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import 'firebase/firestore';
+import { Observable } from 'rxjs';
+import { Firestore, addDoc, collection, collectionData, getDocs, query } from '@angular/fire/firestore';
+import { ProductInterface } from '../products/products.interface';
 
 @Component({
   selector: 'app-fragrances',
   templateUrl: './fragrances.component.html',
   styleUrls: ['./fragrances.component.scss']
 })
-export class FragrancesComponent {
+export class FragrancesComponent implements OnInit {
+  task$ = collectionData(collection(this.firestore, 'JPG')) as Observable<ProductInterface[]>;
+
+
+  constructor(
+    public services: SharedService,
+    public firestore: Firestore
+  ) { }
+
   isModalOpen = false;
-  selectedProduct = [];
+  selectedProduct: any;
 
-
-  openModal() {
-    this.isModalOpen = true;
-  }
   closeModal() {
     this.isModalOpen = false;
   }
 
-  constructor(public services: SharedService) {
+  ngOnInit() {
+    this.task$.subscribe(data => console.log('task$ observable:', data));
+
   }
 
-  JPG: any[] = [];
-
-  ngOnInit() {
-    this.services.refreshData(() => this.services.getJPG(), this.JPG);
+  openModal(product: ProductInterface) {
+    this.selectedProduct = product;
+    this.isModalOpen = true;
+    console.log('Kiválasztott termék:', product);
   }
 }
+

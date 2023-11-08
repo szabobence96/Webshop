@@ -34,10 +34,12 @@ import { HomeComponent } from './login-reg-landing/home/home.component';
 import { ProfileComponent } from './login-reg-landing/profile/profile.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { FirestoreModule } from '@angular/fire/firestore';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { CarouselModule } from './carousel/carousel.module';
 import { FragrancesComponent } from './fragrances/fragrances.component';
 import { ModalComponent } from './modal/modal.component';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireModule } from '@angular/fire/compat';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -87,6 +89,10 @@ const firebaseConfig = {
     FirestoreModule,
     CommonModule,
     CarouselModule,
+    AngularFireDatabaseModule, 
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
     provideAuth(() => getAuth()),
   ],
   providers: [SharedService, AngularFirestore],

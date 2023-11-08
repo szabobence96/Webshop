@@ -1,10 +1,32 @@
-<div class="product-card-container" (click)="openModal()">
-    <div class="product-card" *ngFor="let item of JPG">
+<!--<div class="product-card-container">
+    <div class="product-card"  *ngFor="let item of JPG" (click)="openModal()">
         <div class="product-card-head"> {{item.productName}}</div>
         <img class="sunglasses" [src]="item.imagePath">
-        <div class="product-card-price">{{item.price}}
-        </div>
+        <div class="product-description">{{item.description}}</div>
+        <div class="product-card-price">{{item.price}}</div>
+    </div>
+</div>
+<div class="val" *ngFor="let task of task$ | async">
+    <p>{{task.price}}</p>
+</div>
+<div class="product-card-container" >
+    <div class="product-card" *ngFor="let item of task$ | async" (click)="openModal(item)">
+        <div class="product-card-head"> {{item.productName}}</div>
+        <img class="sunglasses" [src]="item.imagePath">
+        <div class="product-description">{{item.description}}</div>
+        <div class="product-card-price">{{item.price}}</div>
     </div>
 </div>
 
-<app-modal (closeModalEvent)="closeModal()" *ngIf="isModalOpen"></app-modal>
+-->
+<div class="product-card-container" >
+    <div class="product-card" *ngFor="let item of task$ | async" (click)="openModal(item)">
+        <div class="product-card-head"> {{item.productName}}</div>
+        <img class="sunglasses" [src]="item.imagePath">
+        <div class="product-description">{{item.description}}</div>
+        <div class="product-card-price">{{item.price}}</div>
+    </div>
+</div>
+<app-modal [product]="selectedProduct" (closeModalEvent)="closeModal()" *ngIf="isModalOpen"></app-modal>
+
+
