@@ -1,20 +1,21 @@
 import { Component, EventEmitter, Output, OnInit, Input, Renderer2 } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { SharedService } from '../shared.service';
-import { ProductInterface } from '../products/products.interface';
-import { navbarData } from '../sidenav/nav-data';
+import { SharedService } from '../../shared.service';
+import { ProductInterface } from '../../products/products.interface';
+import { navbarData } from '../../sidenav/nav-data';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  selector: 'app-modal-products',
+  templateUrl: './modal-products.component.html',
+  styleUrls: ['./modal-products.component.scss']
 })
+export class ModalProductsComponent implements OnInit {
 
-export class ModalComponent implements OnInit {
   @Input() product: any;
   @Output() closeModalEvent = new EventEmitter();
   currentImage: string = '';
+
   constructor(
     private db: AngularFireDatabase,
     public services: SharedService,

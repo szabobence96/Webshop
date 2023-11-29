@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { AngularFirestoreModule, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import 'firebase/firestore';
@@ -12,30 +12,43 @@ import { ProductInterface } from '../products/products.interface';
   styleUrls: ['./fragrances.component.scss']
 })
 export class FragrancesComponent implements OnInit {
-  task$ = collectionData(collection(this.firestore, 'JPG')) as Observable<ProductInterface[]>;
-
+  fragrances$ = collectionData(collection(this.firestore, 'fragrances')) as Observable<ProductInterface[]>;
 
   constructor(
     public services: SharedService,
-    public firestore: Firestore
+    public firestore: Firestore,
   ) { }
 
   isModalOpen = false;
   selectedProduct: any;
+
 
   closeModal() {
     this.isModalOpen = false;
   }
 
   ngOnInit() {
-    this.task$.subscribe(data => console.log('task$ observable:', data));
+    this.fragrances$.subscribe(data => console.log('task$ observable:', data));
+    console.log(this.fragrances$)
 
   }
+
+  mouseOver(product: ProductInterface) {
+    product.imagePath = product.modalImagePath[1];
+  }
+
+  mouseLeave(product: ProductInterface) {
+    product.imagePath = product.modalImagePath[0]
+  }
+
 
   openModal(product: ProductInterface) {
     this.selectedProduct = product;
     this.isModalOpen = true;
     console.log('Kiválasztott termék:', product);
+    if (product.type && product.type.length > 0) {
+      this.services.selectSize(product.type[0]);
+    }
   }
 }
 

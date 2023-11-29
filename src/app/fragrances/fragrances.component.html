@@ -1,32 +1,20 @@
-<!--<div class="product-card-container">
-    <div class="product-card"  *ngFor="let item of JPG" (click)="openModal()">
-        <div class="product-card-head"> {{item.productName}}</div>
-        <img class="sunglasses" [src]="item.imagePath">
-        <div class="product-description">{{item.description}}</div>
-        <div class="product-card-price">{{item.price}}</div>
-    </div>
-</div>
-<div class="val" *ngFor="let task of task$ | async">
-    <p>{{task.price}}</p>
-</div>
-<div class="product-card-container" >
-    <div class="product-card" *ngFor="let item of task$ | async" (click)="openModal(item)">
-        <div class="product-card-head"> {{item.productName}}</div>
-        <img class="sunglasses" [src]="item.imagePath">
-        <div class="product-description">{{item.description}}</div>
-        <div class="product-card-price">{{item.price}}</div>
+<div class="brands-container">
+    <div class="brands">
+
     </div>
 </div>
 
--->
-<div class="product-card-container" >
-    <div class="product-card" *ngFor="let item of task$ | async" (click)="openModal(item)">
-        <div class="product-card-head"> {{item.productName}}</div>
-        <img class="sunglasses" [src]="item.imagePath">
-        <div class="product-description">{{item.description}}</div>
-        <div class="product-card-price">{{item.price}}</div>
+<div class="product-card-container">
+    <div class="product-card" *ngFor="let item of fragrances$ | async" (click)="openModal(item)"
+        (mouseover)="mouseOver(item)" (mouseleave)="mouseLeave(item)">
+        <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
+            <p class="scent">{{item.scent}}</p>
+        </div>
+        <div class="main-image-container">
+            <img class="main-image" [src]="item.imagePath">
+        </div>
+        <div class="product-card-price">{{ item.type[0].price }} <p class="tol">Ft-tól</p>
+        </div>
     </div>
 </div>
 <app-modal [product]="selectedProduct" (closeModalEvent)="closeModal()" *ngIf="isModalOpen"></app-modal>
-
-

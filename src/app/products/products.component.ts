@@ -1,44 +1,46 @@
-import { Component } from '@angular/core';
-import { SharedService } from 'src/app/shared.service';
-import { navbarData } from '../sidenav/nav-data';
+import { Component, Input, OnInit } from '@angular/core';
+import { SharedService } from '../shared.service';
+import { AngularFirestoreModule, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { Firestore, addDoc, collection, collectionData, getDocs, query } from '@angular/fire/firestore';
+import { ProductInterface } from '../products/products.interface';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['../fragrances/fragrances.component.scss']
 })
-export class ProductsComponent {
-  constructor(private services: SharedService) { }
+export class ProductsComponent implements OnInit {
+  task$ = collectionData(collection(this.firestore, 'hawkers')) as Observable<ProductInterface[]>;
 
-  cartItems: any[] = [];
-  hawkers: any[] = [];
 
-  ngOnInit() {
-    this.services.refreshData(() => this.services.getHawkers(), this.hawkers);
-    this.cartItems = this.services.getCartItems();
+  constructor(
+    public services: SharedService,
+    public firestore: Firestore
+  ) { }
 
-    //console.log("hawkers tartalma:", this.hawkers); ellenőrzés hogy valóban feltötte-e a tömböt
+  isModalOpen = false;
+  selectedProduct: any;
+
+  closeModal() {
+    this.isModalOpen = false;
   }
 
-  navbarData = navbarData;
+  ngOnInit() {
+    this.task$.subscribe(data => console.log('task$ observable:', data));
+    console.log(this.task$)
 
-  addToCart(product: any) {
+  }
 
-    const cartItems = this.services.getCartItems();
-    const existingCartItem = cartItems.find(item => item.product.id === product.id);
 
-    if (existingCartItem) {
-      if (existingCartItem.quantity < 5) {
-        existingCartItem.quantity++;
-      }
-    } else {
-      this.services.addToCart(product);
-    }
-    const kosarElem = navbarData.find(item => item.routerLink === 'shopping-cart');
-    if (kosarElem) {
-      const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-      kosarElem.badge = cartItemCount;
+  openModal(product: ProductInterface) {
+    this.selectedProduct = product;
+    this.isModalOpen = true;
+    console.log('Kiválasztott termék:', product);
+    if (product.type && product.type.length > 0) {
+      this.services.selectSize(product.type[0]);
     }
   }
 }
+

@@ -42,18 +42,4 @@ export class HomeComponent implements OnInit {
   findUserOrders(userEmail: string): any[] {
     return this.items.filter((order: { email: string; }) => order.email === userEmail);
   }
-
-  /*
-  indMatchingEmails(items = this.items, users = this.users): any[] {
-    const matchingEmails = [];
-    for (const order of items) {
-      for (const user of users) {
-        if (order.email === user.email) {
-          matchingEmails.push(order.email);
-        }
-      }
-    }
-    return matchingEmails;
-  }
-  */
 }

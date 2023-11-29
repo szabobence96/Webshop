@@ -6,21 +6,33 @@
     .product-card {
         cursor: pointer;
         display: flex;
+        color: #333;
         flex-direction: column;
         border-radius: .5rem;
         background-color: #fff;
         margin: 1.25rem 0 1.25rem 0;
         box-shadow: 0 .25rem .5rem #000000;
         width: calc(33.33% - 20px);
-        /* Három elem egymás mellett (33.33% oszlopszélesség) és 20px margó */
         margin: 10px;
-        /* Margó a termékek között */
+        width: 350px;
+        overflow: hidden;
+
 
         .product-card-head {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid #edf1f7;
-            font-size: 1.2rem;
-            font-weight: 300;
+            padding: 10px 0 5px 15px;
+            border-bottom: 2px solid #edf1f7;
+            font-size: 18px;
+            font-weight: 500;
+
+            .brand-name {
+                font-size: 16px;
+                font-weight: 300;
+            }
+
+            .scent {
+                margin: -10px 0 -5px 0;
+                font-size: 14px;
+            }
         }
 
         .product-card-body {
@@ -30,16 +42,40 @@
 
         }
 
+        .main-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .main-image {
+                max-width: 300px;
+                max-height: 300px;
+                width: auto;
+                height: auto;
+            }
+        }
+
+        .scent {
+            font-weight: 100;
+            font-size: 15px;
+        }
+
+        // background-color: #f6f9fc;
+
         .product-card-price {
             display: flex;
             align-items: center;
-            /* Vízszintesen középre igazítás */
-            padding-top: 25px;
+            padding: 25px 0 0 15px;
+            font-weight: 400;
+            font-size: 22px;
+            background-color: #edf1f7;
 
-            p {
-                font-size: 30px;
+
+            .tol {
+                font-size: 15px;
                 font-weight: 100;
-                padding: 10px;
+                padding: 15px 0 0 5px;
+
             }
 
             .add-to-cart {

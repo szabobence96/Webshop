@@ -7,7 +7,7 @@ import { navbarData } from '../sidenav/nav-data';
 })
 
 export class ShoppingCartService {
- 
+
   navbarData = navbarData;
   insuranceIsChecked = true;
   giftIsChecked = false;
@@ -18,7 +18,7 @@ export class ShoppingCartService {
   getTotalPrice() {
     let totalPrice = 0;
     for (const cartItem of this.services.getCartItems()) {
-      totalPrice += cartItem.product.price * cartItem.quantity;
+      totalPrice += (cartItem.selectedPrice * cartItem.quantity);
     }
     return totalPrice;
   }
@@ -33,12 +33,12 @@ export class ShoppingCartService {
     }
   }
 
-  calculateInsurance(){
+  calculateInsurance() {
     const insuranceFee = this.insuranceIsChecked ? 500 : 0;
     return insuranceFee;
   }
 
-  calculateGiftFee(){
+  calculateGiftFee() {
     const giftFee = this.giftIsChecked ? 1590 : 0;
     return giftFee;
   }
@@ -46,8 +46,8 @@ export class ShoppingCartService {
     const totalPrice = this.calculateShippingPrice() + this.getTotalPrice();
     const insuranceFee = this.calculateInsurance();
     const giftFee = this.calculateGiftFee();
-    
+
     return totalPrice + insuranceFee + giftFee;
   }
-  
+
 }

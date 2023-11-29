@@ -10,7 +10,7 @@ export class WearSizeComponent {
   @Input() selectedSize: string = 'M' // Az aktuális kiválasztott méretet a komponens bemenetként várja
   @Output() sizeSelected = new EventEmitter<string>();
 
-  
+
   selectSize(size: string) {
     this.selectedSize = size;
     console.log('selectedSize changed to:', this.selectedSize);

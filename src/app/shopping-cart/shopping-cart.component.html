@@ -9,14 +9,14 @@
         <div class="shopping-cart-card">
             <div *ngFor="let cartItem of services.getCartItems()" class="cart-item">
                 <img class="product-image" [src]="cartItem.product.imagePath">
-                <div class="shopping-cart-head">{{ cartItem.product.productName }}</div>
-                <div class="size">{{cartItem.product.selectedSize}}</div>
+                <div class="shopping-cart-head">{{ cartItem.product.productName }} {{cartItem.size}}</div>
                 <div class="decreaseQuantity" (click)="decreaseQuantity(cartItem)"
                     [ngClass]="{ 'disabled-button': cartItem.quantity === 1 }">-</div>
                 <div class="product-quantity">{{ cartItem.quantity }}</div>
                 <div class="increaseQuantity" (click)="increaseQuantity(cartItem)"
                     [ngClass]="{ 'disabled-button': cartItem.quantity === 5 }">+</div>
-                <div class="shopping-cart-price">{{ (cartItem.product.price * cartItem.quantity) }}</div>
+                <div class="shopping-cart-price"> {{(cartItem.selectedPrice * cartItem.quantity)}}
+                </div>
                 <div class="removeFromCart" (click)="removeFromCart(cartItem)">X</div>
             </div>
         </div>

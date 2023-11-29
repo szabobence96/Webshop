@@ -19,11 +19,14 @@ export class ShoppingCartComponent implements OnInit {
   insuranceIsChecked = true;
   giftIsChecked = false;
   shippingPrice = 1390;
-
+  selectedProductPrice = this.services.selectedSizePrice;
   ngOnInit() {
     this.cartItems = this.services.getCartItems();
   }
 
+  getProductPrice() {
+    return this.selectedProductPrice;
+  }
   addToCart() {
     const kosarElem = this.navbarData.find(item => item.routerLink === 'shopping-cart');
     if (kosarElem) {
@@ -76,7 +79,7 @@ export class ShoppingCartComponent implements OnInit {
   getTotalPrice() {
     let totalPrice = 0;
     for (const cartItem of this.services.getCartItems()) {
-      totalPrice += cartItem.product.price * cartItem.quantity;
+      totalPrice += cartItem.selectedPrice * cartItem.quantity;
     }
     return totalPrice;
   }

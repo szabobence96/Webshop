@@ -1,17 +1,14 @@
-<div class="product-background" style="background-image: url('./assets/images/sunglasses/sunglasses-background2.jpg');">
-</div>
-<div class="glitch-wrapper">
-    <div class="glitch" data-glitch="#Hawkers">#Hawkers</div>
-    <div class="glitch margin-left" data-glitch="#Hawkers">#Hawkers</div>
-    <div class="glitch " data-glitch="#Hawkers">#Hawkers</div>
-</div>
 <div class="product-card-container">
-    <div class="product-card" *ngFor="let hawkers of hawkers">
-        <div class="product-card-head">{{ hawkers.productName }}</div>
-        <img class="sunglasses" [src]="hawkers.imagePath">
-        <div class="product-card-body">{{hawkers.description}}</div>
+    <div class="product-card" *ngFor="let item of task$ | async" (click)="openModal(item)">
+        <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
+        </div>
+        <div class="main-image-container">
+            <img class="main-image" [src]="item.imagePath">
+        </div>
         <div class="product-card-price">
-            <my-button [currentPrice]="hawkers.price" (click)="addToCart(hawkers)" class="add-to-cart"></my-button>
+            <p class="tol">{{item.price}} Ft</p>
         </div>
     </div>
 </div>
+<app-modal-products [product]="selectedProduct" (closeModalEvent)="closeModal()"
+    *ngIf="isModalOpen"></app-modal-products>

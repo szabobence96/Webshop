@@ -40,6 +40,7 @@ import { FragrancesComponent } from './fragrances/fragrances.component';
 import { ModalComponent } from './modal/modal.component';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireModule } from '@angular/fire/compat';
+import { ModalProductsComponent } from './products/modal-products/modal-products.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -74,6 +75,7 @@ const firebaseConfig = {
     ProfileComponent,
     ShippingComponent,
     ModalComponent,
+    ModalProductsComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
@@ -89,7 +91,7 @@ const firebaseConfig = {
     FirestoreModule,
     CommonModule,
     CarouselModule,
-    AngularFireDatabaseModule, 
+    AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,

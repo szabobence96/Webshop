@@ -28,7 +28,7 @@ export class ProdCardComponent {
     console.log('selectedSize changed to:', this.selectedSize);
   }
 
-  
+
 
   addToCart(product: any) {
     const size = this.selectedSize;
@@ -47,7 +47,7 @@ export class ProdCardComponent {
       }
     } else if (cartItems.length < 5) {
       // Ha nincsenek azonos méretű termékek a kosárban, és a kosár még nem érte el a 5 termék limitet
-      this.services.addToCart({ ...product, selectedSize: size });
+      this.services.addToCartService({ ...product, selectedSize: size });
     }
 
     const kosarElem = navbarData.find(item => item.routerLink === 'shopping-cart');
