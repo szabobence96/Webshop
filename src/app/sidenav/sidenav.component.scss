@@ -52,11 +52,11 @@
                 font-size: 24px;
             }
         }
-
     }
 
 }
 
+/*
 @media screen and (max-width: 450px) {
     .sidenav {
         width: 3rem;
@@ -92,10 +92,25 @@
         }
     }
 }
+*/
+
+.sidenav-closed-mobile {
+    width: 0rem;
+    transition: .5s ease;
+
+    .logo {
+        display: none;
+    }
+
+    .sidenav-nav {
+        display: none;
+    }
+}
 
 .sidenav-collapsed {
     width: 16.55625rem;
 }
+
 
 .sidenav-nav {
     list-style: none;
@@ -111,6 +126,7 @@
     .sidenav-nav-item {
         width: 100%;
         margin-bottom: 0.625rem;
+
 
         .sidenav-nav-link {
             display: flex;
@@ -156,40 +172,30 @@
     }
 }
 
-@media screen and (max-width: 450px) {
+.sidenav-link-close {
+    color: #f3f3f3;
+    font-size: 25px;
+    margin-top: 40px;
+    z-index: 5;
+}
 
-
-
-    .sidenav-nav {
-        padding: 0.2rem;
-
-        .sidenav-nav-item {
-
-            .sidenav-nav-link {
-                height: 2.6rem;
-
-                .sidenav-link-icon {
-                    font-size: 18px;
-                    text-align: center;
-                    margin-left: 5px;
-                }
-
-                .cart-badge {
-                    position: fixed;
-                }
-
-                .sidenav-link-text {
-                    margin-left: 1.5rem;
-                }
-            }
-        }
-
-        .sidenav-nav-item:hover {
-            .sidenav-nav-link {
-                background-color: #fff;
-                color: #000;
-            }
-        }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
     }
 
+    to {
+        opacity: 1;
+    }
+}
+
+.sidenav-link-open {
+    cursor: pointer;
+    position: absolute;
+    color: #7d7d7d;
+    font-size: 25px;
+    top: 10%;
+    z-index: 5;
+    animation: fadeIn 1s;
+    /* 1 másodperc késleltetett animáció */
 }

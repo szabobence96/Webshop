@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 interface SideNavToggle {
   screenwidth: number;
   collapsed: boolean;
+  closed: boolean;
 }
+
 
 @Component({
   selector: 'app-root',
@@ -14,10 +16,12 @@ export class AppComponent {
   title = 'webshop';
 
   isSideNavCollapsed = false;
+  isSideNavMobileClosed = false;
   screenWidth = 0;
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenwidth;
     this.isSideNavCollapsed = data.collapsed;
+    this.isSideNavMobileClosed = data.closed;
   }
 }

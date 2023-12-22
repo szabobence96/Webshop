@@ -14,6 +14,9 @@ import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angula
 import { ProfileComponent } from './login-reg-landing/profile/profile.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { FragrancesComponent } from './fragrances/fragrances.component';
+import { JeanPaulGaultierComponent } from './brands/jean-paul-gaultier/jean-paul-gaultier.component';
+import { DiorComponent } from './brands/dior/dior.component';
+import { DiorFragrancesComponent } from './fragrances/dior-fragrances/dior-fragrances/dior-fragrances.component';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['user']);
@@ -24,23 +27,24 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'accessories', component: AccessoriesComponent },
   { path: 'fragrances', component: FragrancesComponent },
-  { path: 'media', component: MediaComponent },
+  { path: 'jeanpaulgaultier', component: JeanPaulGaultierComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'shipping', component: ShippingComponent },
+  { path: 'diors', component: DiorFragrancesComponent },
   {
     path: 'user', component: UserComponent, children: [
       { path: 'profile', component: ProfileComponent, ...canActivate(redirectToLogin) },
     ]
   },
-  /*
-  {path: 'user', component: UserComponent},
-  {path: 'profile', component: ProfileComponent, ...canActivate(redirectToLogin) },
-  
-  */
   { path: 'user/login', component: LoginComponent, ...canActivate(redirectToHome) },
   { path: 'user/sign-up', component: SignUpComponent, ...canActivate(redirectToHome) },
   { path: 'home', component: HomeComponent, ...canActivate(redirectToLogin) },
   { path: '', component: LandingComponent, pathMatch: 'full' },
+
+  //brand routing
+  { path: 'media', component: MediaComponent },
+  { path: 'dior', component: DiorComponent },
+
 ];
 
 @NgModule({

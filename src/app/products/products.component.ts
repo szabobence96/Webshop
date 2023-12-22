@@ -9,7 +9,7 @@ import { ProductInterface } from '../products/products.interface';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['../fragrances/fragrances.component.scss']
+  styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
   task$ = collectionData(collection(this.firestore, 'hawkers')) as Observable<ProductInterface[]>;

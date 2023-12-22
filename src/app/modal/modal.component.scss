@@ -182,5 +182,18 @@
             }
         }
     }
+}
 
+@media screen and (max-width: 500px) {
+    .modal-content {
+        width: 350px;
+        height: 450px;
+
+        .left-section {
+            .modal-image {
+                max-width: 300px;
+                max-height: 350px;
+            }
+        }
+    }
 }

@@ -1,4 +1,6 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''" [ngClass]="closed ? 'sidenav-closed-mobile': ''"
+    @fadeInOut>
+    <!--*ngIf="closed === false"-->
     <div class="logo-container">
         <button class="logo" (click)="toggleCollapse()">></button>
         <div class="logo-text" @fadeInOut *ngIf="collapsed">Astra</div>
@@ -6,6 +8,9 @@
             <i class="fal fa-times close-icon"></i>
         </button>
     </div>
+
+
+
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData">
             <a href="" class="sidenav-nav-link" [routerLink]="[data.routerLink]" routerLinkActive="active"
@@ -19,5 +24,10 @@
                 </mat-icon>
             </a>
         </li>
+        <div class="sidenav-link-close fal fa-times close-icon" @fadeInOut
+            *ngIf="collapsed===false && screenwidth < 969" (click)="
+            toggleClose()"></div>
     </ul>
 </div>
+<i class="sidenav-link-open fa fa-angle-double-right" *ngIf="closed===true && screenwidth < 969" (click)="
+toggleClose()"></i>

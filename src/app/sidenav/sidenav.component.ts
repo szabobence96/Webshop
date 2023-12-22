@@ -5,6 +5,7 @@ import { navbarData } from './nav-data';
 interface SideNavToggle {
   screenwidth: number;
   collapsed: boolean;
+  closed: boolean;
 }
 
 
@@ -27,9 +28,10 @@ interface SideNavToggle {
         )
       ])
     ]),
+
     trigger('rotate', [
       transition(':enter', [
-        animate('430ms', //Itt állítod az X nek a sebességét.
+        animate('430ms',
           keyframes([
             style({ transform: 'rotate(0deg)', offset: '0' }),
             style({ transform: 'rotate(0.5turn)', offset: '1' })
@@ -43,6 +45,7 @@ export class SidenavComponent implements OnInit {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
+  closed = false;
   screenwidth = 0;
   navData = navbarData;
 
@@ -51,20 +54,36 @@ export class SidenavComponent implements OnInit {
     this.screenwidth = window.innerWidth;
     if (this.screenwidth <= 968) {
       this.collapsed = false;
-      this.onToggleSideNav.emit({ collapsed: this.collapsed, screenwidth: this.screenwidth });
+      this.closed = false;
+      this.onToggleSideNav.emit({ closed: this.closed, collapsed: this.collapsed, screenwidth: this.screenwidth });
     }
   }
 
   ngOnInit(): void {
     this.screenwidth = window.innerWidth;
   }
+
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
-    this.onToggleSideNav.emit({ collapsed: this.collapsed, screenwidth: this.screenwidth });
+    this.onToggleSideNav.emit({ closed: this.closed, collapsed: this.collapsed, screenwidth: this.screenwidth });
+    if (this.collapsed === false) {
+      this.closed = false;
+
+    }
+    console.log('toggle collapsed?: ', this.collapsed)
   }
 
   closeSidenav(): void {
     this.collapsed = false;
-    this.onToggleSideNav.emit({ collapsed: this.collapsed, screenwidth: this.screenwidth });
+    this.onToggleSideNav.emit({ closed: this.closed, collapsed: this.collapsed, screenwidth: this.screenwidth });
+    this.closed = false;
+    console.log('close sidenav collapsed?: ', this.collapsed)
+
+  }
+
+  toggleClose(): void {
+    this.closed = !this.closed;
+    this.onToggleSideNav.emit({ collapsed: this.collapsed, closed: this.closed, screenwidth: this.screenwidth });
+    console.log('toggleClose?: ', this.closed)
   }
 }

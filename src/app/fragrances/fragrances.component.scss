@@ -1,7 +1,23 @@
+.brands-container {
+    background-color: #fff;
+    border-radius: 15px;
+    margin-bottom: 50px;
+
+    .brand-img {
+        max-width: 150px;
+        max-height: 150px;
+        width: auto;
+        height: auto;
+        aspect-ratio: 3/2;
+        object-fit: contain;
+        cursor: pointer;
+    }
+}
+
 .product-card-container {
     display: flex;
     flex-wrap: wrap;
-    /* A flexbox elemeket új sorban helyezi el, ha nincs elég hely egy sorban */
+    justify-content: center;
 
     .product-card {
         cursor: pointer;
@@ -10,11 +26,13 @@
         flex-direction: column;
         border-radius: .5rem;
         background-color: #fff;
-        margin: 1.25rem 0 1.25rem 0;
+        margin: 1.25rem;
         box-shadow: 0 .25rem .5rem #000000;
+
         width: calc(33.33% - 20px);
+        /* 3 kártya egy sorban */
+        min-width: 320px;
         margin: 10px;
-        width: 350px;
         overflow: hidden;
 
 
@@ -48,8 +66,8 @@
             align-items: center;
 
             .main-image {
-                max-width: 300px;
-                max-height: 300px;
+                max-width: 250px;
+                max-height: 250px;
                 width: auto;
                 height: auto;
             }
@@ -88,22 +106,10 @@
     }
 }
 
-.product-card-price {
-    padding-top: 25px;
-}
-
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 1600px) {
     .product-card-container {
         .product-card {
-            width: calc(50% - 20px);
-        }
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .product-card-container {
-        .product-card {
-            width: calc(95%);
+            width: calc(25% - 20px);
         }
     }
 }

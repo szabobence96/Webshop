@@ -22,6 +22,12 @@
     margin-left: 5rem;
 }
 
+.body-mobile-closed {
+    width: calc(100%);
+    margin-left: 0rem;
+}
+
+/*
 @media screen and (max-width: 450px) {
     .body {
         padding: 1rem 0.5rem 0.25rem 0.25rem;
@@ -29,6 +35,7 @@
         margin-left: 3rem;
     }
 }
+*/
 
 @media screen and (max-width: 1000px) {
     .body {

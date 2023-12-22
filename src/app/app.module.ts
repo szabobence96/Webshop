@@ -41,6 +41,11 @@ import { ModalComponent } from './modal/modal.component';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ModalProductsComponent } from './products/modal-products/modal-products.component';
+import { DiorComponent } from './brands/dior/dior.component';
+import { JeanPaulGaultierComponent } from './brands/jean-paul-gaultier/jean-paul-gaultier.component';
+import { DiorFragrancesComponent } from './fragrances/dior-fragrances/dior-fragrances/dior-fragrances.component';
+import { JPGFragrancesComponent } from './fragrances/JPG-fragrances/jpg-fragrances/jpg-fragrances.component';
+import { LancomeFragrancesComponent } from './fragrances/lancome-fragrances/lancome-fragrances.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -76,6 +81,11 @@ const firebaseConfig = {
     ShippingComponent,
     ModalComponent,
     ModalProductsComponent,
+    DiorComponent,
+    JeanPaulGaultierComponent,
+    DiorFragrancesComponent,
+    JPGFragrancesComponent,
+    LancomeFragrancesComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
