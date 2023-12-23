@@ -28,7 +28,6 @@ interface SideNavToggle {
         )
       ])
     ]),
-
     trigger('rotate', [
       transition(':enter', [
         animate('430ms',
