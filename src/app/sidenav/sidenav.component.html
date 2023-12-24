@@ -16,8 +16,8 @@
                 <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
                     {{data.label}}
                 </span>
-                <mat-icon matBadge="{{ data.badge }}" class="cart-badge" matBadgeColor="warn"
-                    [matBadgeHidden]="!data.badge" matBadgeOverlap="false">
+                <mat-icon matBadge="{{ data.badge }}" @fadeInOut *ngIf="closed===false" class="cart-badge"
+                    matBadgeColor="warn" [matBadgeHidden]="!data.badge" matBadgeOverlap="false">
                 </mat-icon>
             </a>
         </li>
