@@ -174,11 +174,14 @@
     }
 }
 
-.sidenav-link-close {
-    color: #f3f3f3;
-    font-size: 25px;
-    margin-top: 40px;
-    z-index: 5;
+.sidenav-link-close-container {
+
+    .sidenav-link-close {
+        color: #f3f3f3;
+        font-size: 25px;
+        margin-top: 40px;
+        z-index: 5;
+    }
 }
 
 @keyframes fadeIn {
@@ -194,9 +197,12 @@
 .sidenav-link-open {
     cursor: pointer;
     position: absolute;
-    color: #7d7d7d;
+    color: #e9e9e9;
     font-size: 25px;
-    top: 50%;
+    bottom: 0%;
     z-index: 5;
-    animation: fadeIn 1s;
+    animation: fadeIn 1.5s;
+    background-color: #092c3d;
+    padding: 5px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
 }
