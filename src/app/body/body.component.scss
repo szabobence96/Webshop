@@ -6,7 +6,6 @@
     position: fixed;
     top: 0;
     transition: all .5s ease;
-    padding: 3rem;
     background: linear-gradient(to bottom, #f4f7fa, #f4f7fa);
     background-attachment: fixed;
     overflow: auto;
@@ -37,7 +36,7 @@
 }
 */
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 102px) {
     .body {
         padding: 1rem 0.5rem 0.25rem 0.25rem;
     }

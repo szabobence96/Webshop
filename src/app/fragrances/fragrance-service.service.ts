@@ -1,4 +1,4 @@
-import { ElementRef, Injectable, Input, OnInit, Renderer2 } from '@angular/core';
+import { ElementRef, HostListener, Injectable, Input, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { AngularFirestoreModule, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import 'firebase/firestore';
@@ -15,6 +15,7 @@ export class FragranceServiceService {
     public services: SharedService,
     public firestore: Firestore,
   ) { }
+
 
   isAllChecked: boolean = true;
   isDiorChecked: boolean = false;
@@ -63,5 +64,4 @@ export class FragranceServiceService {
   closeModal() {
     this.isModalOpen = false;
   }
-
 }

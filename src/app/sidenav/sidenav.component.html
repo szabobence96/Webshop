@@ -21,11 +21,11 @@
                 </mat-icon>
             </a>
         </li>
-        <div class="sidenav-link-close-container" @fadeInOut *ngIf="collapsed===false && screenwidth < 969"
+        <div class="sidenav-link-close-container" @fadeInOut *ngIf="collapsed===false && screenwidth < 1080"
             (click)="toggleClose()">
             <i class="sidenav-link-close fal fa-times close-icon"></i>
         </div>
     </ul>
 </div>
-<i class="sidenav-link-open fa fa-angle-double-right" @fadeInOut *ngIf="closed===true && screenwidth < 969" (click)="
+<i class="sidenav-link-open fa fa-angle-double-right" @fadeInOut *ngIf="closed===true && screenwidth < 1080" (click)="
 toggleClose()"></i>

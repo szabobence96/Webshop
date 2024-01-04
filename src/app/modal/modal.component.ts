@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnInit, Input, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, Input, Renderer2, ElementRef, HostListener } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { SharedService } from '../shared.service';
@@ -15,16 +15,27 @@ export class ModalComponent implements OnInit {
   @Input() product: any;
   @Output() closeModalEvent = new EventEmitter();
   currentImage: string = '';
+  screenWidth: number = 0;
   constructor(
     private db: AngularFireDatabase,
     public services: SharedService,
-    private renderer: Renderer2,
+    private el: ElementRef,
   ) {
   }
-
-  ngOnInit() {
-
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.screenWidth = window.innerWidth;
   }
+  ngOnInit() {
+    this.screenWidth = window.innerWidth;
+  }
+
+  showDetailsBox = false;
+
+  showDetails() {
+    this.showDetailsBox = !this.showDetailsBox;
+  }
+
   changeMainImage(imagePath: string): void {
     this.currentImage = imagePath;
     console.log('imagePath value: ', imagePath)

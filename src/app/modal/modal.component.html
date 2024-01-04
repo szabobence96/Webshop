@@ -25,8 +25,13 @@
                 <div class="composition-description">
                     <p class="comp-desc-p">Illat: </p>{{product.composition.scentType}}
                 </div>
-                <div class="composition-description">
-                    <p class="comp-desc-pe">Termékjellemző: </p>{{product.composition.compDescription}}
+                <div class="composition-description" (click)="showDetails()">
+                    <p class="comp-desc-p">Termékjellemző:
+                        <i class="mobile-comp-desc-i" *ngIf="screenWidth <= 750">Kattintson a részletekért!</i>
+
+                    <div class="comp-desc-p-details" *ngIf="screenWidth > 750">
+                        {{product.composition.compDescription}}
+                    </div>
                 </div>
             </div>
             <div class="item-size-buttons-container">
@@ -38,6 +43,18 @@
             </div>
             <div class="cart-btn" (click)="addToCart(product)">Hozzáadás a kosárhoz</div>
         </div>
-        <button class="close-btn" (click)="closeModal()">x</button>
+        <button class="close-btn" (click)="closeModal()"><i class="fal fa-times close-icon"></i></button>
+        <div *ngIf="showDetailsBox && screenWidth <= 750" class="mobile-comp-desc-details-container">
+            <div class="mobile-comp-desc-details">
+                <p class="mobile-comp-desc-p">Fejillat: {{product.composition.head}} </p>
+                <p class="mobile-comp-desc-p">Szívillat: {{product.composition.hearth}} </p>
+                <p class="mobile-comp-desc-p">Alapillat: {{product.composition.base}} </p>
+                <p class="mobile-comp-desc-p">Illat: {{product.composition.scentType}} </p>
+                <p class="comp-desc-p">Termékjellemző: </p>
+                {{product.composition.compDescription}}
+                <button class="close-comp-desc-details-btn" (click)="showDetails()"><i
+                        class="fal fa-times close-icon"></i></button>
+            </div>
+        </div>
     </div>
 </div>

@@ -22,7 +22,8 @@ export class FragrancesComponent {
   constructor(
     public services: SharedService,
     public firestore: Firestore,
-    public fragranceService: FragranceServiceService
+    public fragranceService: FragranceServiceService,
+    public renderer: Renderer2
   ) { }
 
 }
