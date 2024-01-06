@@ -1,19 +1,27 @@
-import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { SharedService } from '../shared.service';
-import { AngularFirestoreModule, AngularFirestoreCollection, DocumentData } from '@angular/fire/compat/firestore';
+import { SlideInOutAnimation } from './animation';
+
 import 'firebase/firestore';
-import { Observable, map } from 'rxjs';
-import { Firestore, addDoc, collection, collectionData, getDocs, query, where } from '@angular/fire/firestore';
-import { ProductInterface } from '../products/products.interface';
-import { FragranceServiceService } from './fragrance-service.service';
+import { Firestore } from '@angular/fire/firestore';
+import { ProductService } from '../../product-modal-helper/product-service';
 
 @Component({
   selector: 'app-fragrances',
   templateUrl: './fragrances.component.html',
-  styleUrls: ['./fragrances.component.scss']
+  styleUrls: ['./fragrances.component.scss', '../style-helper/product-style-helper.scss'],
+  animations: [SlideInOutAnimation]
 })
 export class FragrancesComponent {
 
+  animationState = 'out';
+  toggleShowDiv(divName: string) {
+    if (divName === 'divA') {
+      console.log(this.animationState);
+      this.animationState = this.animationState === 'out' ? 'in' : 'out';
+      console.log(this.animationState);
+    }
+  }
 
   jeanPaulBrandImg: string = './assets/images/fragrances/logo/jeanpaul_logo.jpg';
   diorBrandImg: string = './assets/images/fragrances/logo/dior_logo.jpg';
@@ -22,7 +30,7 @@ export class FragrancesComponent {
   constructor(
     public services: SharedService,
     public firestore: Firestore,
-    public fragranceService: FragranceServiceService,
+    public productService: ProductService,
     public renderer: Renderer2
   ) { }
 

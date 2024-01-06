@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { ProductService } from '../../../product-modal-helper/product-service';
 import { SharedService } from 'src/app/shared.service';
+import { ProductService } from 'src/product-modal-helper/product-service';
 
 @Component({
-  selector: 'app-lancome-fragrances',
-  templateUrl: './lancome-fragrances.component.html',
+  selector: 'app-woman-fragrances',
+  templateUrl: './woman-fragrances.component.html',
   styleUrls: ['../../style-helper/product-style-helper.scss']
 })
-export class LancomeFragrancesComponent {
+export class WomanFragrancesComponent {
   constructor(
     public services: SharedService,
     public productService: ProductService

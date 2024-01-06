@@ -1,14 +1,15 @@
 <div class="product-card-container">
-    <div class="product-card" *ngFor="let item of task$ | async" (click)="openModal(item)">
+    <div class="product-card" *ngFor="let item of task$ | async" (click)="productService.openModal(item)">
         <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
         </div>
         <div class="main-image-container">
             <img class="main-image" [src]="item.imagePath">
         </div>
         <div class="product-card-price"> {{item.price}}
-            <p class="g-price">Ft-tól</p>
+            <p class="tol">Ft</p>
         </div>
     </div>
 </div>
-<app-modal-products [product]="selectedProduct" (closeModalEvent)="closeModal()"
-    *ngIf="isModalOpen"></app-modal-products>
+
+<app-modal [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
+    *ngIf="productService.isModalOpen"></app-modal>

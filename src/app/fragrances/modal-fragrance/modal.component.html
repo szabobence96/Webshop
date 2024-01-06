@@ -4,10 +4,11 @@
             <div class="product-name"> {{product.productName}} {{services.selectedSize}}</div>
             <div class="product-description">{{product.scent}} </div>
             <div class="product-price">{{services.selectedSizePrice}} Ft</div>
-            <img class="modal-image" [src]="currentImage || product.modalImagePath[0]">
+            <img class="modal-image" [src]="modalService.currentImage || product.modalImagePath[0]">
             <div class="modal-image-selection-container">
                 <div *ngFor="let item of product.modalImagePath">
-                    <img class="modal-image-selection" [src]="item" (mouseover)="changeMainImage(item)" alt="Image">
+                    <img class="modal-image-selection" [src]="item" (mouseover)="modalService.changeMainImage(item)"
+                        alt="Image">
                 </div>
             </div>
         </div>
@@ -25,11 +26,12 @@
                 <div class="composition-description">
                     <p class="comp-desc-p">Illat: </p>{{product.composition.scentType}}
                 </div>
-                <div class="composition-description" (click)="showDetails()">
+                <div class="composition-description" (click)="modalService.showDetails()">
                     <p class="comp-desc-p">Termékjellemző:
-                        <i class="mobile-comp-desc-i" *ngIf="screenWidth <= 750">Kattintson a részletekért!</i>
+                        <i class="mobile-comp-desc-i" *ngIf="modalService.screenWidth <= 800">Kattintson a
+                            részletekért!</i>
 
-                    <div class="comp-desc-p-details" *ngIf="screenWidth > 750">
+                    <div class="comp-desc-p-details" *ngIf="modalService.screenWidth > 800">
                         {{product.composition.compDescription}}
                     </div>
                 </div>
@@ -41,18 +43,20 @@
                         {{item.price}} Ft</div>
                 </div>
             </div>
-            <div class="cart-btn" (click)="addToCart(product)">Hozzáadás a kosárhoz</div>
+            <div class="cart-btn" (click)="modalService.addToCart(product)">Hozzáadás a kosárhoz</div>
         </div>
-        <button class="close-btn" (click)="closeModal()"><i class="fal fa-times close-icon"></i></button>
-        <div *ngIf="showDetailsBox && screenWidth <= 750" class="mobile-comp-desc-details-container">
+        <button class="close-btn" (click)="modalService.closeModal()"><i class="fal fa-times close-icon"></i></button>
+        <div *ngIf="modalService.showDetailsBox && modalService.screenWidth <= 800"
+            class="mobile-comp-desc-details-container">
             <div class="mobile-comp-desc-details">
+                <p class="mobile-comp-desc-p">{{product.scent}} </p>
                 <p class="mobile-comp-desc-p">Fejillat: {{product.composition.head}} </p>
                 <p class="mobile-comp-desc-p">Szívillat: {{product.composition.hearth}} </p>
                 <p class="mobile-comp-desc-p">Alapillat: {{product.composition.base}} </p>
                 <p class="mobile-comp-desc-p">Illat: {{product.composition.scentType}} </p>
                 <p class="comp-desc-p">Termékjellemző: </p>
                 {{product.composition.compDescription}}
-                <button class="close-comp-desc-details-btn" (click)="showDetails()"><i
+                <button class="close-comp-desc-details-btn" (click)="modalService.showDetails()"><i
                         class="fal fa-times close-icon"></i></button>
             </div>
         </div>

@@ -2,38 +2,43 @@
     <div class="modal-content">
         <div class="left-section">
             <div class="product-name"> {{product.productName}} {{services.selectedSize}}</div>
-            <div class="product-description">{{product.scent}} </div>
+            <div class="product-description">#</div>
             <div class="product-price">{{services.selectedSizePrice}} Ft</div>
-            <img class="modal-image" [src]="currentImage || product.modalImagePath[0]">
+            <img class="modal-image" [src]="modalService.currentImage || product.modalImagePath[0]">
             <div class="modal-image-selection-container">
                 <div *ngFor="let item of product.modalImagePath">
-                    <img class="modal-image-selection" [src]="item" (mouseover)="changeMainImage(item)" alt="Image">
+                    <img class="modal-image-selection" [src]="item" (mouseover)="modalService.changeMainImage(item)"
+                        alt="Image">
                 </div>
             </div>
         </div>
         <div class="right-section">
             <div class="composition-container">
                 <div class="composition-description">
+                    <p class="comp-desc-p">Fejillat: </p>
                 </div>
-                <div class="composition-description">
-                </div>
-                <div class="composition-description">
-                </div>
-                <div class="composition-description">
-                </div>
-                <div class="composition-description">
-                    <p class="comp-desc-pe">Termékjellemző:
-                </div>
-            </div>
-            <div class="item-size-buttons-container">
-                <div *ngFor="let item of product.type" (click)="services.selectSize(item)">
-                    <div class="item-size-buttons" tabindex="0" [class.selected]="services.selectedSize === item">{{
-                        item.size }}
-                        {{item.price}} Ft</div>
+                <div class="composition-description" (click)="modalService.showDetails()">
+                    <p class="comp-desc-p">Termékjellemző:
+                        <i class="mobile-comp-desc-i" *ngIf="modalService.screenWidth <= 800">Kattintson a
+                            részletekért!</i>
+
+                    <div class="comp-desc-p-details" *ngIf="modalService.screenWidth > 800">
+                        {{product.composition.compDescription}}
+
+                    </div>
                 </div>
             </div>
-            <div class="cart-btn" (click)="addToCart(product)">Hozzáadás a kosárhoz</div>
+            <div class="cart-btn" (click)="modalService.addToCart(product)">Hozzáadás a kosárhoz</div>
         </div>
-        <button class="close-btn" (click)="closeModal()">x</button>
+        <button class="close-btn" (click)="modalService.closeModal()"><i class="fal fa-times close-icon"></i></button>
+        <div *ngIf="modalService.showDetailsBox && modalService.screenWidth <= 800"
+            class="mobile-comp-desc-details-container">
+            <div class="mobile-comp-desc-details">
+                <p class="mobile-comp-desc-p">Fejillat: </p>
+                <p class="comp-desc-p">Termékjellemző: </p>
+                <button class="close-comp-desc-details-btn" (click)="modalService.showDetails()"><i
+                        class="fal fa-times close-icon"></i></button>
+            </div>
+        </div>
     </div>
 </div>

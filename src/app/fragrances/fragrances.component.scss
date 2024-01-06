@@ -1,7 +1,10 @@
 .brands-container {
     background-color: #fff;
     border-radius: 15px;
+    display: flex;
     margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
 
     .brand-img {
         max-width: 150px;
@@ -14,202 +17,107 @@
     }
 }
 
-.product-card-container {
+.divA {
     display: flex;
-    flex-wrap: wrap;
+    color: #333;
+    flex-direction: column;
+    border-radius: .5rem;
+    background-color: #fff;
+    margin: 1.25rem;
+    box-shadow: 0 .25rem .5rem #000000;
+    transition: all 2.5s ease;
+}
+
+.filter {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.192);
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.021);
+    transition: all 0.3s;
+    margin-left: 10px;
+}
+
+.filter svg {
+    height: 20px;
+    fill: #092c3d;
+    transition: all 0.3s;
+}
+
+.filter:hover {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.11);
+    background-color: #092c3d;
+}
+
+.filter:hover svg {
+    fill: white;
+}
+
+@mixin center-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+$btn-size-open: 135px;
+$btn-size: 60px;
+$btn-color: #092c3b;
+$btn-border: 1px solid #093c3b;
+$btn-font-color: #fff;
+$btn-font-size: 1rem;
+$btn-icon-size: 2rem;
+$btn-trasition-time: .2s;
+$btn-transition: all cubic-bezier(0.310, -0.105, 0.430, 1.400) $btn-trasition-time;
+
+.btn--circle-container {
+    display: flex;
     justify-content: center;
 
-    .product-card {
+
+    .btn--circle {
+        margin-bottom: 10px;
+        position: relative;
+        text-decoration: none;
         cursor: pointer;
-        display: flex;
-        color: #333;
-        flex-direction: column;
-        border-radius: .5rem;
-        background-color: #fff;
-        margin: 1.25rem;
-        box-shadow: 0 .25rem .5rem #000000;
+        border-radius: 1000px;
+        border: $btn-border;
+        height: $btn-size;
+        width: $btn-size;
+        transition: $btn-transition;
+        background-color: $btn-color;
 
-        width: calc(33.33% - 20px);
-        /* 3 kártya egy sorban */
-        min-width: 320px;
-        margin: 10px;
-        overflow: hidden;
+        &:hover {
+            width: $btn-size-open;
 
-
-        .product-card-head {
-            padding: 10px 0 5px 15px;
-            border-bottom: 2px solid #edf1f7;
-            font-size: 18px;
-            font-weight: 500;
-
-            .brand-name {
-                font-size: 16px;
-                font-weight: 300;
+            .btn-stage:first-child {
+                opacity: 0;
             }
 
-            .scent {
-                margin: -10px 0 -5px 0;
-                font-size: 14px;
+            .btn-stage:nth-child(n+2) {
+                opacity: 1;
+                transition: opacity linear calc(#{$btn-trasition-time} + 0.05s);
             }
         }
+    }
 
-        .product-card-body {
-            padding: 1rem 1.5rem;
-            font-weight: 300;
-            border-bottom: 1px solid #edf1f7;
+    .btn-stage {
+        @include center-absolute;
 
-        }
+        color: $btn-font-color;
+        font-size: $btn-icon-size;
+        transition: opacity linear calc(#{$btn-trasition-time} - 0.05s);
 
-        .main-image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .main-image {
-                max-width: 250px;
-                max-height: 250px;
-                width: auto;
-                height: auto;
-            }
-        }
-
-        .scent {
-            font-weight: 100;
-            font-size: 15px;
-        }
-
-        // background-color: #f6f9fc;
-
-        .product-card-price {
-            display: flex;
-            align-items: center;
-            padding: 25px 0 0 15px;
-            font-weight: 400;
-            font-size: 22px;
-            background-color: #edf1f7;
-
-
-            .tol {
-                font-size: 15px;
-                font-weight: 100;
-                padding: 15px 0 0 5px;
-
-            }
-
-            .add-to-cart {
-                font-size: 15px;
-                padding: 10px;
-                margin-left: auto;
-                margin-bottom: 5px;
-            }
+        &:nth-child(n+2) {
+            opacity: 0;
+            white-space: nowrap;
+            font-size: $btn-font-size;
         }
     }
 }
 
-@media screen and (min-width: 1600px) {
-    .product-card-container {
-        .product-card {
-            width: calc(25% - 20px);
-
-        }
-    }
-}
-
-@media screen and (min-width: 551px) and (max-width: 1024px) {
-    .product-card-container {
-        display: flex;
-        flex-wrap: wrap;
-
-        .product-card {
-            width: calc(40% - 10px);
-            min-width: 250px;
-
-            .main-image-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                .main-image {
-                    max-width: 200px;
-                    max-height: 200px;
-                    width: auto;
-                    height: auto;
-                }
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 550px) {
-    .product-card-container {
-
-        .product-card {
-            width: calc(100% - 10px);
-
-            min-width: 150px;
-
-            margin: 5px;
-
-            .product-card-head {
-                padding: 10px 0 5px 15px;
-                border-bottom: 2px solid #edf1f7;
-                font-size: 16px;
-                font-weight: 500;
-
-                .brand-name {
-                    font-size: 14px;
-                    font-weight: 300;
-                }
-
-                .scent {
-                    margin: -10px 0 -5px 0;
-                    font-size: 12px;
-                }
-            }
-
-            .product-card-body {
-                padding: 1rem 1.5rem;
-                font-weight: 300;
-                border-bottom: 1px solid #edf1f7;
-
-            }
-
-            .main-image-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                .main-image {
-                    max-width: 180px;
-                    max-height: 180px;
-                    width: auto;
-                    height: auto;
-                }
-            }
-
-            .scent {
-                font-weight: 100;
-                font-size: 15px;
-            }
-
-            // background-color: #f6f9fc;
-
-            .product-card-price {
-                display: flex;
-                align-items: center;
-                padding: 25px 0 0 15px;
-                font-weight: 400;
-                font-size: 22px;
-                background-color: #edf1f7;
-
-
-                .tol {
-                    font-size: 15px;
-                    font-weight: 100;
-                    padding: 15px 0 0 5px;
-
-                }
-            }
-        }
-    }
-}
+/* Product-card in styles.scss */

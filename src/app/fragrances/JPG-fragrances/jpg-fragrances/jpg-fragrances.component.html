@@ -1,7 +1,7 @@
-<div class="product-card-container" *ngIf="fragranceService.isJPGChecked === true">
-    <div class="product-card" *ngFor="let item of fragranceService.JPGQuery$ | async"
-        (click)="fragranceService.openModal(item)" (mouseover)="fragranceService.mouseOver(item)"
-        (mouseleave)="fragranceService.mouseLeave(item)">
+<div class="product-card-container" *ngIf="productService.isJPGChecked === true">
+    <div class="product-card" *ngFor="let item of productService.JPGQuery$ | async"
+        (click)="productService.openModal(item)" (mouseover)="productService.mouseOver(item)"
+        (mouseleave)="productService.mouseLeave(item)">
         <div class="product-card-head"> {{item['brand']}} <p class="brand-name">{{item['brandName']}}</p>
             <p class="scent">{{item['scent']}}</p>
         </div>
@@ -9,7 +9,7 @@
             <img class="main-image" [src]="item['imagePath']">
         </div>
         <div class="product-card-price">{{ item['type'][0].price }}
-            <p class="g-price">Ft-tól</p>
+            <p class="tol">Ft-tól</p>
         </div>
     </div>
 </div>

@@ -20,9 +20,6 @@ import { SharedService } from './shared.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
-import { MyButtonComponent } from './my-button/my-button.component';
-import { ProdCardComponent } from './prod-card/prod-card.component';
-import { WearSizeComponent } from './wear-size/wear-size.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login-reg-landing/login/login.component';
 import { SignUpComponent } from './login-reg-landing/sign-up/sign-up.component';
@@ -36,7 +33,7 @@ import { FirestoreModule } from '@angular/fire/firestore';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { CarouselModule } from './carousel/carousel.module';
 import { FragrancesComponent } from './fragrances/fragrances.component';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './fragrances/modal-fragrance/modal.component';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ModalProductsComponent } from './products/modal-products/modal-products.component';
@@ -45,6 +42,8 @@ import { JeanPaulGaultierComponent } from './brands/jean-paul-gaultier/jean-paul
 import { DiorFragrancesComponent } from './fragrances/dior-fragrances/dior-fragrances/dior-fragrances.component';
 import { JPGFragrancesComponent } from './fragrances/JPG-fragrances/jpg-fragrances/jpg-fragrances.component';
 import { LancomeFragrancesComponent } from './fragrances/lancome-fragrances/lancome-fragrances.component';
+import { WomanFragrancesComponent } from './fragrances/woman-fragrances/woman-fragrances.component';
+import { ManFragrancesComponent } from './fragrances/man-fragrances/man-fragrances.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -68,9 +67,6 @@ const firebaseConfig = {
     FragrancesComponent,
     MediaComponent,
     ShoppingCartComponent,
-    MyButtonComponent,
-    ProdCardComponent,
-    WearSizeComponent,
     UserComponent,
     LoginComponent,
     SignUpComponent,
@@ -85,6 +81,8 @@ const firebaseConfig = {
     DiorFragrancesComponent,
     JPGFragrancesComponent,
     LancomeFragrancesComponent,
+    WomanFragrancesComponent,
+    ManFragrancesComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),

@@ -5,42 +5,28 @@ import 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Firestore, addDoc, collection, collectionData, getDocs, query } from '@angular/fire/firestore';
 import { ProductInterface } from '../products/products.interface';
+import { ModalService } from 'src/product-modal-helper/modal-service.service';
+import { ProductService } from 'src/product-modal-helper/product-service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss', '../style-helper/product-style-helper.scss']
 })
 export class ProductsComponent implements OnInit {
-  task$ = collectionData(collection(this.firestore, 'hawkers')) as Observable<ProductInterface[]>;
 
+  task$ = collectionData(collection(this.firestore, 'hawkers')) as Observable<ProductInterface[]>;
 
   constructor(
     public services: SharedService,
-    public firestore: Firestore
+    public firestore: Firestore,
+    public modalService: ModalService,
+    public productService: ProductService,
   ) { }
-
-  isModalOpen = false;
-  selectedProduct: any;
-
-  closeModal() {
-    this.isModalOpen = false;
-  }
 
   ngOnInit() {
     this.task$.subscribe(data => console.log('task$ observable:', data));
     console.log(this.task$)
-
-  }
-
-
-  openModal(product: ProductInterface) {
-    this.selectedProduct = product;
-    this.isModalOpen = true;
-    console.log('Kiválasztott termék:', product);
-    if (product.type && product.type.length > 0) {
-      this.services.selectSize(product.type[0]);
-    }
   }
 }
 

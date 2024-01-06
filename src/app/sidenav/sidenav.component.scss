@@ -1,5 +1,7 @@
+$main-color: #092c3b;
+
 .sidenav {
-    background: #092c3d;
+    background: $main-color;
     user-select: none;
     transition: all .5s ease;
     position: fixed;
@@ -31,6 +33,10 @@
             cursor: pointer;
             border: none;
 
+            .fa-bars {
+                color: #000;
+            }
+
         }
 
         .logo-text {
@@ -57,44 +63,6 @@
     }
 
 }
-
-/*
-@media screen and (max-width: 450px) {
-    .sidenav {
-        width: 3rem;
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            padding: 0rem;
-            margin-top: 5px;
-            margin-left: 4px;
-            margin-bottom: 15px;
-            width: 100%;
-
-            .logo {
-                background: #fff;
-                text-align: center;
-                width: 2.5rem;
-                min-width: 2.5rem;
-                border-radius: 0.613rem;
-                padding: 0.313rem;
-                font-size: 24px;
-                font-weight: 900;
-                cursor: pointer;
-                border: none;
-            }
-
-            .logo-text {
-                margin-left: 1.5rem;
-                font-size: 24px;
-                font-weight: 700;
-                color: #fff;
-            }
-        }
-    }
-}
-*/
 
 .sidenav-closed-mobile {
     width: 0rem;
@@ -199,10 +167,10 @@
     position: fixed;
     color: #e9e9e9;
     font-size: 25px;
-    bottom: 0%;
+    bottom: 0;
     z-index: 5;
     animation: fadeIn 1s;
-    background-color: #092c3d;
+    background-color: $main-color;
     padding: 5px 5px 5px 0px;
     border-radius: 0px 5px 5px 0px;
 }

@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-import { FragranceServiceService } from '../../fragrance-service.service';
+import { ProductService } from '../../../../product-modal-helper/product-service';
 
 @Component({
   selector: 'app-jpg-fragrances',
   templateUrl: './jpg-fragrances.component.html',
-  styleUrls: ['../../fragrances.component.scss']
+  styleUrls: ['../../../style-helper/product-style-helper.scss']
 
 })
 export class JPGFragrancesComponent {
   constructor(
     public services: SharedService,
-    public fragranceService: FragranceServiceService
+    public productService: ProductService
   ) { }
 }

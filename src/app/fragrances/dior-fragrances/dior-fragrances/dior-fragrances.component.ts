@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
-import { FragranceServiceService } from '../../fragrance-service.service';
+import { ProductService } from '../../../../product-modal-helper/product-service';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-dior-fragrances',
-  templateUrl: '../dior-fragrances/dior-fragrances.component.html',
-  styleUrls: ['../../fragrances.component.scss']
+  templateUrl: './dior-fragrances.component.html',
+  styleUrls: ['../../../style-helper/product-style-helper.scss']
 })
 
 export class DiorFragrancesComponent {
   constructor(
     public services: SharedService,
-    public fragranceService: FragranceServiceService
+    public productService: ProductService
   ) { }
-
-
 }

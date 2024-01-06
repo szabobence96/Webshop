@@ -5,24 +5,36 @@
         <img class="brand-img" [src]="lancomeBrandImg">
     </div>
 </div>
-<div class="fragrance-filter-container">
-    <mat-checkbox class="example-margin" [(ngModel)]="fragranceService.isAllChecked"
-        (change)="fragranceService.onCheckboxChange('isAllChecked')"
-        [disabled]="fragranceService.isAllChecked === true">Mindet
+<button title="filter" class="filter" (click)="toggleShowDiv('divA')">
+    <svg viewBox="0 0 512 512" height="1em">
+        <path
+            d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z">
+        </path>
+    </svg>
+</button>
+<div class="fragrance-filter-container" [@slideInOut]="animationState" class="divA">
+    <mat-checkbox class="example-margin" [(ngModel)]="productService.isAllChecked"
+        (change)="productService.onCheckboxChange('isAllChecked')"
+        [disabled]="productService.isAllChecked === true">Mindet
         mutat</mat-checkbox>
-    <mat-checkbox class="example-margin" [(ngModel)]="fragranceService.isDiorChecked"
-        (change)="fragranceService.onCheckboxChange('isDiorChecked')">Dior</mat-checkbox>
-    <mat-checkbox class="example-margin" [(ngModel)]="fragranceService.isLancomeChecked"
-        (change)="fragranceService.onCheckboxChange('isLancomeChecked')">Lancome</mat-checkbox>
-    <mat-checkbox class="example-margin" [(ngModel)]="fragranceService.isJPGChecked"
-        (change)="fragranceService.onCheckboxChange('isJPGChecked')">Jean
-        Paul Gaultier</mat-checkbox>
+    <mat-checkbox class="example-margin" [(ngModel)]="productService.isDiorChecked"
+        (change)="productService.onCheckboxChange('isDiorChecked')">Dior</mat-checkbox>
 
+    <mat-checkbox class="example-margin" [(ngModel)]="productService.isWomanChecked"
+        (change)="productService.onCheckboxChange('isWomanChecked')">Női</mat-checkbox>
+
+    <mat-checkbox class="example-margin" [(ngModel)]="productService.isLancomeChecked"
+        (change)="productService.onCheckboxChange('isLancomeChecked')">Lancome</mat-checkbox>
+
+    <mat-checkbox class="example-margin" [(ngModel)]="productService.isJPGChecked"
+        (change)="productService.onCheckboxChange('isJPGChecked')">Jean
+        Paul Gaultier</mat-checkbox>
 </div>
-<div class="product-card-container" *ngIf="fragranceService.isAllChecked === true">
-    <div class="product-card" *ngFor="let item of fragranceService.fragrances$ | async"
-        (click)="fragranceService.openModal(item)" (mouseover)="fragranceService.mouseOver(item)"
-        (mouseleave)="fragranceService.mouseLeave(item)">
+<div class="product-card-container" *ngIf="productService.isAllChecked === true">
+    <div class="product-card"
+        *ngFor="let item of productService.fragrances$ | async| slice:0:productService.displayItemCount"
+        (click)="productService.openModal(item)" (mouseover)="productService.mouseOver(item)"
+        (mouseleave)="productService.mouseLeave(item)">
         <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
             <p class="scent">{{item.scent}}</p>
         </div>
@@ -33,9 +45,16 @@
         </div>
     </div>
 </div>
+<app-woman-fragrances></app-woman-fragrances>
 <app-dior-fragrances></app-dior-fragrances>
 <app-jpg-fragrances></app-jpg-fragrances>
 <app-lancome-fragrances></app-lancome-fragrances>
+<div class="btn--circle-container">
+    <div class="btn--circle" (click)="productService.loadMore()">
+        <span class="btn-stage">+</span>
+        <span class="btn-stage">Több</span>
+    </div>
+</div>
 
-<app-modal [product]="fragranceService.selectedProduct" (closeModalEvent)="fragranceService.closeModal()"
-    *ngIf="fragranceService.isModalOpen"></app-modal>
+<app-modal [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
+    *ngIf="productService.isModalOpen"></app-modal>

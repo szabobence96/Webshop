@@ -3,12 +3,10 @@
     height: 100%;
     margin-left: 5rem;
     z-index: 0;
-    position: fixed;
-    top: 0;
+    background-attachment: fixed;
+    background-repeat: repeat-y;
     transition: all .5s ease;
     background: linear-gradient(to bottom, #f4f7fa, #f4f7fa);
-    background-attachment: fixed;
-    overflow: auto;
 }
 
 .body-trimmed {
@@ -26,17 +24,7 @@
     margin-left: 0rem;
 }
 
-/*
-@media screen and (max-width: 450px) {
-    .body {
-        padding: 1rem 0.5rem 0.25rem 0.25rem;
-        width: calc(100% - 3rem);
-        margin-left: 3rem;
-    }
-}
-*/
-
-@media screen and (max-width: 102px) {
+@media screen and (min-width: 1080px) {
     .body {
         padding: 1rem 0.5rem 0.25rem 0.25rem;
     }
