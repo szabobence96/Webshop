@@ -13,26 +13,32 @@
     </svg>
 </button>
 <div class="fragrance-filter-container" [@slideInOut]="animationState" class="divA">
-    <mat-checkbox class="example-margin" [(ngModel)]="productService.isAllChecked"
+    <mat-checkbox class="checkbox-all" [(ngModel)]="productService.isAllChecked"
         (change)="productService.onCheckboxChange('isAllChecked')"
         [disabled]="productService.isAllChecked === true">Mindet
         mutat</mat-checkbox>
-    <mat-checkbox class="example-margin" [(ngModel)]="productService.isDiorChecked"
+
+    <mat-checkbox class="checkbox-w" [(ngModel)]="productService.isWomanChecked"
+        (change)="productService.onCheckboxChange('isWomanChecked')"
+        [disabled]="productService.isManChecked === true">Női</mat-checkbox>
+
+    <mat-checkbox class="checkbox-m" [(ngModel)]="productService.isManChecked"
+        (change)="productService.onCheckboxChange('isManChecked')"
+        [disabled]="productService.isWomanChecked === true">Férfi</mat-checkbox>
+
+    <mat-checkbox class="checkbox-b" [(ngModel)]="productService.isDiorChecked"
         (change)="productService.onCheckboxChange('isDiorChecked')">Dior</mat-checkbox>
 
-    <mat-checkbox class="example-margin" [(ngModel)]="productService.isWomanChecked"
-        (change)="productService.onCheckboxChange('isWomanChecked')">Női</mat-checkbox>
-
-    <mat-checkbox class="example-margin" [(ngModel)]="productService.isLancomeChecked"
+    <mat-checkbox class="checkbox-b" [(ngModel)]="productService.isLancomeChecked"
         (change)="productService.onCheckboxChange('isLancomeChecked')">Lancome</mat-checkbox>
 
-    <mat-checkbox class="example-margin" [(ngModel)]="productService.isJPGChecked"
+    <mat-checkbox class="checkbox-b" [(ngModel)]="productService.isJPGChecked"
         (change)="productService.onCheckboxChange('isJPGChecked')">Jean
         Paul Gaultier</mat-checkbox>
 </div>
 <div class="product-card-container" *ngIf="productService.isAllChecked === true">
     <div class="product-card"
-        *ngFor="let item of productService.fragrances$ | async| slice:0:productService.displayItemCount"
+        *ngFor="let item of productService.fragrances$ | async | slice:0:productService.displayItemCount"
         (click)="productService.openModal(item)" (mouseover)="productService.mouseOver(item)"
         (mouseleave)="productService.mouseLeave(item)">
         <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
@@ -45,12 +51,15 @@
         </div>
     </div>
 </div>
+
+<app-man-fragrances></app-man-fragrances>
 <app-woman-fragrances></app-woman-fragrances>
 <app-dior-fragrances></app-dior-fragrances>
 <app-jpg-fragrances></app-jpg-fragrances>
 <app-lancome-fragrances></app-lancome-fragrances>
-<div class="btn--circle-container">
-    <div class="btn--circle" (click)="productService.loadMore()">
+
+<div class="btn--circle-container" *ngIf="productService.displayItemCount < productService.long">
+    <div class="btn--circle" (click)="productService.loadMoreItem()">
         <span class="btn-stage">+</span>
         <span class="btn-stage">Több</span>
     </div>

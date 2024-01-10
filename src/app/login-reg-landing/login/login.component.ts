@@ -11,7 +11,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', Validators.required],
     password: ['', Validators.required],
   });
 
@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: NonNullableFormBuilder
   ) { }
+
+  isDisabled: boolean = true;
 
   ngOnInit(): void {
   }
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
+
     const { email, password } = this.loginForm.value;
 
     if (!this.loginForm.valid || !email || !password) {
@@ -46,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.toast.observe({
           success: 'Sikeres bejelentkezés',
           loading: 'Bejelentkezés...',
-          error: `Hiba a bejelentkezésnél!`,
+          error: `Hibás E-mail vagy jelszó!`,
         })
       )
       .subscribe(() => {

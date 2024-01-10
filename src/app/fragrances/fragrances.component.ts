@@ -1,10 +1,11 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { SlideInOutAnimation } from './animation';
 
 import 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { ProductService } from '../../product-modal-helper/product-service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-fragrances',
@@ -26,7 +27,6 @@ export class FragrancesComponent {
   jeanPaulBrandImg: string = './assets/images/fragrances/logo/jeanpaul_logo.jpg';
   diorBrandImg: string = './assets/images/fragrances/logo/dior_logo.jpg';
   lancomeBrandImg: string = './assets/images/fragrances/logo/lancome_logo.jpg'
-
   constructor(
     public services: SharedService,
     public firestore: Firestore,

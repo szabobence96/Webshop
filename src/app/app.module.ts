@@ -82,7 +82,7 @@ const firebaseConfig = {
     JPGFragrancesComponent,
     LancomeFragrancesComponent,
     WomanFragrancesComponent,
-    ManFragrancesComponent,
+    ManFragrancesComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
