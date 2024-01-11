@@ -1,28 +1,20 @@
-<div class="form-container mat-elevation-z5">
-  <h1>Új fiók létrehozása!</h1>
-  <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+<div class="form-container">
+
+  <p class="title">Hozza létre fiókját!</p>
+  <form class="reg-form" [formGroup]="signUpForm" (ngSubmit)="submit()">
     <mat-form-field>
       <mat-label>Vezetéknév</mat-label>
       <input matInput formControlName="firstName" />
-      <mat-error *ngIf="name?.errors?.['required']">
-        Adja meg a vezetéknevét!
-      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Keresztnév</mat-label>
       <input matInput formControlName="lastName" />
-      <mat-error *ngIf="name?.errors?.['required']">
-        Adja meg a keresztnevét!
-      </mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="legacy">
       <mat-label>E-mail cím</mat-label>
       <input matInput formControlName="email" formControlName="email" />
-      <mat-error *ngIf="email?.errors?.['required']">
-        Adja meg az E-mail címét!
-      </mat-error>
       <mat-error *ngIf="email?.errors?.['email']">
         Kérem, valódi E-mail címet használjon!
       </mat-error>
@@ -31,9 +23,7 @@
     <mat-form-field>
       <mat-label>Telefonszám</mat-label>
       <input type="number" matInput formControlName="phone" />
-      <mat-error *ngIf="name?.errors?.['required']">
-        Adja meg a telefonszámát!
-      </mat-error>
+
     </mat-form-field>
 
     <mat-form-field>
@@ -45,14 +35,16 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="password" placeholder="Jelszó" formControlName="password" />
+      <mat-label>Jelszó</mat-label>
+      <input matInput type="password" formControlName="password" />
       <mat-error *ngIf="password?.errors?.['required']">
         Adjon meg egy jelszót!
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="password" placeholder="Jelszó újra" formControlName="confirmPassword" />
+      <mat-label>Jelszó újra</mat-label>
+      <input matInput type="password" formControlName="confirmPassword" />
       <mat-error *ngIf="confirmPassword?.errors?.['required']">
         Adja meg mégegyszer!
       </mat-error>
@@ -61,8 +53,6 @@
     <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
       A jelszónak egyeznie kell!
     </mat-error>
-    <div class="center margin-top">
-      <button type="submit" mat-raised-button color="primary">Regisztráció!</button>
-    </div>
+    <button type="submit" class="form-btn">Regisztráció!</button>
   </form>
 </div>

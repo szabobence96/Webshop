@@ -13,6 +13,12 @@
 
 }
 
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+
 html,
 body {
     height: 100%;
