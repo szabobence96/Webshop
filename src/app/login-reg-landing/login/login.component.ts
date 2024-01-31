@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -13,18 +13,29 @@ export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required],
+    rememberMe: [false] // Kezdetben nem emlékezünk meg
   });
 
   constructor(
     private authService: AuthenticationService,
     private toast: HotToastService,
     private router: Router,
-    private fb: NonNullableFormBuilder
+    private fb: NonNullableFormBuilder,
   ) { }
 
-  isDisabled: boolean = true;
+  emailInvalid = false;
+  passwordInvalid = false;
+  hide = false;
 
   ngOnInit(): void {
+    const savedCredentials = this.authService.getSavedCredentials();
+    if (savedCredentials) {
+      this.loginForm.patchValue({
+        email: savedCredentials.email,
+        password: savedCredentials.password, // Itt hozzáadva a jelszó is
+        rememberMe: true,
+      });
+    }
   }
 
   get email() {
@@ -37,7 +48,9 @@ export class LoginComponent implements OnInit {
 
   submit() {
 
-    const { email, password } = this.loginForm.value;
+    const { email, password, rememberMe } = this.loginForm.value;
+    this.emailInvalid = this.loginForm.get('email')!.invalid;
+    this.passwordInvalid = this.loginForm.get('password')!.invalid;
 
     if (!this.loginForm.valid || !email || !password) {
       return;
@@ -52,9 +65,15 @@ export class LoginComponent implements OnInit {
           error: `Hibás E-mail vagy jelszó!`,
         })
       )
-      .subscribe(() => {
-        this.router.navigate(['/user']);
-        //window.location.reload();
-      });
+      .subscribe(
+        () => {
+          if (rememberMe) {
+            this.authService.saveCredentials(email, password);
+          } else {
+            this.authService.clearSavedCredentials();
+          }
+          this.router.navigate(['/user/profile']);
+          //window.location.reload();
+        });
   }
 }

@@ -26,7 +26,7 @@
         .cart-item {
             color: aliceblue;
             border-radius: 10px;
-            background-color: #092c3d;
+            background-color: #061e29;
             flex: 1;
             display: flex;
             align-items: center;
@@ -170,13 +170,9 @@
 /*Empty cart*/
 .empty-cart {
     display: flex;
-    /* Vagy display: grid; */
     flex-direction: column;
-    /* Csak flex esetén */
     align-items: center;
-    /* Középre igazítás */
     text-align: center;
-    /* Szöveg középre igazítás */
 }
 
 .empty-cart-img {
@@ -200,7 +196,6 @@
     font-size: 26px;
     font-weight: 300;
     border-top: 1px solid #ccc;
-    padding-top: 5px;
     padding-top: 15px;
     -moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
@@ -399,6 +394,6 @@ h3.active {
 }
 
 .btn-hover.color-8 {
-    background-image: linear-gradient(to right, #455669, #485563, #203542, #092c3d);
+    background-image: linear-gradient(to right, #455669, #485563, #203542, #061e29);
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }

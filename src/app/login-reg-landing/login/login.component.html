@@ -26,13 +26,16 @@
 <div class="form-container">
     <p class="title">Jelentkezzen be!</p>
     <form class="form" [formGroup]="loginForm" (ngSubmit)="submit()">
-        <div class="inputGroup">
+        <div class="inputGroup" [ngClass]="{'error': emailInvalid}">
             <input type="text" required="" formControlName="email">
             <label for="text">E-mail cím</label>
         </div>
-        <div class="inputGroup">
-            <input type="password" required="" formControlName="password" autocomplete="off">
+        <div class="inputGroup" [ngClass]="{'error': passwordInvalid}">
+            <input type="password" formControlName="password" required="">
             <label for="text">Jelszó</label>
+        </div>
+        <div class="checkbox">
+            <mat-checkbox type="checkbox" formControlName="rememberMe">Emékezz rám</mat-checkbox>
         </div>
         <button class="form-btn">Bejelentkezés</button>
     </form>

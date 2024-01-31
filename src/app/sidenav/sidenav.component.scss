@@ -1,16 +1,16 @@
-$main-color: #092c3b;
+$main-color: #061e29; //#041720
 
 .sidenav {
     background: $main-color;
     user-select: none;
     transition: all .5s ease;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     top: 0;
     width: 5rem;
     //width: 16.5625rem;
     height: 100vh;
-    box-shadow: 0.063rem 0 1.25rem 0 #000000;
+    // box-shadow: 0.0415rem 0 0.35rem 0 #3f3f3f;
 
 
 
@@ -167,10 +167,10 @@ $main-color: #092c3b;
     position: fixed;
     color: #e9e9e9;
     font-size: 25px;
-    bottom: 0;
+    bottom: 5px;
+    left: 5px;
     z-index: 5;
-    animation: fadeIn 1s;
     background-color: $main-color;
-    padding: 5px 5px 5px 0px;
-    border-radius: 0px 5px 5px 0px;
+    padding: 10px;
+    border-radius: 50%;
 }

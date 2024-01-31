@@ -11,5 +11,5 @@
     </div>
 </div>
 
-<app-modal [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
-    *ngIf="productService.isModalOpen"></app-modal>
+<app-modal-products [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
+    *ngIf="productService.isModalOpen"></app-modal-products>

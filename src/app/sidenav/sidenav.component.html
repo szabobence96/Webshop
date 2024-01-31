@@ -1,16 +1,15 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''" [ngClass]="closed ? 'sidenav-closed-mobile': ''"
-    @fadeInOut>
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''" [ngClass]="closed ? 'sidenav-closed-mobile': ''">
     <!--*ngIf="closed === false"-->
     <div class="logo-container">
         <button class="logo" @fadeInOut *ngIf="closed===false" (click)="toggleCollapse()"><i class="fa fa-bars"
                 aria-hidden="true"></i></button>
         <div class="logo-text" @fadeInOut *ngIf="collapsed">Logo</div>
-        <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+        <button class="btn-close" @rotate @fadeInOut *ngIf="collapsed" (click)="closeSidenav()">
             <i class="fal fa-times close-icon"></i>
         </button>
     </div>
     <ul class="sidenav-nav">
-        <li class="sidenav-nav-item" *ngFor="let data of navData">
+        <li class="sidenav-nav-item" @fadeInOut *ngFor="let data of navData">
             <a href="" class="sidenav-nav-link" [routerLink]="[data.routerLink]" routerLinkActive="active"
                 [routerLinkActiveOptions]="{exact: true}">
                 <i class="sidenav-link-icon" @fadeInOut *ngIf="closed===false" [class]="data.icon"></i>
@@ -24,9 +23,9 @@
         </li>
         <div class="sidenav-link-close-container" @fadeInOut *ngIf="collapsed===false && screenwidth < 1080"
             (click)="toggleClose()">
-            <i class="sidenav-link-close fal fa-times close-icon"></i>
+            <i @fadeInOut *ngIf="closed === false" class="sidenav-link-close fal fa-times close-icon"></i>
         </div>
     </ul>
 </div>
-<i class="sidenav-link-open fa fa-angle-double-right" @fadeInOut *ngIf="closed===true && screenwidth < 1080" (click)="
+<i class="sidenav-link-open fa fa-angle-double-right" *ngIf="closed===true && screenwidth < 1080" (click)="
 toggleClose()"></i>

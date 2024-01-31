@@ -35,7 +35,7 @@
     margin: 10px 0 30px 0;
     font-size: 28px;
     font-weight: 800;
-    color: #092c3d;
+    color: #061e29;
 }
 
 .form {
@@ -71,7 +71,7 @@
     border-radius: 20px;
     border: 0 !important;
     outline: 0 !important;
-    background: #092c3d;
+    background: #061e29;
     color: white;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -93,8 +93,8 @@
     margin-left: 1px;
     font-size: 11px;
     text-decoration: underline;
-    text-decoration-color: #092c3d;
-    color: #092c3d;
+    text-decoration-color: #061e29;
+    color: #061e29;
     cursor: pointer;
     font-weight: 800;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -145,12 +145,12 @@
     margin-bottom: 1px;
 }
 
-@media screen and (max-width:650) {
+@media screen and (max-width:650px) {
 
     .form-container {
         max-width: 550px;
         height: 500px;
-        padding: 10px 15px;
+        padding: 15px 7px;
         margin-top: 35px;
 
         .title {
@@ -191,6 +191,19 @@
     width: 100%;
 }
 
+.inputGroup.error input {
+    border-color: red;
+}
+
+.inputGroup.error label {
+    color: red;
+}
+
+.inputGroup.error :is(input:focus, input:valid)~label {
+    color: rgb(100, 100, 100);
+}
+
+
 .inputGroup label {
     font-size: 100%;
     position: absolute;
@@ -211,5 +224,5 @@
 }
 
 .inputGroup :is(input:focus, input:valid) {
-    border-color: #092c3d;
+    border-color: #061e29;
 }

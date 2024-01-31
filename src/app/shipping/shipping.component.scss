@@ -1,34 +1,54 @@
-.shipping-container{
+.shipping-container {
     display: block;
     max-width: 600px;
     margin: auto;
 
-    background: #eceff1;
+    background: white;
     padding: 48px;
     border-radius: 16px;
-    mat-form-field{
+
+    mat-form-field {
         width: 100%;
-        background: #eceff1;
+        margin-top: 8px;
+
     }
 }
 
-.center{
+.center {
     display: flex;
     justify-content: center;
 }
 
-.margin-top{
+.margin-top {
     margin-top: 16px;
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
-.button-container{
+
+.button-container {
     margin-top: 25px;
-    .price{
+
+    .price {
         float: right;
         font-size: 18px;
         font-weight: 100;
+    }
+
+    .order-btn {
+        padding: 15px 30px;
+        border-radius: 5px;
+        font-size: 15px;
+        background-color: #061e29;
+        cursor: pointer;
+        border: none;
+        color: white;
+        transition: 0.5s ease-in-out;
+
+    }
+
+    .order-btn:hover {
+        color: #eceff1;
     }
 }

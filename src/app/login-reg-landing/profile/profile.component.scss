@@ -6,6 +6,33 @@
 
 }
 
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    padding: 30px;
+    background-color: white;
+}
+
+@media screen and (max-width: 700px) {
+    .form-container {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: auto;
+        padding: 10px;
+
+        .row {
+            display: block;
+        }
+    }
+
+
+}
+
 .profile-image {
     position: relative;
 
@@ -28,7 +55,21 @@
 }
 
 .save-button {
-    background-color: #17455c;
+    padding: 10px 15px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    border-radius: 20px;
+    border: 0 !important;
+    outline: 0 !important;
+    background: #061e29;
+    color: white;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 0.2s ease-in-out;
+}
+
+.save-button:hover {
+    background: #0c384f;
 }
 
 .test {

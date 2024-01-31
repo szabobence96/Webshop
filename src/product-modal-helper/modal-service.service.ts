@@ -59,6 +59,7 @@ export class ModalService {
     this.renderer.removeStyle(document.body, 'overflow');
     this.productService.isModalOpen = false;
     this.showDetailsBox = false;
+    this.currentImage = "";
   }
 
   addToCart(product: any) {

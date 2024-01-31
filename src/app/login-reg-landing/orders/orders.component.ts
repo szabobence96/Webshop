@@ -5,12 +5,12 @@ import { SharedService } from 'src/app/shared.service';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class OrdersComponent implements OnInit {
 
   user$ = this.authService.currentUser$;
   items: any = [];

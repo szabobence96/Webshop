@@ -1,12 +1,401 @@
-/*
-.product-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: cover;
-    z-index: -1;
-     Egyéb stílusok 
+.a-remove-brightness {
+    animation: removeBrightness 2s ease forwards;
+}
+
+.a-delayed {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 3s;
+}
+
+.a-first-text {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 2s;
+    pointer-events: none;
+}
+
+.a-second-text {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 2s;
+}
+
+.a-third-text {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 2s;
+}
+
+.a-add-brightness {
+    animation: addBrightness 3s ease forwards;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        pointer-events: none;
     }
-    */
+
+    to {
+        pointer-events: auto;
+        opacity: 1;
+    }
+}
+
+@keyframes removeBrightness {
+    from {
+        filter: brightness(90%);
+    }
+
+    to {
+        filter: brightness(20%);
+    }
+}
+
+@keyframes addBrightness {
+    from {
+        filter: brightness(10%);
+    }
+
+    to {
+        filter: brightness(150%);
+    }
+}
+
+
+.dashboard-container {
+    background-color: black;
+
+    .commercial-container {
+
+        .brand-container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            .brand-text {
+                font-size: 20px;
+                color: white;
+                border: 2px solid white;
+                margin: 40px 0 20px 0;
+                color: white;
+                height: auto;
+                font-size: 20px;
+                font-weight: bold;
+                padding: 20px 40px;
+                user-select: none;
+            }
+
+            .brands {
+                background-color: black;
+                height: 100px;
+                margin-top: 10px;
+                width: auto;
+                overflow: hidden;
+                color: white;
+                justify-content: space-between;
+
+                .dior,
+                .jpg,
+                .lancome,
+                .hawkers {
+                    transition: all 0.3s;
+                    cursor: pointer;
+                    height: 100px;
+                    filter: brightness(150%);
+                }
+
+                .dior:hover,
+                .jpg:hover,
+                .lancome:hover,
+                .hawkers:hover {
+                    filter: brightness(250%);
+                }
+            }
+        }
+
+        .fragrances-text {
+            text-align: center;
+            font-size: 20px;
+            width: auto;
+            margin: 10px auto;
+            margin-top: 40px;
+            color: white;
+            border: 2px solid white;
+            color: white;
+            height: auto;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 20px 40px;
+            user-select: none;
+        }
+
+        .commercial-first {
+            display: flex;
+            justify-content: center;
+            position: relative;
+
+            .first-text {
+                position: absolute;
+                z-index: 2;
+                color: white;
+                font-size: 18px;
+                margin: 0px 10px 0 10px;
+                top: 50%;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+
+                .commercial-button {
+                    border: 1px solid white;
+                    background-color: white;
+                    color: black;
+                    display: block;
+                    width: auto;
+                    font-size: 18px;
+                    padding: 5px 15px;
+                }
+            }
+
+            .commercial-img {
+                margin-top: 10px;
+                max-width: 1300px;
+                width: auto;
+                overflow: hidden;
+                filter: brightness(50%);
+                transition: all 0.4s ease-in-out;
+
+                &:hover {
+                    filter: brightness(30%);
+                    transition: all 0.4s ease-in-out;
+                }
+            }
+        }
+
+        /* ------------- SECOND SIDE -------------- */
+
+
+        .commercial-second-container-1 {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            user-select: none;
+
+            .image-container-1,
+            .image-container-2 {
+                width: 50%;
+                position: relative;
+                transition: all 0.4s ease-in-out;
+
+                &:hover {
+                    transition: all 0.4s ease-in-out;
+                    filter: brightness(120%);
+                }
+
+                .common-text-2-container {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    -webkit-transition: all 500ms ease-out;
+                    -moz-transition: all 500ms ease-out;
+                    -o-transition: all 500ms ease-out;
+                    -ms-transition: all 500ms ease-out;
+                    transition: all 500ms ease-out;
+                    transition-delay: 0.05s;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0px;
+
+                    &:hover {
+                        opacity: 1;
+                        background-color: rgba(0, 0, 0, 0.699);
+                    }
+
+                    .second-text-1,
+                    .second-text-2 {
+                        z-index: 100;
+                        color: white;
+                        font-size: 18px;
+                        margin: 15px;
+                        position: absolute;
+                        top: 35%;
+                        text-align: center;
+                        display: flex;
+                        /* Use flexbox for layout */
+                        flex-direction: column;
+                        opacity: 1;
+                        filter: brightness(200%);
+
+                        app-custom-button {
+                            width: auto;
+                            margin: 0 auto;
+                        }
+                    }
+                }
+
+                .commercial-second-img-1,
+                .commercial-second-img-2 {
+                    width: 100%;
+                    height: auto;
+                    max-height: 100%;
+                    transition: all 0.4s ease-in-out;
+                    filter: brightness(60%);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .dashboard-container {
+
+        .commercial-container {
+
+            .brand-container {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+
+                .brand-text {
+                    font-size: 15px;
+                }
+
+                .brands {
+                    height: auto;
+
+                    .dior,
+                    .jpg,
+                    .lancome,
+                    .hawkers {
+                        transition: all 0.3s;
+                        cursor: pointer;
+                        height: 100px;
+                        flex: 1;
+                    }
+                }
+            }
+
+            .commercial-first {
+                .first-text {
+                    min-width: 80%;
+                    font-size: 18px;
+                    top: 50%;
+                    user-select: none;
+
+                    button {
+                        font-size: 15px;
+                        padding: 15px 30px;
+                        margin-top: 50px;
+                        margin-left: 30px;
+                    }
+                }
+
+                .commercial-img {
+                    width: 100%;
+                    margin-top: 0px;
+                    filter: brightness(50%);
+                }
+            }
+
+            .brand-container {
+                .fragrances-text {
+                    font-size: 15px;
+                }
+            }
+
+            .commercial-second-container-1 {
+                display: block;
+
+                .image-container-1,
+                .image-container-2 {
+                    .common-text-2-container {
+
+                        width: 200%;
+
+                        .second-text-1,
+                        .second-text-2 {
+                            top: 10%;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .commercial-second-img-1,
+                    .commercial-second-img-2 {
+                        width: 200%;
+                        height: auto;
+                        max-height: auto;
+                        transition: all 0.4s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+button {
+    margin-top: 40px;
+    z-index: 2;
+    color: white;
+    display: block;
+    width: fit-content;
+    height: auto;
+    outline: none;
+    border: none;
+    background-color: inherit;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 40px;
+    position: relative;
+    cursor: pointer;
+}
+
+button::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: scaleX(0.2) scaleY(0.5) translate(250%, 100%);
+    border-top: solid 4px white;
+    border-left: solid 8px white;
+    transition: all .4s ease-in-out;
+}
+
+button::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%) scaleX(0.2) scaleY(0.5);
+    border-bottom: solid 4px white;
+    border-right: solid 8px white;
+    transition: all .4s ease-in-out;
+}
+
+button:hover::before {
+    transform: translate(0%, 0%) scaleX(1) scaleY(1);
+    border-top: solid 4px white;
+    border-left: solid 4px white;
+}
+
+button:hover::after {
+    transform: scaleX(1) scaleY(1) translate(0%, 0%);
+    border-bottom: solid 4px white;
+    border-right: solid 4px white;
+}

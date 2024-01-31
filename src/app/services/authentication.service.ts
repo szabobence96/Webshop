@@ -16,6 +16,21 @@ import { concatMap, from, Observable, of, switchMap } from 'rxjs';
 export class AuthenticationService {
 
   constructor(private auth: Auth) { }
+  private readonly localStorageKey = 'savedCredentials';
+
+  getSavedCredentials(): { email: string; password: string } | null {
+    const savedCredentials = localStorage.getItem(this.localStorageKey);
+    return savedCredentials ? JSON.parse(savedCredentials) : null;
+  }
+
+  saveCredentials(email: string, password: string): void {
+    const credentials = { email, password };
+    localStorage.setItem(this.localStorageKey, JSON.stringify(credentials));
+  }
+
+  clearSavedCredentials(): void {
+    localStorage.removeItem(this.localStorageKey);
+  }
 
   currentUser$ = authState(this.auth);
 

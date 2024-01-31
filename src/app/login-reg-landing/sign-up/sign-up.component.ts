@@ -54,7 +54,16 @@ export class SignUpComponent implements OnInit {
     private toast: HotToastService,
     private usersService: UsersService,
   ) { }
+  hide = true;
+  termsChecked = false;
 
+  termsCheck(event: MouseEvent) {
+    event.stopPropagation();
+    if (event.target !== event.currentTarget) {
+      // A kattintás csak akkor történik meg, ha a mat-checkbox-en kívülre kattintasz
+      this.termsChecked = !this.termsChecked;
+    }
+  }
   ngOnInit(): void {
   }
 
@@ -70,14 +79,26 @@ export class SignUpComponent implements OnInit {
     return this.signUpForm.get('confirmPassword');
   }
 
-  get name() {
-    return this.signUpForm.get('name');
+  get address() {
+    return this.signUpForm.get('address');
+  }
+
+  get firstName() {
+    return this.signUpForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.signUpForm.get('lastName');
+  }
+
+  get phone() {
+    return this.signUpForm.get('phone');
   }
 
   submit() {
     const { lastName, firstName, address, phone, email, password } = this.signUpForm.value;
 
-    if (!this.signUpForm.valid || !firstName || !firstName || !password || !email) {
+    if (!this.signUpForm.valid || !firstName || !firstName || !password || !email || !address || !phone || this.termsChecked == false) {
       return;
     }
 

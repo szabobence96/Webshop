@@ -44,19 +44,6 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  uploadImage(event: any, user: ProfileUser) {
-    this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`)
-      .pipe(
-        this.toast.observe(
-          {
-            loading: 'A kép töltődik...',
-            success: 'A kép sikeresen feltöltve!',
-            error: 'Hiba a kép feltöltése közben'
-          }
-        ),
-        switchMap((photoURL) => this.usersService.updateUser({ uid: user.uid, photoURL }))
-      ).subscribe();
-  }
   saveProfile() {
     const { uid, ...data } = this.profileForm.value;
 

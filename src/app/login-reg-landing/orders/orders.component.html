@@ -1,7 +1,7 @@
-<app-user></app-user>
+<app-user-header></app-user-header>
 <div class="orders-container" *ngIf="user$ | async as user">
     <div class="orders-head">Korábbi rendelések</div>
-    <div class="order-table" *ngIf="user$ | async as user">
+    <div class="order-table">
         <div class="order-row" *ngFor="let order of userOrders">
             <div class="item-container" *ngFor="let item of order.items">
                 <div class="product-image">

@@ -27,6 +27,26 @@ export class ShippingComponent implements OnInit {
     }
   );
 
+  get email() {
+    return this.shippingForm.get('email');
+  }
+
+  get address() {
+    return this.shippingForm.get('address');
+  }
+
+  get firstName() {
+    return this.shippingForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.shippingForm.get('lastName');
+  }
+
+  get phone() {
+    return this.shippingForm.get('phone');
+  }
+
   constructor(
     private fb: NonNullableFormBuilder,
     public services: SharedService,

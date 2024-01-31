@@ -1,1 +1,56 @@
-<app-carousel [images]="images" [autoSlide]="false"></app-carousel>
+<app-carousel [images]="currentImages" [autoSlide]="true"></app-carousel>
+
+<div class="dashboard-container">
+    <div class="commercial-container">
+        <div class="brand-container">
+            <div class="brand-text">
+                {{textService.ourSunglasses}}
+            </div>
+            <div class="brands">
+                <img class="hawkers" src="../../assets/images/commercial/hawkers_logo.png">
+            </div>
+        </div>
+        <div class="commercial-first">
+            <div class="first-text" id="first-text-animation">{{textService.hawkers}}
+                <button class="" id="delayed-element" routerLink="/products/">{{textService.goToProducts}}</button>
+            </div>
+            <img *ngIf="screenWidth >= 768" class="commercial-img" id="remove-brightness"
+                src="../../assets/images/commercial/mainpage_commercial1.jpg" alt="">
+            <img *ngIf="screenWidth < 768 && screenWidth > 512" class="commercial-img" id="remove-brightness"
+                src="../../assets/images/commercial/mainpage_commercial_mobile_copy.jpg">
+            <img *ngIf="screenWidth < 512" class="commercial-img" id="remove-brightness"
+                src="../../assets/images/commercial/mainpage_commercial_mobile_512.png" alt="">
+        </div>
+        <div class="brand-container">
+            <div class="fragrances-text">
+                {{textService.ourFragrances}}
+            </div>
+            <div class="brands">
+                <img class="dior" src="../../assets/images/commercial/dior_logo.png">
+                <img class="jpg" src="../../assets/images/commercial/jpg_logo.png">
+                <img class="lancome" src="../../assets/images/commercial/lancome_logo.png">
+            </div>
+        </div>
+        <div class="commercial-second-container-1" id="add-brightness">
+            <div class="image-container-1">
+                <img class="commercial-second-img-1" src="../../assets/images/commercial/commercial_labella_copy_1.jpg"
+                    alt="">
+                <div class="common-text-2-container">
+                    <div class="second-text-1">{{textService.labella}}
+                        <app-custom-button routerLink="/jeanpaulgaultier/"
+                            [text]="textService.more"></app-custom-button>
+                    </div>
+                </div>
+            </div>
+            <div class="image-container-2">
+                <img class="commercial-second-img-2" src="../../assets/images/commercial/lebauraw.jpg">
+                <div class="common-text-2-container">
+                    <div class="second-text-2">{{textService.lebeau}}
+                        <app-custom-button routerLink="/jeanpaulgaultier/"
+                            [text]="textService.more"></app-custom-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

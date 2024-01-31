@@ -1,15 +1,126 @@
 .form-container {
-    height: 700px;
-}
-
-mat-error {
+    height: auto;
+    width: 100%; // Alapértelmezett szélesség
+    max-width: 700px;
     position: relative;
 }
 
+
+mat-checkbox {
+    margin-top: 0ps;
+    white-space: nowrap;
+    position: relative;
+
+    .terms {
+        display: inline-block;
+        color: #061e29;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.pw-must-match {
+    position: absolute;
+    font-size: 12px;
+    margin-left: 14px;
+    bottom: 33%;
+
+}
+
 .reg-form {
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0px;
-    margin-bottom: 5px;
+}
+
+mat-form-field {
+    color: #061e29;
+
+    mat-label {
+        color: #061e29;
+        font-size: 15px;
+    }
+
+    .pw-hide {
+        cursor: pointer;
+    }
+}
+
+.form-btn {
+    width: 60%;
+    transition: 0.3s ease-in-out;
+}
+
+.login-container {
+    display: flex;
+    font-size: 10px;
+    color: #747474;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
+    .login {
+        cursor: pointer;
+        color: #061e29;
+        margin-left: 5px;
+        font-size: 11px;
+        text-decoration: underline;
+        text-decoration-color: #061e29;
+        color: #061e29;
+        cursor: pointer;
+        font-weight: 800;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+}
+
+.form-btn:disabled {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 0 !important;
+    outline: 0 !important;
+    background: #989898;
+    color: white;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+    transition: 0.3s ease-in-out;
+}
+
+@media screen and (max-width:650px) {
+    .form-container {
+
+        .row {
+            display: block;
+        }
+
+        .title {
+            margin: 10px 0 20px 0;
+            font-size: 24px;
+        }
+
+        .pw-must-match {
+            position: absolute;
+            font-size: 12px;
+            margin-left: 14px;
+            bottom: 28%;
+        }
+
+        .form-btn {
+            margin-top: 10px;
+            top: 100%;
+        }
+
+        mat-checkbox {
+            margin-top: 10px;
+            white-space: wrap;
+            position: relative;
+
+            .terms {
+                display: inline-block;
+                color: #061e29;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
 }

@@ -40,17 +40,7 @@ export class SharedService {
   getUsers() {
     return this.getCollectionData('*users');
   }
-  /*
-    addToCart(item: any) {
-  
-      const existingItem = this.cartItems.find(cartItem => cartItem.product.id === item.id && cartItem.selectedSize === item.selectedSize);
-      if (existingItem) {
-        existingItem.quantity++;
-      } else {
-        this.cartItems.push({ product: item, quantity: 1 });
-      }
-    }
-  */
+
   addToCartService(item: any) {
     const newItem = { selectedPrice: this.selectedSizePrice };
     const existingItem = this.cartItems.find(cartItem => cartItem.product.id === item.id && cartItem.selectedPrice === newItem.selectedPrice);

@@ -1,0 +1,46 @@
+.custom-button {
+    margin-top: 20px;
+    width: auto;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-weight: 700;
+    position: relative;
+    transition: all 0.5s;
+    z-index: 1;
+}
+
+.custom-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 5px;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+.custom-button:hover::before {
+    width: 110%;
+}
+
+.custom-button:hover {
+    color: black;
+}
+
+.custom-button:active:before {
+    background: #b9b9b9;
+}
+
+@media screen and (max-width:768px) {
+    .custom-button {
+        height: 35px;
+        font-size: 15px;
+    }
+}

@@ -20,13 +20,13 @@ import { SharedService } from './shared.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
-import { UserComponent } from './user/user.component';
+import { UserHeaderComponent } from './user-header/user-header.component';
 import { LoginComponent } from './login-reg-landing/login/login.component';
 import { SignUpComponent } from './login-reg-landing/sign-up/sign-up.component';
 import { LandingComponent } from './login-reg-landing/landing/landing.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { HomeComponent } from './login-reg-landing/home/home.component';
+import { OrdersComponent } from './login-reg-landing/orders/orders.component';
 import { ProfileComponent } from './login-reg-landing/profile/profile.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { FirestoreModule } from '@angular/fire/firestore';
@@ -44,6 +44,8 @@ import { JPGFragrancesComponent } from './fragrances/JPG-fragrances/jpg-fragranc
 import { LancomeFragrancesComponent } from './fragrances/lancome-fragrances/lancome-fragrances.component';
 import { WomanFragrancesComponent } from './fragrances/woman-fragrances/woman-fragrances.component';
 import { ManFragrancesComponent } from './fragrances/man-fragrances/man-fragrances.component';
+import { UserComponent } from './user/user.component';
+import { CustomButtonComponent } from './custom-button/custom-button.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -68,10 +70,11 @@ const firebaseConfig = {
     MediaComponent,
     ShoppingCartComponent,
     UserComponent,
+    UserHeaderComponent,
     LoginComponent,
     SignUpComponent,
     LandingComponent,
-    HomeComponent,
+    OrdersComponent,
     ProfileComponent,
     ShippingComponent,
     ModalComponent,
@@ -82,7 +85,8 @@ const firebaseConfig = {
     JPGFragrancesComponent,
     LancomeFragrancesComponent,
     WomanFragrancesComponent,
-    ManFragrancesComponent
+    ManFragrancesComponent,
+    CustomButtonComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
@@ -96,6 +100,7 @@ const firebaseConfig = {
     FormsModule,
     MatFormFieldModule,
     FirestoreModule,
+
     CommonModule,
     CarouselModule,
     AngularFireDatabaseModule,

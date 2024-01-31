@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+    <h1 class="log-in-a" *ngIf="user$ | async as user">
+        Üdvözöljük, {{user.displayName}}!</h1>
+
+    <ng-container *ngIf="user$ | async as user">
+        <button mat-button [matMenuTriggerFor]="userMenu">
+            <img class="profile-image-toolbar" width="30" height="30" src="assets/image-placeholder.png" />
+            <mat-icon>expand_more</mat-icon>
+        </button>
+    </ng-container>
+</mat-toolbar>
+
+<mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="/user/orders">Rendelések</button>
+    <button mat-menu-item routerLink="/user/profile">Profil</button>
+    <button mat-menu-item (click)="logout()">Kijelentkezés</button>
+</mat-menu>
