@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="item-size-buttons-container">
-                <div *ngFor="let item of product.type" (click)="services.selectSize(item)">
+                <div *ngFor="let item of product.type" (click)="services.selectItem(item)">
                     <div class="item-size-buttons" tabindex="0" [class.selected]="services.selectedSize === item">{{
                         item.size }}
                         {{item.price}} Ft</div>

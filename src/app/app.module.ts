@@ -46,6 +46,12 @@ import { WomanFragrancesComponent } from './fragrances/woman-fragrances/woman-fr
 import { ManFragrancesComponent } from './fragrances/man-fragrances/man-fragrances.component';
 import { UserComponent } from './user/user.component';
 import { CustomButtonComponent } from './custom-button/custom-button.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SkeletonComponent } from './skeleton/skeleton.component';
+import { LancomeComponent } from './brands/lancome/lancome.component';
+import { HawkersComponent } from './brands/hawkers/hawkers.component';
+import { SettingsButtonComponent } from './settings-button/settings-button.component';
+import { ModalAccessoriesComponent } from './accessories/modal-accessories/modal-accessories/modal-accessories.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -74,6 +80,8 @@ const firebaseConfig = {
     LoginComponent,
     SignUpComponent,
     LandingComponent,
+    LancomeComponent,
+    HawkersComponent,
     OrdersComponent,
     ProfileComponent,
     ShippingComponent,
@@ -87,6 +95,9 @@ const firebaseConfig = {
     WomanFragrancesComponent,
     ManFragrancesComponent,
     CustomButtonComponent,
+    SkeletonComponent,
+    SettingsButtonComponent,
+    ModalAccessoriesComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
@@ -100,7 +111,7 @@ const firebaseConfig = {
     FormsModule,
     MatFormFieldModule,
     FirestoreModule,
-
+    NgxSkeletonLoaderModule,
     CommonModule,
     CarouselModule,
     AngularFireDatabaseModule,

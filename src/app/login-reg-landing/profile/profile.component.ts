@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   user$ = this.usersService.currentUserProfile$;
-
+  contentLoaded: boolean = false;
   profileForm = this.fb.group({
     uid: [''],
     displayName: [''],
@@ -42,6 +42,9 @@ export class ProfileComponent implements OnInit {
       .subscribe((user) => {
         this.profileForm.patchValue({ ...user });
       });
+    setTimeout(() => {
+      this.contentLoaded = true;
+    }, 1000);
   }
 
   saveProfile() {

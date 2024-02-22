@@ -13,7 +13,25 @@ import { Observable } from 'rxjs';
   styleUrls: ['./fragrances.component.scss', '../style-helper/product-style-helper.scss'],
   animations: [SlideInOutAnimation]
 })
-export class FragrancesComponent {
+export class FragrancesComponent implements OnInit {
+
+  contentLoaded: boolean = false;
+  jeanPaulBrandImg: string = './assets/images/fragrances/logo/jeanpaul_logo.jpg';
+  diorBrandImg: string = './assets/images/fragrances/logo/dior_logo.jpg';
+  lancomeBrandImg: string = './assets/images/fragrances/logo/lancome_logo.jpg'
+
+  constructor(
+    public services: SharedService,
+    public firestore: Firestore,
+    public productService: ProductService,
+    public renderer: Renderer2,
+  ) { }
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.contentLoaded = true;
+    }, 1500);
+  }
 
   animationState = 'out';
   toggleShowDiv(divName: string) {
@@ -24,15 +42,7 @@ export class FragrancesComponent {
     }
   }
 
-  jeanPaulBrandImg: string = './assets/images/fragrances/logo/jeanpaul_logo.jpg';
-  diorBrandImg: string = './assets/images/fragrances/logo/dior_logo.jpg';
-  lancomeBrandImg: string = './assets/images/fragrances/logo/lancome_logo.jpg'
-  constructor(
-    public services: SharedService,
-    public firestore: Firestore,
-    public productService: ProductService,
-    public renderer: Renderer2
-  ) { }
+
 
 }
 

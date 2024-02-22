@@ -1,17 +1,17 @@
 .a-remove-brightness {
-    animation: removeBrightness 2s ease forwards;
+    animation: removeBrightness 1s ease forwards;
 }
 
 .a-delayed {
     opacity: 0;
-    animation: fadeIn 2s ease forwards;
-    animation-delay: 3s;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.5s;
 }
 
 .a-first-text {
     opacity: 0;
     animation: fadeIn 1s ease forwards;
-    animation-delay: 2s;
+    animation-delay: 1s;
     pointer-events: none;
 }
 
@@ -27,9 +27,6 @@
     animation-delay: 2s;
 }
 
-.a-add-brightness {
-    animation: addBrightness 3s ease forwards;
-}
 
 
 @keyframes fadeIn {
@@ -50,23 +47,24 @@
     }
 
     to {
-        filter: brightness(20%);
-    }
-}
-
-@keyframes addBrightness {
-    from {
         filter: brightness(10%);
     }
-
-    to {
-        filter: brightness(150%);
-    }
 }
 
 
+@keyframes addBlur {
+    0% {
+        filter: blur(0px);
+    }
+
+    100% {
+        filter: blur(10px);
+        /* You can adjust the amount of blur as needed */
+    }
+}
+
 .dashboard-container {
-    background-color: black;
+    background-color: #EAE7E6;
 
     .commercial-container {
 
@@ -76,13 +74,12 @@
             flex-direction: column;
             align-items: center;
 
-
             .brand-text {
                 font-size: 20px;
+                background: #1C202B;
                 color: white;
-                border: 2px solid white;
+                border-radius: 0.625rem;
                 margin: 40px 0 20px 0;
-                color: white;
                 height: auto;
                 font-size: 20px;
                 font-weight: bold;
@@ -91,7 +88,7 @@
             }
 
             .brands {
-                background-color: black;
+                background-color: transparent;
                 height: 100px;
                 margin-top: 10px;
                 width: auto;
@@ -124,9 +121,9 @@
             width: auto;
             margin: 10px auto;
             margin-top: 40px;
+            background: #1C202B;
             color: white;
-            border: 2px solid white;
-            color: white;
+            border-radius: 0.625rem;
             height: auto;
             font-size: 20px;
             font-weight: bold;
@@ -139,26 +136,17 @@
             justify-content: center;
             position: relative;
 
+
             .first-text {
                 position: absolute;
                 z-index: 2;
                 color: white;
+                top: 50%;
                 font-size: 18px;
                 margin: 0px 10px 0 10px;
-                top: 50%;
                 text-align: center;
                 justify-content: center;
                 align-items: center;
-
-                .commercial-button {
-                    border: 1px solid white;
-                    background-color: white;
-                    color: black;
-                    display: block;
-                    width: auto;
-                    font-size: 18px;
-                    padding: 5px 15px;
-                }
             }
 
             .commercial-img {
@@ -189,12 +177,7 @@
             .image-container-2 {
                 width: 50%;
                 position: relative;
-                transition: all 0.4s ease-in-out;
 
-                &:hover {
-                    transition: all 0.4s ease-in-out;
-                    filter: brightness(120%);
-                }
 
                 .common-text-2-container {
                     position: absolute;
@@ -220,16 +203,16 @@
                     .second-text-2 {
                         z-index: 100;
                         color: white;
-                        font-size: 18px;
+                        font-size: 14px;
+                        font-style: italic;
                         margin: 15px;
                         position: absolute;
                         top: 35%;
                         text-align: center;
                         display: flex;
-                        /* Use flexbox for layout */
                         flex-direction: column;
                         opacity: 1;
-                        filter: brightness(200%);
+                        filter: brightness(100%);
 
                         app-custom-button {
                             width: auto;
@@ -243,8 +226,8 @@
                     width: 100%;
                     height: auto;
                     max-height: 100%;
-                    transition: all 0.4s ease-in-out;
-                    filter: brightness(60%);
+                    // transition: all 0.4s ease-in-out;
+                    //                    filter: brightness(60%);
                 }
             }
         }
@@ -323,7 +306,8 @@
                         .second-text-1,
                         .second-text-2 {
                             top: 10%;
-                            font-size: 14px;
+                            font-size: 12px;
+                            overflow: auto;
                         }
                     }
 

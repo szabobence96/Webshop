@@ -1,28 +1,31 @@
-<!--
+<ngx-skeleton-loader class="mid screen-width" *ngIf="!contentLoaded" appearance="circle" [theme]="{
+    'max-width': '550px',
+    'height': '550px',
+    width: '90vw',
+    'border-radius': '15px',
+}"></ngx-skeleton-loader>
 
-    <div class="empty-cart" *ngIf="services.getCartItems().length === 0">
-        <img class="empty-cart-img" src="./assets/images/empty-cart.jpg">
-        <div class="empty-cart-desc">A kosara üres!<p class="empty-cart-button" [routerLink]="['/products']">Vissza a
-            termékekhez!</div>
-        </div>
-    -->
-<div class="shopping-cart-component" *ngIf="services.getCartItems().length > -1">
-    <div class="shipping-container mat-elevation-z5">
+<div class="shopping-cart-component" *ngIf="services.getCartItems().length > 0">
+    <div class="shipping-container mat-elevation-z5" *ngIf="contentLoaded"
+        [style.display]="contentLoaded ? 'block' : 'none'">
+        <p class="title">Kérem, adja meg a szállítási adatait!</p>
         <form #rendelesForm="ngForm" [formGroup]="shippingForm" (ngSubmit)="rendelesFormSubmit(rendelesForm.value)">
-            <mat-form-field *ngIf="!(user$ | async)">
-                <mat-label>Vezetéknév</mat-label>
-                <input type="text" matInput formControlName="lastName" />
-                <mat-error *ngIf="lastName?.errors?.['required']">
-                    Adja meg a vezetéknevét!
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field *ngIf="!(user$ | async)">
-                <mat-label>Keresztnév</mat-label>
-                <input type="text" matInput formControlName="firstName" />
-                <mat-error *ngIf="firstName?.errors?.['required']">
-                    Adja meg a Keresztnevét!
-                </mat-error>
-            </mat-form-field>
+            <div class="row">
+                <mat-form-field *ngIf="!(user$ | async)">
+                    <mat-label>Vezetéknév</mat-label>
+                    <input type="text" matInput formControlName="lastName" maxlength="12" />
+                    <mat-error *ngIf="lastName?.errors?.['required']">
+                        Adja meg a vezetéknevét!
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field *ngIf="!(user$ | async)">
+                    <mat-label>Keresztnév</mat-label>
+                    <input type="text" matInput formControlName="firstName" maxlength="12" />
+                    <mat-error *ngIf="firstName?.errors?.['required']">
+                        Adja meg a Keresztnevét!
+                    </mat-error>
+                </mat-form-field>
+            </div>
             <mat-form-field *ngIf="!(user$ | async)">
                 <mat-label>E-mail cím</mat-label>
                 <input type="email" matInput formControlName="email" />
@@ -42,14 +45,19 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Szallítási cím</mat-label>
-                <input type="text" matInput formControlName="address" />
+                <input type="text" matInput formControlName="address" maxlength="50" />
                 <mat-error *ngIf="address?.errors?.['required']">
                     Adja meg a Szállítási címét!
                 </mat-error>
             </mat-form-field>
+            <mat-checkbox *ngIf="!(user$ | async)" (click)="termsCheck($event)">Elfogadom az <div class="terms"
+                    routerLink="/user/login">ÁSZF
+                </div>-et
+            </mat-checkbox>
             <div class="button-container">
-                <button class="order-btn" type="submit">Rendelés megerősítése</button>
-                <p class="price">végösszeg: {{price}} Ft</p>
+                <p class="price">Végösszeg: {{price}} Ft</p>
+                <button class="order-btn" [disabled]="termsChecked == false && !(user$ | async)" type="submit">Rendelés
+                    megerősítése</button>
             </div>
         </form>
     </div>

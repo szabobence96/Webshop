@@ -1,15 +1,33 @@
-<div class="product-card-container">
-    <div class="product-card" *ngFor="let item of task$ | async" (click)="productService.openModal(item)">
-        <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
-        </div>
-        <div class="main-image-container">
-            <img class="main-image" [src]="item.imagePath">
-        </div>
-        <div class="product-card-price"> {{item.price}}
-            <p class="tol">Ft</p>
+<div class="skeleton" *ngIf="!contentLoaded">
+    <ng-container *ngFor="let _ of [1,2,3,4,5,6]">
+        <ngx-skeleton-loader appearance="circle" [theme]="{
+            width: '320px',
+            height: '400px',
+            'border-radius': '15px',
+            margin: '10px'
+        }"></ngx-skeleton-loader>
+    </ng-container>
+</div>
+<div [style.display]="contentLoaded ? 'flex' : 'none'" class="img-brand-container">
+    <img class="img-brand" src="../../assets/images/commercial/hawkers_logo.png" alt="">
+</div>
+<div [style.display]="contentLoaded ? 'flex' : 'none'">
+    <div class="product-card-container" *ngIf="contentLoaded">
+        <div class="product-card" (mouseover)="productService.mouseOver(item)"
+            (mouseleave)="productService.mouseLeave(item)" *ngFor="let item of task$ | async"
+            (click)="productService.openModal(item)">
+            <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
+            </div>
+            <div class="main-image-container">
+                <img class="main-image" [src]="item.imagePath">
+            </div>
+            <div class="price-container">
+                <div class="product-card-price"> {{item.price}}
+                    <p class="tol">Ft</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 <app-modal-products [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
     *ngIf="productService.isModalOpen"></app-modal-products>

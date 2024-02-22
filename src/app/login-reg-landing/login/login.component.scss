@@ -8,6 +8,10 @@
     justify-content: center;
 }
 
+mat-checkbox {
+    user-select: none;
+}
+
 .margin-top {
     margin-top: 16px;
 }
@@ -145,7 +149,7 @@
     margin-bottom: 1px;
 }
 
-@media screen and (max-width:650px) {
+@media screen and (max-width:550px) {
 
     .form-container {
         max-width: 550px;
@@ -165,7 +169,7 @@
     }
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 550px) {
     .form-container {
         position: absolute;
         top: 50%;

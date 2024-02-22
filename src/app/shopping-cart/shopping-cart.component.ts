@@ -14,7 +14,7 @@ export class ShoppingCartComponent implements OnInit {
 
   cartItems: any[] = [];
   selectedProducts: any[] = [];
-
+  contentLoaded: boolean = false;
   navbarData = navbarData;
   insuranceIsChecked = true;
   giftIsChecked = false;
@@ -22,6 +22,9 @@ export class ShoppingCartComponent implements OnInit {
   selectedProductPrice = this.services.selectedSizePrice;
   ngOnInit() {
     this.cartItems = this.services.getCartItems();
+    setTimeout(() => {
+      this.contentLoaded = true;
+    }, 1000);
   }
 
   getProductPrice() {
@@ -34,6 +37,9 @@ export class ShoppingCartComponent implements OnInit {
     }
   }
 
+  isNumber(value: any): boolean {
+    return !isNaN(value);
+  }
 
   increaseQuantity(cartItem: any) {
     cartItem.quantity++;

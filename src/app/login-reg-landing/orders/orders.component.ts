@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UsersService } from 'src/app/services/users.service';
 import { SharedService } from 'src/app/shared.service';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { firestore } from 'firebase';
 
 
 @Component({
@@ -17,17 +20,22 @@ export class OrdersComponent implements OnInit {
   users: any = [];
   userEmail: string | undefined;
   userOrders: any = [];
-
+  contentLoaded: boolean = false;
   constructor(
+    private fs: Firestore,
     private authService: AuthenticationService,
     private usersService: UsersService,
-    private services: SharedService,
+    public services: SharedService,
   ) { }
+
 
   ngOnInit(): void {
     this.services.refreshData(() => this.services.getOrders(), this.items);
     this.services.refreshData(() => this.services.getUsers(), this.users);
     this.getUser();
+    setTimeout(() => {
+      this.contentLoaded = true;
+    }, 1500);
   }
 
   getUser() {

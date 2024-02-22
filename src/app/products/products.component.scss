@@ -1,0 +1,14 @@
+.img-brand-container {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    .img-brand {
+        height: 200px;
+        width: auto;
+        margin: 0 auto;
+        user-select: none;
+    }
+}

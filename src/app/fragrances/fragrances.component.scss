@@ -17,8 +17,6 @@
     }
 }
 
-
-
 .divA {
     display: flex;
     color: #333;
@@ -30,96 +28,5 @@
 
 }
 
-.filter {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(0, 0, 0, 0.192);
-    cursor: pointer;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.021);
-    transition: all 0.3s;
-    margin-left: 10px;
-}
 
-.filter svg {
-    height: 20px;
-    fill: #061e29;
-    transition: all 0.3s;
-}
-
-.filter:hover {
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.11);
-    background-color: #061e29;
-}
-
-.filter:hover svg {
-    fill: white;
-}
-
-@mixin center-absolute {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-$btn-size-open: 135px;
-$btn-size: 60px;
-$btn-color: #061e29;
-$btn-border: 1px solid #061e29;
-$btn-font-color: #fff;
-$btn-font-size: 1rem;
-$btn-icon-size: 2rem;
-$btn-trasition-time: .2s;
-$btn-transition: all cubic-bezier(0.310, -0.105, 0.430, 1.400) $btn-trasition-time;
-
-.btn--circle-container {
-    display: flex;
-    justify-content: center;
-
-
-    .btn--circle {
-        margin-bottom: 10px;
-        position: relative;
-        text-decoration: none;
-        cursor: pointer;
-        border-radius: 1000px;
-        border: $btn-border;
-        height: $btn-size;
-        width: $btn-size;
-        transition: $btn-transition;
-        background-color: $btn-color;
-
-        &:hover {
-            width: $btn-size-open;
-
-            .btn-stage:first-child {
-                opacity: 0;
-            }
-
-            .btn-stage:nth-child(n+2) {
-                opacity: 1;
-                transition: opacity linear calc(#{$btn-trasition-time} + 0.05s);
-            }
-        }
-    }
-
-    .btn-stage {
-        @include center-absolute;
-
-        color: $btn-font-color;
-        font-size: $btn-icon-size;
-        transition: opacity linear calc(#{$btn-trasition-time} - 0.05s);
-
-        &:nth-child(n+2) {
-            opacity: 0;
-            white-space: nowrap;
-            font-size: $btn-font-size;
-        }
-    }
-}
-
-/* Product-card in styles.scss */
+/* Product-card in style-helper/product-style.scss */

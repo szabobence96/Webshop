@@ -17,6 +17,7 @@ export class AppComponent {
 
   isSideNavCollapsed = false;
   isSideNavMobileClosed = false;
+  isWholeToggled = false;
   screenWidth = 0;
 
   onToggleSideNav(data: SideNavToggle): void {

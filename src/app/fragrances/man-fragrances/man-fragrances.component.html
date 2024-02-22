@@ -1,6 +1,5 @@
 <div class="product-card-container" *ngIf="productService.isManChecked === true">
-    <div class="product-card"
-        *ngFor="let item of productService.manFragrances$ | async | slice:0:productService.displayItemCount"
+    <div class="product-card" *ngFor="let item of productService.manFragrances$ | async"
         (click)="productService.openModal(item)" (mouseover)="productService.mouseOver(item)"
         (mouseleave)="productService.mouseLeave(item)">
         <div class="product-card-head"> {{item['brand']}} <p class="brand-name">{{item['brandName']}}</p>

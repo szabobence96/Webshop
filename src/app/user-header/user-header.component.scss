@@ -1,7 +1,7 @@
 mat-toolbar {
     justify-content: space-between;
     margin: 0px;
-    background-color: #061e29;
+    background-color: #1C202B;
     border-radius: 0px;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.39);
 }
@@ -48,7 +48,7 @@ mat-toolbar {
 }
 
 .sign svg path {
-    fill: #061e29;
+    fill: #1C202B;
 }
 
 /* text */
@@ -57,7 +57,7 @@ mat-toolbar {
     right: 0%;
     width: 0%;
     opacity: 0;
-    color: #061e29;
+    color: #1C202B;
     font-size: 1.2em;
     font-weight: 600;
     transition-duration: .3s;

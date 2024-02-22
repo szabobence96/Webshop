@@ -8,5 +8,6 @@ export interface ProductInterface {
     description: string;
     scent: string;
     type: any[];
+    colorType: any[];
     modalImagePath: string;
 }

@@ -16,7 +16,7 @@ import { ProductService } from 'src/product-modal-helper/product-service';
 export class ProductsComponent implements OnInit {
 
   task$ = collectionData(collection(this.firestore, 'hawkers')) as Observable<ProductInterface[]>;
-
+  contentLoaded: boolean = false;
   constructor(
     public services: SharedService,
     public firestore: Firestore,
@@ -27,6 +27,9 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.task$.subscribe(data => console.log('task$ observable:', data));
     console.log(this.task$)
+    setTimeout(() => {
+      this.contentLoaded = true;
+    }, 1500);
   }
 }
 

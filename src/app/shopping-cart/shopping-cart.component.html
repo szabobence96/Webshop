@@ -1,23 +1,60 @@
-<div class="empty-cart" *ngIf="services.getCartItems().length === 0">
-    <img class="empty-cart-img" src="./assets/images/empty-cart.jpg">
+<div class="ngx-container" *ngIf="!contentLoaded && services.getCartItems().length === 0">
+    <ngx-skeleton-loader appearance="circle" [theme]="{
+        'max-width': '300px',
+        'height': '300px',
+        width: '90vw',
+        'border-radius': '15px',
+    }"></ngx-skeleton-loader>
+
+    <ngx-skeleton-loader count="2" appearance="line" [theme]="{
+        width:'100%',
+        'min-width':'150px',
+    }"></ngx-skeleton-loader>
+</div>
+<div class="empty-cart" [style.display]="contentLoaded ? 'flex' : 'none'" *ngIf="services.getCartItems().length === 0">
+    <img class="empty-cart-img" src="./assets/images/empty-cart.png">
     <div class="empty-cart-desc">A kosara üres!<p class="empty-cart-button" [routerLink]="['/products']">Vissza a
             termékekhez!</div>
 </div>
-<div class="shopping-cart-component" *ngIf="services.getCartItems().length > 0">
+<div class="ngx-container" *ngIf="!contentLoaded && services.getCartItems().length > 0">
+    <ngx-skeleton-loader appearance="circle" [theme]="{
+        'max-width': '300px',
+        'height': '300px',
+        width: '90vw',
+        'border-radius': '15px',
+    }"></ngx-skeleton-loader>
 
+    <ngx-skeleton-loader count="2" appearance="line" [theme]="{
+        width:'100%',
+        'min-width':'150px',
+    }"></ngx-skeleton-loader>
+</div>
+<div class="shopping-cart-component" [style.display]="contentLoaded ? 'grid' : 'none'"
+    *ngIf="services.getCartItems().length > 0">
     <div class="shopping-cart-card-container">
         <div class="shopping-cart-card">
             <div *ngFor="let cartItem of services.getCartItems()" class="cart-item">
-                <img class="product-image" [src]="cartItem.product.imagePath">
-                <div class="shopping-cart-head">{{ cartItem.product.productName }} {{cartItem.size}}</div>
+                <div class="img-background"></div>
+                <!-- <img class="product-image" [src]="cartItem.product.imagePath"> -->
+                <img class="product-image" [src]="cartItem.selectedImage || cartItem.product.imagePath">
+
+                <div class="shopping-cart-head">{{ cartItem.product.productName }} {{cartItem.size}}
+                    {{cartItem.color}}
+                </div>
                 <div class="decreaseQuantity" (click)="decreaseQuantity(cartItem)"
-                    [ngClass]="{ 'disabled-button': cartItem.quantity === 1 }">-</div>
+                    [ngClass]="{ 'disabled-button': cartItem.quantity === 1 }"><i class="fa fa-minus"
+                        aria-hidden="true"></i>
+                </div>
                 <div class="product-quantity">{{ cartItem.quantity }}</div>
                 <div class="increaseQuantity" (click)="increaseQuantity(cartItem)"
-                    [ngClass]="{ 'disabled-button': cartItem.quantity === 5 }">+</div>
+                    [ngClass]="{ 'disabled-button': cartItem.quantity === 5 }"><i class="fa fa-plus"
+                        aria-hidden="true"></i>
+                </div>
                 <div class="shopping-cart-price"> {{(cartItem.selectedPrice * cartItem.quantity)}}
                 </div>
-                <div class="removeFromCart" (click)="removeFromCart(cartItem)">X</div>
+
+                <button class="removeFromCart" (click)="removeFromCart(cartItem)"><i
+                        class="fal fa-times close-icon"></i></button>
             </div>
         </div>
     </div>

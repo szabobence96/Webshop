@@ -1,23 +1,42 @@
-<app-user-header></app-user-header>
-<div class="orders-container" *ngIf="user$ | async as user">
-    <div class="orders-head">Korábbi rendelések</div>
-    <div class="order-table">
-        <div class="order-row" *ngFor="let order of userOrders">
-            <div class="item-container" *ngFor="let item of order.items">
-                <div class="product-image">
-                    <img [src]="item.product.imagePath">
-                </div>
-                <div class="description">{{ item.product.description }}</div> <!--description => productName-->
-                <div class="quantity">{{ item.quantity }} db</div>
-                <div class="product-price">{{ item.product.price }} Ft/db</div>
-            </div>
-            <div class="order-data">
-                <p class="gift">Ajándékcsomagolás: {{ order.gift ? 'Igen, +1590 Ft' : 'Nem' }}</p>
-                <p class="insurance">Küldemény biztosítása: {{ order.insurance ? 'Igen, +500 Ft' : 'Nem' }}</p>
-                <p class="shipping-price">Szállítás díja: {{ order.shippingPrice }} Ft</p>
+<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line" [theme]="{ width: '100%', height: '50px' }">
+</ngx-skeleton-loader>
+<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line" count="3"
+    [theme]="{ width: '100%', height: '200px', marginBottom: '10px' }"></ngx-skeleton-loader>
 
-                <p class="order-date">Rendelés dátuma: {{ order.orderDate.toDate() | date: 'yyyy-MM-dd' }}</p>
-                <p class="total-price">Összesen: {{ order.price }} Ft</p>
+<div class="contentloaded" [style.display]="contentLoaded ? 'block' : 'none'">
+    <app-user-header></app-user-header>
+    <div class="orders-container" *ngIf="user$ | async as user">
+        <div class="orders-head-container">
+            <div class="orders-head" *ngIf="userOrders.length > 0 ">Korábbi rendelések</div>
+        </div>
+        <div class="order-table">
+            <div class="order-row" *ngFor="let order of userOrders">
+                <div class="item-container" *ngFor="let item of order.items">
+                    <div class="product-image">
+                        <img [src]="item.selectedImage">
+                        <img *ngIf="item.selectedImage === null" [src]="item.product.imagePath">
+                    </div>
+                    <div class="description">{{ item.product.productName }} {{item.size}} {{item.color}}</div>
+                    <!--description => productName-->
+                    <div class="quantity">{{ item.quantity }} db</div>
+                    <div class="product-price">{{ item.selectedPrice }} Ft/db</div>
+                </div>
+                <div class="order-data">
+                    <p class="gift">Ajándékcsomagolás: {{ order.gift ? 'Igen, +1590 Ft' : 'Nem' }}</p>
+                    <p class="insurance">Küldemény biztosítása: {{ order.insurance ? 'Igen, +500 Ft' : 'Nem' }}</p>
+                    <p class="shipping-price">Szállítás díja: {{ order.shippingPrice }} Ft</p>
+                    <p class="shipping-price">Rendelési azonosító {{ order.id }} </p>
+
+                    <p class="order-date">Rendelés dátuma: {{ order.orderDate.toDate() | date: 'yyyy-MM-dd' }}</p>
+                    <p class="total-price">Összesen: {{ order.price }} Ft</p>
+                </div>
+            </div>
+        </div>
+        <div class="orders-head" *ngIf="userOrders.length <= 0">
+            <div class="empty-cart">
+                <img class="empty-cart-img" src="../../../assets/images/empty-order.png">
+                <div class="empty-cart-desc">A rendelési előzménye üres!<p class="empty-cart-button"
+                        [routerLink]="['/products']">Válogasson a termékek között!</div>
             </div>
         </div>
     </div>

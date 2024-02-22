@@ -1,1 +1,41 @@
-<p>accessories works!</p>
+<div [style.display]="contentLoaded ? 'flex' : 'none'" class="img-brand-container">
+    <img class="img-brand" src="../../assets/images/commercial/police_logo.svg" alt="">
+</div>
+<div class="img-brand-container" *ngIf="!contentLoaded">
+    <ng-container>
+        <ngx-skeleton-loader appearance="line" [theme]="{
+            width: '320px',
+            height: '50px',
+            'margin-top': '20px',
+        }"></ngx-skeleton-loader>
+    </ng-container>
+</div>
+
+<div class="skeleton" *ngIf="!contentLoaded">
+    <ng-container *ngFor="let _ of [1,2,3,4,5]">
+        <ngx-skeleton-loader appearance="circle" [theme]="{
+            width: '320px',
+            height: '350px',
+            'border-radius': '15px',
+        }"></ngx-skeleton-loader>
+    </ng-container>
+</div>
+<div [style.display]="contentLoaded ? 'flex' : 'none'">
+    <div class="product-card-container" *ngIf="contentLoaded">
+        <div class="product-card" (mouseover)="productService.mouseOver(item)"
+            (mouseleave)="productService.mouseLeave(item)" *ngFor="let item of accessories$ | async"
+            (click)="productService.openModal(item)">
+            <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
+            </div>
+            <div class="main-image-container">
+                <img class="main-image" [src]="item.imagePath">
+            </div>
+            <div class="price-container">
+                <div class="product-card-price">{{ item.type[0].price }} <p class="tol">Ft-tól</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-modal-accessories [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
+        *ngIf="productService.isModalOpen"></app-modal-accessories>

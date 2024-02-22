@@ -45,7 +45,6 @@ export class ModalService {
   showDetails() {
     this.showDetailsBox = !this.showDetailsBox;
   }
-
   changeMainImage(imagePath: string): void {
     this.currentImage = imagePath;
     console.log('imagePath value: ', imagePath)
@@ -55,11 +54,12 @@ export class ModalService {
     this.closeModalEvent.emit();
     this.services.selectedSize = null;
     this.services.selectedSizePrice = null;
-    console.log('bezárt modal értéke: ', this.services.selectedSize, this.services.selectedSizePrice)
+    this.services.selectedColor = null;
+    console.log('bezárt modal értéke: ', this.services.selectedSize, this.services.selectedSizePrice, this.services.selectedColor)
     this.renderer.removeStyle(document.body, 'overflow');
     this.productService.isModalOpen = false;
     this.showDetailsBox = false;
-    this.currentImage = "";
+    this.services.currentImage = ""; //firebase eldobja és nem jegyzi meg
   }
 
   addToCart(product: any) {

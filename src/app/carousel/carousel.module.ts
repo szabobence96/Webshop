@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarouselComponent } from './carousel.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -9,7 +10,8 @@ import { CarouselComponent } from './carousel.component';
     CarouselComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgxSkeletonLoaderModule
   ],
   exports: [
     CarouselComponent

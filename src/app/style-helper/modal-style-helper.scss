@@ -7,7 +7,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+    transition: all .5s ease;
     height: 100%;
     z-index: 1000;
 
@@ -73,7 +75,7 @@
         }
 
         .right-section {
-            background-color: #061e29;
+            background-color: #1C202B;
             position: absolute;
             right: 0;
             top: auto;
@@ -124,6 +126,42 @@
                     background-color: rgb(172, 172, 172);
                     color: black;
 
+                }
+            }
+
+            .item-color-buttons-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                user-select: none;
+
+                .item-color-buttons {
+                    border: 1.5px solid #aeaeae;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    width: 90px;
+                    height: 40px;
+                    align-items: center;
+                    text-align: center;
+                    background-color: white;
+                    cursor: pointer;
+                    border-radius: 3px;
+                    transition: ease 0.2s;
+                    font-weight: 500;
+                    color: #333;
+
+                    &:hover {
+                        background-color: rgb(209, 209, 209);
+                    }
+
+                    &:focus {
+                        border: 1.2px solid #333;
+                        background-color: rgb(172, 172, 172);
+                        color: black;
+                    }
                 }
             }
 
@@ -222,6 +260,9 @@
 
 @media screen and (max-width: 550px) {
     .modal-container {
+        width: calc(100% - 0rem);
+        margin-left: 0rem;
+
         .modal-content {
             padding: 0px;
             width: 95%;
@@ -323,8 +364,10 @@
     }
 }
 
-@media screen and (min-width:550px) and (max-width: 800px) {
+@media screen and (min-width:550px) and (max-width: 700px) {
     .modal-container {
+        width: calc(100% - 0rem);
+        margin-left: 0rem;
 
         .modal-content {
             width: 100%;

@@ -1,4 +1,4 @@
-$main-color: #061e29; //#041720
+$main-color: #1C202B; //#041720
 
 .sidenav {
     background: $main-color;
@@ -10,8 +10,11 @@ $main-color: #061e29; //#041720
     width: 5rem;
     //width: 16.5625rem;
     height: 100vh;
-    // box-shadow: 0.0415rem 0 0.35rem 0 #3f3f3f;
 
+    // box-shadow: 0.0415rem 0 0.35rem 0 #3f3f3f;
+    @media screen and (max-width:700px) {
+        width: 0rem;
+    }
 
 
     .logo-container {
@@ -65,15 +68,39 @@ $main-color: #061e29; //#041720
 }
 
 .sidenav-closed-mobile {
+
     width: 0rem;
     transition: .5s ease;
 
-    .logo {
-        display: none;
+    .logo-container {
+        display: flex;
+
+        .logo {
+            display: none;
+        }
     }
 
     .sidenav-nav {
         display: none;
+    }
+
+}
+
+.sidenav-opened-mobile {
+    width: 16.5625rem;
+    transition: .5s ease;
+
+    .logo-container {
+        display: flex;
+
+        .logo {
+            display: block;
+        }
+
+    }
+
+    .sidenav-nav {
+        display: flex;
     }
 }
 
@@ -164,6 +191,7 @@ $main-color: #061e29; //#041720
 
 .sidenav-link-open {
     cursor: pointer;
+    border: 1px solid #fff;
     position: fixed;
     color: #e9e9e9;
     font-size: 25px;

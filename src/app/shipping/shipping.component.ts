@@ -8,6 +8,8 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
 import { Firestore, collection, addDoc, } from '@angular/fire/firestore';
 import { take } from 'rxjs';
+import { DocumentReference } from '@firebase/firestore';
+import { AngularFirestore, fromDocRef } from '@angular/fire/compat/firestore';
 
 
 
@@ -57,9 +59,30 @@ export class ShippingComponent implements OnInit {
     private router: Router,
     private firestore: Firestore,
     private formbuilder: FormBuilder,
+    private afs: AngularFirestore
 
   ) { }
+
+  contentLoaded: boolean = false;
+  termsChecked: boolean = false;
+  orderId: string = '';
+
+
+  termsCheck(event: MouseEvent) {
+    event.stopPropagation();
+    if (event.target !== event.currentTarget) {
+      // A kattintás csak akkor történik meg, ha a mat-checkbox-en kívülre kattintasz
+      this.termsChecked = !this.termsChecked;
+    }
+  }
+
   ngOnInit() {
+    if (this.services.getCartItems().length === 0) {
+      this.router.navigateByUrl('/shopping-cart');
+    }
+    setTimeout(() => {
+      this.contentLoaded = true;
+    }, 1000);
     this.user$.subscribe(userProfile => {
       if (userProfile) {
         this.shippingForm.patchValue({
@@ -81,7 +104,6 @@ export class ShippingComponent implements OnInit {
   shippingPrice = this.shoppingService.shippingPrice;
   orderDate = new Date();
 
-
   async rendelesFormSubmit(formValue: any) {
     const { firstName, lastName, email, phone, address } = this.shippingForm.value;
     if (!this.shippingForm.valid || !firstName || !lastName || !email || !phone || !address) {
@@ -101,15 +123,14 @@ export class ShippingComponent implements OnInit {
       formValue.shippingPrice = this.shippingPrice;
       formValue.price = this.price;
       formValue.orderDate = this.orderDate;
+      this.services.placedOrder = true;
+      this.router.navigate(['/landing']);
       await addDoc(rendelesCollection, formValue);
       console.log('Rendelés elküldve a Firestore-ba');
-      this.router.navigate(['/dashboard']);
       this.shippingForm.reset();
-      this.services.exit();
+      this.services.clearCart();
     } catch (error) {
       console.error('Hiba történt a rendelés elküldése során: ', error);
     }
   }
-
-
 }
