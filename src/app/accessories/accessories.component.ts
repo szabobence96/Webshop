@@ -23,6 +23,7 @@ export class AccessoriesComponent implements OnInit {
 
   }
   accessories$ = collectionData(collection(this.firestore, 'accessories')) as Observable<ProductInterface[]>;
+  watches$ = collectionData(collection(this.firestore, 'watches')) as Observable<ProductInterface[]>;
 
   ngOnInit() {
     setTimeout(() => {

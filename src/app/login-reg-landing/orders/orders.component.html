@@ -25,7 +25,9 @@
                     <p class="gift">Ajándékcsomagolás: {{ order.gift ? 'Igen, +1590 Ft' : 'Nem' }}</p>
                     <p class="insurance">Küldemény biztosítása: {{ order.insurance ? 'Igen, +500 Ft' : 'Nem' }}</p>
                     <p class="shipping-price">Szállítás díja: {{ order.shippingPrice }} Ft</p>
-                    <p class="shipping-price">Rendelési azonosító {{ order.id }} </p>
+                    <p class="shipping-price">Rendelési azonosító: {{ order.id }} </p>
+                    <p class="shipping-price">Telefonszám: {{ order.phone }} </p>
+                    <p class="shipping-price">Szállítási cím: {{ order.address }} </p>
 
                     <p class="order-date">Rendelés dátuma: {{ order.orderDate.toDate() | date: 'yyyy-MM-dd' }}</p>
                     <p class="total-price">Összesen: {{ order.price }} Ft</p>
@@ -34,7 +36,7 @@
         </div>
         <div class="orders-head" *ngIf="userOrders.length <= 0">
             <div class="empty-cart">
-                <img class="empty-cart-img" src="../../../assets/images/empty-order.png">
+                <img class="empty-cart-img" src="./assets/images/empty-order.png">
                 <div class="empty-cart-desc">A rendelési előzménye üres!<p class="empty-cart-button"
                         [routerLink]="['/products']">Válogasson a termékek között!</div>
             </div>

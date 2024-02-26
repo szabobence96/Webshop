@@ -39,6 +39,5 @@
         </div> -->
     </ul>
 </div>
-<i class="sidenav-link-open fa fa-angle-double-right" (click)="modalService.closeModal()" @fadeInOut
-    *ngIf="(closed || opened) && screenwidth < 700" (click)="
-toggleOpen()"></i>
+<i class="sidenav-link-open fa fa-angle-double-right" [ngStyle]="{'opacity': productService.isModalOpen ? '0' : '1'}"
+    [ngStyle]="{'opacity': closed ? '0' : '1'}" (click)="modalService.closeModal()" (click)="toggleOpen()"></i>

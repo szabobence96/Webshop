@@ -16,9 +16,9 @@ import { Observable } from 'rxjs';
 export class FragrancesComponent implements OnInit {
 
   contentLoaded: boolean = false;
-  jeanPaulBrandImg: string = './assets/images/fragrances/logo/jeanpaul_logo.jpg';
-  diorBrandImg: string = './assets/images/fragrances/logo/dior_logo.jpg';
-  lancomeBrandImg: string = './assets/images/fragrances/logo/lancome_logo.jpg'
+  jeanPaulBrandImg: string = './assets/images/commercial/jpg_logo.png';
+  diorBrandImg: string = './assets/images/commercial/dior_logo.png';
+  lancomeBrandImg: string = './assets/images/commercial/lancome_logo.png'
 
   constructor(
     public services: SharedService,

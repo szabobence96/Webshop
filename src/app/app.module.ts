@@ -47,7 +47,6 @@ import { ManFragrancesComponent } from './fragrances/man-fragrances/man-fragranc
 import { UserComponent } from './user/user.component';
 import { CustomButtonComponent } from './custom-button/custom-button.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { SkeletonComponent } from './skeleton/skeleton.component';
 import { LancomeComponent } from './brands/lancome/lancome.component';
 import { HawkersComponent } from './brands/hawkers/hawkers.component';
 import { SettingsButtonComponent } from './settings-button/settings-button.component';
@@ -95,7 +94,6 @@ const firebaseConfig = {
     WomanFragrancesComponent,
     ManFragrancesComponent,
     CustomButtonComponent,
-    SkeletonComponent,
     SettingsButtonComponent,
     ModalAccessoriesComponent,
   ],

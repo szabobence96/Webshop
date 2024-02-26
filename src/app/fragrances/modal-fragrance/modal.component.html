@@ -14,24 +14,31 @@
         </div>
         <div class="right-section">
             <div class="composition-container">
-                <div class="composition-description">
+                <div class="composition-description" *ngIf="modalService.screenWidth > 700
+                    ">
                     <p class="comp-desc-p">Fejillat: </p>{{product.composition.head}}
                 </div>
-                <div class="composition-description">
+                <div class="composition-description" *ngIf="modalService.screenWidth > 700
+                    ">
                     <p class="comp-desc-p">Szívillat: </p>{{product.composition.hearth}}
                 </div>
-                <div class="composition-description">
+                <div class="composition-description" *ngIf="modalService.screenWidth > 700
+                    ">
                     <p class="comp-desc-p">Alapillat: </p>{{product.composition.base}}
                 </div>
-                <div class="composition-description">
+                <div class="composition-description" *ngIf="modalService.screenWidth > 700
+                    ">
                     <p class="comp-desc-p">Illat: </p>{{product.composition.scentType}}
                 </div>
-                <div class="composition-description" (click)="modalService.showDetails()">
+                <div class="composition-description" [ngStyle]="{ 'display': 'block' }"
+                    (click)="modalService.showDetails()">
                     <p class="comp-desc-p">Termékjellemző:
-                        <i class="mobile-comp-desc-i" *ngIf="modalService.screenWidth <= 800">Kattintson a
+                        <i class="mobile-comp-desc-i" *ngIf="modalService.screenWidth <= 700
+                        ">Kattintson a
                             részletekért!</i>
 
-                    <div class="comp-desc-p-details" *ngIf="modalService.screenWidth > 800">
+                    <div class="comp-desc-p-details" *ngIf="modalService.screenWidth > 700
+                        ">
                         {{product.composition.compDescription}}
                     </div>
                 </div>
@@ -43,11 +50,18 @@
                         {{item.price}} Ft</div>
                 </div>
             </div>
-            <div class="cart-btn" (click)="modalService.addToCart(product)">Hozzáadás a kosárhoz</div>
+            <div class="cart-btn" *ngIf="modalService.screenWidth > 700
+                " (click)="modalService.addToCart(product)">
+                Hozzáadás a kosárhoz</div>
+            <div class="cart-btn" *ngIf="modalService.screenWidth <= 700
+            " (click)="modalService.addToCart(product)">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+
         </div>
         <button class="close-btn" (click)="modalService.closeModal()"><i class="fal fa-times close-icon"></i></button>
-        <div *ngIf="modalService.showDetailsBox && modalService.screenWidth <= 800"
-            class="mobile-comp-desc-details-container">
+        <div *ngIf="modalService.showDetailsBox && modalService.screenWidth <= 700
+        " class="mobile-comp-desc-details-container">
             <div class="mobile-comp-desc-details">
                 <p class="mobile-comp-desc-p">{{product.scent}} </p>
                 <p class="mobile-comp-desc-p">Fejillat: {{product.composition.head}} </p>

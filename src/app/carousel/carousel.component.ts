@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SkeletonService } from '../skeleton/skeleton-service.service';
 
 interface carouselimage {
   imageSrc: string;
@@ -29,8 +28,7 @@ export class CarouselComponent implements OnInit {
       this.autoSlideImages();
     }
     setTimeout(() => {
-      // Itt lehet a tartalmat előkészíteni vagy más műveleteket végezni
-      this.contentLoaded = true; // A tartalom betöltődött, a skeletont eltávolítjuk
+      this.contentLoaded = true;
     }, 2000);
   }
 

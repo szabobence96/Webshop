@@ -103,9 +103,9 @@ export class SharedService {
 
   selectItem(item: any): void {
     this.selectedSize = item.size || null;
-    this.selectedSizePrice = item.price;
-    console.log('kiválasztott ár: ', item.price)
-    console.log('kiválasztott kiszerelés: ', item.size)
+    this.selectedSizePrice = item.price || null;
+    console.log('kiválasztott kiszerelés: item.size ', item.size)
+    console.log('kiválasztott ár: item.price ', item.price)
   }
 
   selectColor(item: any): void {

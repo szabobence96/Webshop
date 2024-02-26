@@ -37,5 +37,27 @@
             </div>
         </div>
     </div>
-    <app-modal-accessories [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
-        *ngIf="productService.isModalOpen"></app-modal-accessories>
+</div>
+<div [style.display]="contentLoaded ? 'flex' : 'none'">
+    <div class="product-card-container" *ngIf="contentLoaded">
+        <div class="product-card" (mouseover)="productService.mouseOver(item)"
+            (mouseleave)="productService.mouseLeave(item)" *ngFor="let item of watches$ | async"
+            (click)="productService.openModal(item)">
+            <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
+            </div>
+            <div class="main-image-container">
+                <img class="main-image" [src]="item.imagePath">
+            </div>
+            <div class="price-container">
+                <div class="product-card-price">{{ item.price }} <p class="tol">Ft</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<app-modal-accessories [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
+    *ngIf="productService.isModalOpen"></app-modal-accessories>

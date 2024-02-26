@@ -77,7 +77,7 @@ export class ShippingComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.services.getCartItems().length === 0) {
+    if (this.services.getCartItems().length === -1) {
       this.router.navigateByUrl('/shopping-cart');
     }
     setTimeout(() => {

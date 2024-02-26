@@ -1,8 +1,9 @@
-import { Component, Output, EventEmitter, OnInit, HostListener, ElementRef } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { navbarData } from './nav-data';
 import { SharedService } from '../shared.service';
 import { ModalService } from 'src/product-modal-helper/modal-service.service';
+import { ProductService } from 'src/product-modal-helper/product-service';
 
 interface SideNavToggle {
   screenwidth: number;
@@ -50,8 +51,8 @@ export class SidenavComponent implements OnInit {
   opened = false;
   screenwidth = 0;
   navData = navbarData;
-
-  constructor(public modalService: ModalService, private elementRef: ElementRef) { }
+  element: HTMLElement | any
+  constructor(public modalService: ModalService, private elementRef: ElementRef, public productService: ProductService) { }
 
   @HostListener('document:click', ['$event'])
   clickOutside(event: Event) {
@@ -59,7 +60,6 @@ export class SidenavComponent implements OnInit {
       this.opened = false;
       this.collapsed = false;
       this.onToggleSideNav.emit({ closed: this.closed, collapsed: this.collapsed, screenwidth: this.screenwidth });
-
     }
   }
 
@@ -79,8 +79,35 @@ export class SidenavComponent implements OnInit {
     }
   }
 
+  lastScrollPosition = 0;
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any) {
+    const scrollThreshold = 200;
+    const currentScrollPosition = window.scrollY;
+    if (Math.abs(currentScrollPosition - this.lastScrollPosition) > scrollThreshold) {
+      if (currentScrollPosition > this.lastScrollPosition) {
+        console.log('Scrolling Down');
+        if (this.element) {
+          this.element.style.opacity = '0';
+          this.element.style.transition = 'opacity 0.2s ease-in-out';
+          this.element.style.pointerEvents = 'none';
+        }
+      } else {
+        console.log('Scrolling Up');
+        if (this.element) {
+          this.element.style.opacity = '1';
+          this.element.style.transition = 'opacity 0.2s ease-in-out';
+          this.element.style.pointerEvents = 'auto';
+        }
+      }
+      this.lastScrollPosition = currentScrollPosition;
+    }
+  }
+
   ngOnInit(): void {
     this.screenwidth = window.innerWidth;
+    this.element = document.querySelector('.sidenav-link-open');
     if (window.innerWidth <= 700) {
       this.closed = true;
       this.onToggleSideNav.emit({ closed: this.closed, collapsed: this.collapsed, screenwidth: this.screenwidth });

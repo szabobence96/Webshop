@@ -6,6 +6,7 @@
         font-size: 22px;
         font-weight: 800;
         color: #061e29;
+        line-height: normal;
     }
 
     display: block;
@@ -57,19 +58,23 @@ mat-checkbox {
         font-weight: 100;
         margin: 20px 0 20px 0;
         border-bottom: 1px solid #1C202B;
+        width: 100%;
+        text-align: end;
         padding: 0px 0px 15px 0px;
     }
 
     .order-btn {
-        margin: 25px 0 0 0;
-        padding: 15px 30px;
-        border-radius: 5px;
-        font-size: 15px;
+        width: 200px;
+        font-size: 16px;
+        font-weight: 400;
         background-color: #1C202B;
-        cursor: pointer;
-        border: none;
         color: white;
-        transition: 0.5s ease-in-out;
+        cursor: pointer;
+        margin-left: calc(100% - 200px);
+        height: 55px;
+        text-align: center;
+        border-radius: 0.625rem;
+        transition: all 0.5s ease;
 
         &:disabled {
             background-color: gray;
@@ -85,5 +90,9 @@ mat-checkbox {
 @media screen and (max-width:550px) {
     .shipping-container {
         padding: 5px;
+    }
+
+    .row {
+        display: block;
     }
 }

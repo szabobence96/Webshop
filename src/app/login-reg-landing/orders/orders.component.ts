@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UsersService } from 'src/app/services/users.service';
 import { SharedService } from 'src/app/shared.service';
@@ -50,4 +50,5 @@ export class OrdersComponent implements OnInit {
   findUserOrders(userEmail: string): any[] {
     return this.items.filter((order: { email: string; }) => order.email === userEmail);
   }
+
 }

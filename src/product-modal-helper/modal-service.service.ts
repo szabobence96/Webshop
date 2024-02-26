@@ -59,7 +59,8 @@ export class ModalService {
     this.renderer.removeStyle(document.body, 'overflow');
     this.productService.isModalOpen = false;
     this.showDetailsBox = false;
-    this.services.currentImage = ""; //firebase eldobja és nem jegyzi meg
+    this.services.currentImage = ""; //firebase eldobja, nem jegyzi meg
+    this.currentImage = ""; // modal váltás miatt szükséges, dobja el a main image-t
   }
 
   addToCart(product: any) {

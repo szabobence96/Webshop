@@ -2,10 +2,18 @@ mat-toolbar {
     justify-content: space-between;
     margin: 0px;
     background-color: #1C202B;
-    border-radius: 0px;
+    border-radius: 15px;
+    transition: all .5s ease;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.39);
 }
 
+
+@media screen and (max-width: 1080px) {
+    mat-toolbar {
+        border-radius: 0px;
+        transition: all .5s ease;
+    }
+}
 
 .conent {
     padding: 32px;
