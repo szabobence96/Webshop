@@ -19,6 +19,6 @@ export class LandingComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['/dashboard'])
       this.service.placedOrder = false;
-    }, 7000)
+    }, 4000)
   }
 }

@@ -2,8 +2,8 @@ import { Component, Output, EventEmitter, OnInit, HostListener, ElementRef, View
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { navbarData } from './nav-data';
 import { SharedService } from '../shared.service';
-import { ModalService } from 'src/product-modal-helper/modal-service.service';
-import { ProductService } from 'src/product-modal-helper/product-service';
+import { ModalService } from 'src/app/product-modal-helper/modal-service.service';
+import { ProductService } from 'src/app/product-modal-helper/product-service';
 
 interface SideNavToggle {
   screenwidth: number;
@@ -83,6 +83,7 @@ export class SidenavComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
+
     const scrollThreshold = 200;
     const currentScrollPosition = window.scrollY;
     if (Math.abs(currentScrollPosition - this.lastScrollPosition) > scrollThreshold) {
@@ -119,7 +120,6 @@ export class SidenavComponent implements OnInit {
     this.onToggleSideNav.emit({ closed: this.closed, collapsed: this.collapsed, screenwidth: this.screenwidth });
     if (this.collapsed === false) {
       this.closed = false;
-
     }
     console.log('toggle collapsed?: ', this.collapsed)
   }
@@ -132,11 +132,6 @@ export class SidenavComponent implements OnInit {
 
   }
 
-  toggleClose(): void {
-    this.closed = !this.closed;
-    this.onToggleSideNav.emit({ collapsed: this.collapsed, closed: this.closed, screenwidth: this.screenwidth });
-    console.log('toggleClose?: ', this.closed)
-  }
   toggleOpen(): void {
     this.opened = !this.opened;
     this.onToggleSideNav.emit({ collapsed: this.collapsed, closed: this.closed, screenwidth: this.screenwidth });

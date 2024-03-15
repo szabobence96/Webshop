@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { navbarData } from '../sidenav/nav-data';
 import { ShoppingCartService } from './shopping-cart.service';
+import { ProductService } from 'src/app/product-modal-helper/product-service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,7 +11,7 @@ import { ShoppingCartService } from './shopping-cart.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor(public services: SharedService, public shoppingService: ShoppingCartService) { }
+  constructor(public services: SharedService, public shoppingService: ShoppingCartService, public productService: ProductService) { }
 
   cartItems: any[] = [];
   selectedProducts: any[] = [];
@@ -20,25 +21,22 @@ export class ShoppingCartComponent implements OnInit {
   giftIsChecked = false;
   shippingPrice = 1390;
   selectedProductPrice = this.services.selectedSizePrice;
+  screenWidth: number = 0;
+
   ngOnInit() {
+    this.screenWidth = window.innerWidth;
     this.cartItems = this.services.getCartItems();
     setTimeout(() => {
       this.contentLoaded = true;
-    }, 1000);
+    }, 500);
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.screenWidth = window.innerWidth;
+  }
   getProductPrice() {
     return this.selectedProductPrice;
-  }
-  addToCart() {
-    const kosarElem = this.navbarData.find(item => item.routerLink === 'shopping-cart');
-    if (kosarElem) {
-      kosarElem.badge = (kosarElem.badge || 0) + 1;
-    }
-  }
-
-  isNumber(value: any): boolean {
-    return !isNaN(value);
   }
 
   increaseQuantity(cartItem: any) {
@@ -59,19 +57,6 @@ export class ShoppingCartComponent implements OnInit {
     }
   }
 
-  removeFromCart(cartItem: any) {
-    const index = this.services.getCartItems().indexOf(cartItem);
-    if (index !== -1) {
-      const numRemoved = cartItem.quantity;
-      this.services.getCartItems().splice(index, 1);
-
-      const kosarElem = this.navbarData.find(item => item.routerLink === 'shopping-cart');
-      if (kosarElem) {
-        kosarElem.badge = Math.max((kosarElem.badge || 0) - numRemoved, 0);
-      }
-    }
-  }
-
   calculateShippingPrice() {
     const totalPrice = this.getTotalPrice();
 
@@ -88,13 +73,5 @@ export class ShoppingCartComponent implements OnInit {
       totalPrice += cartItem.selectedPrice * cartItem.quantity;
     }
     return totalPrice;
-  }
-
-  calculateTotalPayment(): number {
-    const totalPrice = this.calculateShippingPrice() + this.getTotalPrice();
-    const insuranceFee = this.insuranceIsChecked ? 500 : 0;
-    const giftFee = this.giftIsChecked ? 1590 : 0;
-
-    return totalPrice + insuranceFee + giftFee;
   }
 }

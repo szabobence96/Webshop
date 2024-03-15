@@ -7,8 +7,11 @@
             <img class="modal-image" [src]="modalService.currentImage || product.modalImagePath[0]">
             <div class="modal-image-selection-container">
                 <div *ngFor="let item of product.modalImagePath">
-                    <img class="modal-image-selection" [src]="item" (mouseover)="modalService.changeMainImage(item)"
-                        alt="Image">
+                    <img [style.display]="contentLoaded ? 'flex' : 'none'" class="modal-image-selection" [src]="item"
+                        (mouseover)="modalService.changeMainImage(item)" alt="Image">
+                    <ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line"
+                        [theme]="{ width: '50px', height: '50px', margin: '3px' }"></ngx-skeleton-loader>
+
                 </div>
             </div>
         </div>

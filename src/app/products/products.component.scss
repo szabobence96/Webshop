@@ -1,19 +1,77 @@
-.img-brand-container {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+.fade-in {
+    opacity: 1 !important;
+}
 
-    .img-brand {
-        max-height: 150px;
-        width: auto;
-        height: auto;
-        margin: 0 auto;
-        user-select: none;
+.commercial-watch-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.5s ease;
+
+    img {
+        height: 100%;
+        width: 100%;
+        max-width: 1400px;
+        border-radius: 0.625rem;
+        transition: all 0.5s ease;
+
+    }
+
+    .commercial-watch-text-container {
+        height: 100%;
+        width: 100%;
+        max-width: 1400px;
+        border-radius: 0.625rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 1s ease;
+        background-image: linear-gradient(135deg, #9f05ff69 10%, #fd5e086b 100%);
+
+        .commercial-watch-text {
+            font-family: oswald, sans-serif;
+            text-shadow: 1px 1px 1px #333;
+            line-height: 1.5;
+            border-radius: 0.625rem;
+            font-size: clamp(70px, 14vw, 250px);
+            position: absolute;
+            user-select: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+
+        }
     }
 }
 
-@media screen and (max-width: 700px) {
-    .img-brand {}
+@media screen and (max-width: 1080px) {
+
+    .commercial-watch-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .commercial-watch-text-container {
+            border-radius: 0rem;
+            transition: .5s ease;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            max-width: 1400px;
+            border-radius: 0rem;
+            transition: .5s ease;
+        }
+    }
 }

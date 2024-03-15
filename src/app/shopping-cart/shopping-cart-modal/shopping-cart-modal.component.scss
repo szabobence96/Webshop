@@ -1,0 +1,121 @@
+.remove-item-container {
+    background-color: rgba(0, 0, 0, 0.5); // Példa hátteret halványító színre
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+    transition: all .5s ease;
+    height: 100%;
+    z-index: 110;
+
+    .remove-item {
+        position: relative;
+        width: auto;
+        height: 600px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 0.625rem;
+        align-items: center;
+        justify-content: center;
+
+        .remove-item-header {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .remove-item-desc {
+            font-size: 16px;
+            color: #333;
+
+            .item-name {
+                color: rgb(78, 78, 78);
+            }
+        }
+
+        app-custom-remove-button {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        app-custom-keep-button {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+        }
+
+        .product-name {
+            display: flex;
+        }
+
+        .product-image {
+            height: 300px;
+            width: auto;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .exit-button {
+            position: absolute;
+            top: -2px;
+            right: -1px;
+            font-size: 40px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .remove-item-container {
+        width: calc(100%);
+        margin-left: 0rem;
+        transition: all .5s ease;
+
+        .remove-item {
+            padding: 10px;
+            height: 80vh;
+
+            .remove-item-header {
+                font-size: 18px;
+            }
+
+            .remove-item-desc {
+                font-size: 14px;
+
+                .item-name {
+                    color: rgb(78, 78, 78);
+                }
+
+                border-bottom: 1px solid #ececec;
+            }
+
+            .product-image {
+                height: 220px;
+            }
+
+            app-custom-remove-button {
+                right: 10px;
+                bottom: 10px;
+            }
+
+            app-custom-keep-button {
+                left: 10px;
+                bottom: 10px;
+            }
+
+            .exit-button {
+                position: absolute;
+                top: -3px;
+                right: -1px;
+                font-size: 35px;
+                cursor: pointer;
+            }
+        }
+    }
+}

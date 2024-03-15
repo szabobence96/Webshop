@@ -1,0 +1,21 @@
+.iframe-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+
+    iframe {
+        margin-left: 5rem;
+        display: flex;
+        transition: all .5s ease;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .iframe-container {
+        iframe {
+            margin-left: 0px;
+        }
+    }
+}

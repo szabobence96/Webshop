@@ -53,6 +53,24 @@
     }
 }
 
+@media screen and (max-width:550px) {
+    .order-table {
+        .order-row {
+            .item-container {
+                .product-image {
+                    max-width: 70px;
+                    max-height: 70px;
+
+                    img {
+                        max-width: 70px;
+                        max-height: 70px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .orders-head-container {
     text-align: center;
     display: flex;
@@ -129,4 +147,11 @@
 .empty-cart-button:hover:after {
     width: 100%;
     left: 0;
+}
+
+@media screen and (max-width: 550px) {
+    .empty-cart-desc {
+        max-width: 80%;
+        line-height: 30px;
+    }
 }

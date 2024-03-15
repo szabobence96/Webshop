@@ -35,7 +35,7 @@ export class OrdersComponent implements OnInit {
     this.getUser();
     setTimeout(() => {
       this.contentLoaded = true;
-    }, 1500);
+    }, 1000);
   }
 
   getUser() {

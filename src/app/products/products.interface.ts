@@ -10,4 +10,5 @@ export interface ProductInterface {
     type: any[];
     colorType: any[];
     modalImagePath: string;
+    discount10: boolean;
 }

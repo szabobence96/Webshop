@@ -2,6 +2,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url(https://fonts.googleapis.com/css?family=Oswald:700);
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@600&display=swap');
 
 
 
@@ -10,15 +12,23 @@
     padding: 0;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 html {
+    scroll-behavior: smooth;
 
     --mdc-filled-text-field-caret-color: #1C202B;
     --mdc-filled-text-field-focus-active-indicator-color: #1C202B;
     --mdc-filled-text-field-focus-label-text-color: #1C202B;
 
-    --mdc-filled-text-field-container-color: #e9e9e9; //háttér
+    --mdc-filled-text-field-container-color: #ffffff; //háttér
     --mdc-filled-text-field-disabled-container-color: #091246;
     --mdc-filled-text-field-label-text-color: rgba(0, 0, 0, 0.6);
     --mdc-filled-text-field-disabled-label-text-color: rgba(0, 0, 0, 0.38);
@@ -36,6 +46,12 @@ html {
     --mdc-filled-text-field-error-hover-active-indicator-color: #f44336;
 }
 
+.bold-text:first-child {
+    font-weight: bold;
+}
+
+.scrollable-container {}
+
 .row {
     display: flex;
     gap: 15px;
@@ -46,12 +62,14 @@ html,
 body {
     height: 100%;
     background: #EAE7E6;
+    font-family: oswald, sans-serif;
 
 }
 
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+
 }
 
 .ngx-container {
@@ -59,6 +77,8 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+    position: fixed;
+    width: 100%;
 }
 
 .mat-mdc-slide-toggle.mat-accent {
@@ -138,4 +158,97 @@ mat-form-field {
 
 .text-center {
     text-align: center;
+}
+
+//Animations
+
+.a-remove-brightness {
+    animation: removeBrightness 1s ease forwards;
+}
+
+.a-remove-brightness-lite {
+    animation: removeBrightnessLite 1s ease forwards;
+}
+
+.a-delayed {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.5s;
+}
+
+.a-delayed-slow {
+    opacity: 0;
+    animation: fadeIn 1.3s ease forwards;
+    animation-delay: 2s;
+}
+
+.a-first-text {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1s;
+    pointer-events: none;
+}
+
+.a-first-text-slow {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1s;
+    pointer-events: none;
+}
+
+.a-second-text {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 2s;
+}
+
+.a-third-text {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 2s;
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    to {
+        pointer-events: auto;
+        opacity: 1;
+    }
+}
+
+@keyframes removeBrightness {
+    from {
+        filter: brightness(90%);
+    }
+
+    to {
+        filter: brightness(10%);
+    }
+}
+
+@keyframes removeBrightnessLite {
+    from {
+        filter: brightness(100%);
+    }
+
+    to {
+        filter: brightness(50%);
+    }
+}
+
+@keyframes addBlur {
+    0% {
+        filter: blur(0px);
+    }
+
+    100% {
+        filter: blur(10px);
+        /* You can adjust the amount of blur as needed */
+    }
 }

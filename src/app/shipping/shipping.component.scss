@@ -1,4 +1,17 @@
 .shipping-container {
+    display: block;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 25px;
+    padding: 48px;
+    background-color: #ffffff;
+    border-radius: 16px;
+
+    mat-form-field {
+        width: 100%;
+        margin-top: 8px;
+
+    }
 
     .title {
         text-align: center;
@@ -7,20 +20,8 @@
         font-weight: 800;
         color: #061e29;
         line-height: normal;
-    }
-
-    display: block;
-    max-width: 600px;
-    margin: auto;
-    margin-top: 25px;
-    background: white;
-    padding: 48px;
-    border-radius: 16px;
-
-    mat-form-field {
-        width: 100%;
-        margin-top: 8px;
-
+        border-bottom: 1px solid #747474;
+        padding-bottom: 15px;
     }
 }
 
@@ -36,6 +37,24 @@ mat-checkbox {
         cursor: pointer;
     }
 }
+
+.row-sec {
+    display: flex;
+    gap: 5px;
+
+    .row-in {
+        display: flex;
+        width: 50%;
+        gap: 5px;
+    }
+
+    .row-out {
+        display: flex;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:650px) {}
 
 .center {
     display: flex;
@@ -94,5 +113,18 @@ mat-checkbox {
 
     .row {
         display: block;
+    }
+
+    .row-sec {
+        display: block;
+        gap: 5px;
+
+        .row-in {
+            width: 100%;
+        }
+
+        .row-out {
+            width: 100%;
+        }
     }
 }

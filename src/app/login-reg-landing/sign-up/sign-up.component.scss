@@ -1,10 +1,15 @@
 .form-container {
     height: auto;
     width: 100%; // Alapértelmezett szélesség
-    max-width: 700px;
+    max-width: 800px;
     position: relative;
 }
 
+
+.title {
+    border-bottom: 1px solid #747474;
+    padding-bottom: 15px;
+}
 
 mat-checkbox {
     margin-top: 0px;
@@ -25,6 +30,22 @@ mat-checkbox {
     margin-left: 14px;
     bottom: 22%;
 
+}
+
+.row-sec {
+    display: flex;
+    gap: 5px;
+
+    .row-in {
+        display: flex;
+        width: 50%;
+        gap: 5px;
+    }
+
+    .row-out {
+        display: flex;
+        width: 50%;
+    }
 }
 
 .reg-form {
@@ -66,7 +87,6 @@ mat-form-field {
         font-size: 11px;
         text-decoration: underline;
         text-decoration-color: #1C202B;
-        color: #1C202B;
         cursor: pointer;
         font-weight: 800;
         font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -93,6 +113,18 @@ mat-form-field {
             display: block;
         }
 
+        .row-sec {
+            display: block;
+
+            .row-in {
+                width: 100%;
+            }
+
+            .row-out {
+                width: 100%;
+            }
+        }
+
         .title {
             margin: 10px 0 20px 0;
             font-size: 24px;
@@ -102,7 +134,7 @@ mat-form-field {
             position: absolute;
             font-size: 12px;
             margin-left: 14px;
-            bottom: 19%;
+            bottom: 17%;
         }
 
         .form-btn {

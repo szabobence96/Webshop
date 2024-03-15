@@ -24,7 +24,6 @@ export class UserHeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
   }
 
   logout() {

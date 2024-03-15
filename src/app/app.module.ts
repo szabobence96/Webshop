@@ -39,18 +39,25 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { ModalProductsComponent } from './products/modal-products/modal-products.component';
 import { DiorComponent } from './brands/dior/dior.component';
 import { JeanPaulGaultierComponent } from './brands/jean-paul-gaultier/jean-paul-gaultier.component';
-import { DiorFragrancesComponent } from './fragrances/dior-fragrances/dior-fragrances/dior-fragrances.component';
-import { JPGFragrancesComponent } from './fragrances/JPG-fragrances/jpg-fragrances/jpg-fragrances.component';
+import { DiorFragrancesComponent } from './fragrances/dior-fragrances/dior-fragrances.component';
+import { JPGFragrancesComponent } from './fragrances/jpg-fragrances/jpg-fragrances.component';
 import { LancomeFragrancesComponent } from './fragrances/lancome-fragrances/lancome-fragrances.component';
 import { WomanFragrancesComponent } from './fragrances/woman-fragrances/woman-fragrances.component';
 import { ManFragrancesComponent } from './fragrances/man-fragrances/man-fragrances.component';
 import { UserComponent } from './user/user.component';
-import { CustomButtonComponent } from './custom-button/custom-button.component';
+import { CustomButtonComponent } from './custom/custom-button/custom-button.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { LancomeComponent } from './brands/lancome/lancome.component';
 import { HawkersComponent } from './brands/hawkers/hawkers.component';
 import { SettingsButtonComponent } from './settings-button/settings-button.component';
-import { ModalAccessoriesComponent } from './accessories/modal-accessories/modal-accessories/modal-accessories.component';
+import { ModalAccessoriesComponent } from './accessories/modal-accessories/modal-accessories.component';
+import { FooterComponent } from './footer/footer.component';
+import { ModalDashboardComponent } from './dashboard/modal-dashboard/modal-dashboard.component';
+import { MatSelectModule } from '@angular/material/select';
+import { SkeletonLoaderComponent } from './skeleton/skeleton-loader/skeleton-loader.component';
+import { ShoppingCartModalComponent } from './shopping-cart/shopping-cart-modal/shopping-cart-modal.component';
+import { CustomRemoveButtonComponent } from './custom/custom-remove-button/custom-remove-button.component';
+import { CustomKeepButtonComponent } from './custom/custom-keep-button/custom-keep-button.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -96,6 +103,12 @@ const firebaseConfig = {
     CustomButtonComponent,
     SettingsButtonComponent,
     ModalAccessoriesComponent,
+    FooterComponent,
+    ModalDashboardComponent,
+    SkeletonLoaderComponent,
+    ShoppingCartModalComponent,
+    CustomRemoveButtonComponent,
+    CustomKeepButtonComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
@@ -116,6 +129,7 @@ const firebaseConfig = {
     AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    MatSelectModule,
     provideAuth(() => getAuth()),
   ],
   providers: [SharedService, AngularFirestore],

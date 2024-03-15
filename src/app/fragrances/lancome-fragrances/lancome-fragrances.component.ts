@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductService } from '../../../product-modal-helper/product-service';
+import { ProductService } from '../../product-modal-helper/product-service';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({

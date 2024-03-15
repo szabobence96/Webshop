@@ -13,6 +13,6 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.contentLoaded = true;
-    }, 1500);
+    }, 500);
   }
 }

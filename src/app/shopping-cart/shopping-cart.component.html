@@ -4,6 +4,7 @@
         'height': '300px',
         width: '90vw',
         'border-radius': '15px',
+
     }"></ngx-skeleton-loader>
 
     <ngx-skeleton-loader count="2" appearance="line" [theme]="{
@@ -16,44 +17,44 @@
     <div class="empty-cart-desc">A kosara üres!<p class="empty-cart-button" [routerLink]="['/products']">Vissza a
             termékekhez!</div>
 </div>
-<div class="ngx-container" *ngIf="!contentLoaded && services.getCartItems().length > 0">
-    <ngx-skeleton-loader appearance="circle" [theme]="{
-        'max-width': '300px',
-        'height': '300px',
-        width: '90vw',
-        'border-radius': '15px',
-    }"></ngx-skeleton-loader>
 
-    <ngx-skeleton-loader count="2" appearance="line" [theme]="{
-        width:'100%',
-        'min-width':'150px',
-    }"></ngx-skeleton-loader>
-</div>
 <div class="shopping-cart-component" [style.display]="contentLoaded ? 'grid' : 'none'"
     *ngIf="services.getCartItems().length > 0">
     <div class="shopping-cart-card-container">
         <div class="shopping-cart-card">
             <div *ngFor="let cartItem of services.getCartItems()" class="cart-item">
                 <div class="img-background"></div>
-                <!-- <img class="product-image" [src]="cartItem.product.imagePath"> -->
                 <img class="product-image" [src]="cartItem.selectedImage || cartItem.product.imagePath">
 
-                <div class="shopping-cart-head">{{ cartItem.product.productName }} {{cartItem.size}}
-                    {{cartItem.color}}
+                <div *ngIf="screenWidth >= 700" class="pc-screen">
+                    <div class="shopping-cart-head">{{ cartItem.product.brand }}
+                    </div>
+                    <span class="brand-name">{{cartItem.product.brandName}} {{cartItem.color}}
+                        {{cartItem.size}}</span>
                 </div>
-                <div class="decreaseQuantity" (click)="decreaseQuantity(cartItem)"
-                    [ngClass]="{ 'disabled-button': cartItem.quantity === 1 }"><i class="fa fa-minus"
-                        aria-hidden="true"></i>
+                <div *ngIf="screenWidth < 700" class="mobile-screen">
+                    <div class="shopping-cart-head">{{ cartItem.product.brand }}
+                    </div>
+                    <span class="brand-name">{{cartItem.product.brandName}} {{cartItem.color}}
+                        {{cartItem.size}}</span>
                 </div>
-                <div class="product-quantity">{{ cartItem.quantity }}</div>
-                <div class="increaseQuantity" (click)="increaseQuantity(cartItem)"
-                    [ngClass]="{ 'disabled-button': cartItem.quantity === 5 }"><i class="fa fa-plus"
-                        aria-hidden="true"></i>
+                <div class="buttons">
+                    <div class="decreaseQuantity" (click)="decreaseQuantity(cartItem)"
+                        [ngClass]="{ 'disabled-button': cartItem.quantity === 1 }"><i class="fa fa-minus"
+                            aria-hidden="true"></i>
+                    </div>
+                    <div class="product-quantity">{{ cartItem.quantity }}</div>
+                    <div class="increaseQuantity" (click)="increaseQuantity(cartItem)"
+                        [ngClass]="{ 'disabled-button': cartItem.quantity === 5 }"><i class="fa fa-plus"
+                            aria-hidden="true"></i>
+                    </div>
                 </div>
-                <div class="shopping-cart-price"> {{(cartItem.selectedPrice * cartItem.quantity)}}
+                <div class="shopping-cart-price"> {{(cartItem.selectedPrice * cartItem.quantity)}} Ft
                 </div>
 
-                <button class="removeFromCart" (click)="removeFromCart(cartItem)"><i
+                <!-- <button class="removeFromCart" (click)="removeFromCart(cartItem)"><i
+                        class="fal fa-times close-icon"></i></button> -->
+                <button class="removeFromCart" (click)="productService.openModal(cartItem)"><i
                         class="fal fa-times close-icon"></i></button>
             </div>
         </div>
@@ -61,14 +62,16 @@
     <div class="checkout-container">
         <div class="insurance"><mat-slide-toggle [(ngModel)]="shoppingService.insuranceIsChecked"></mat-slide-toggle>
             <h3 [ngClass]="{'active': shoppingService.insuranceIsChecked}">500 Ft</h3> Küldemény biztosítása
-            <p class="checkout-container-desc">A küldemény megsérülése vagy elvesztése esetén nem kell várnia a helyzet
+            <p [ngStyle]="{'opacity' :shoppingService.insuranceIsChecked ? 1 : 0.5  }" class="checkout-container-desc">A
+                küldemény megsérülése vagy elvesztése esetén nem kell várnia a helyzet
                 törvényileg előírt határidőn belüli rendezésére. Elég, ha bejelenti nekünk és dokumentálja a küldemény
                 megsérülését vagy elvesztését, és mi postafordultával teljesen új árut küldünk önnek.
             </p>
         </div>
         <div class="gift"><mat-slide-toggle [(ngModel)]="shoppingService.giftIsChecked"></mat-slide-toggle>
             <h3 [ngClass]="{'active': shoppingService.giftIsChecked}">1590 Ft</h3> Luxus csomagolás
-            <p class="checkout-container-desc">Szívesen luxus kivitelű ajándékcsomagolásba csomagolunk önnek mindent.
+            <p [ngStyle]="{'opacity' :shoppingService.giftIsChecked ? 1 : 0.5  }" class="checkout-container-desc">
+                Szívesen luxus kivitelű ajándékcsomagolásba csomagolunk önnek mindent.
             </p>
         </div>
         <div class="shipping" [ngStyle]="{'opacity' :getTotalPrice() < 50000 ? 1 : 0.5  }">Házhoz szállítás <h3>1390 Ft
@@ -90,3 +93,5 @@
             szállításra!</button>
     </div>
 </div>
+<app-shopping-cart-modal [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
+    *ngIf="productService.isModalOpen"></app-shopping-cart-modal>

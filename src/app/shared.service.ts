@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { navbarData } from './sidenav/nav-data';
-import { ModalService } from 'src/product-modal-helper/modal-service.service';
+import { ModalService } from 'src/app/product-modal-helper/modal-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class SharedService {
   private cartItems: any[] = [];
   private currentProduct: any[] = [];
   public selectedSizePrice: any;
+  public discount10: boolean = false;
   public selectedSize: any;
   public selectedColor: any;
   public currentImage: any;
@@ -65,31 +66,18 @@ export class SharedService {
       cartItem.selectedPrice === newItem.selectedPrice &&
       cartItem.color === newItem.selectedColor &&
       cartItem.size === newItem.selectedSize
-
     );
     this.cartItems = this.getCartItems();
-    console.log('Cart items before modification:', this.cartItems);
-    console.log('cartItem.product.productName: ', this.cartItems.find(cartItem =>
-      cartItem.product.productName))
-    console.log('newItem.selectedPrice: ', newItem.selectedPrice)
-    console.log('newItem.selectedColor: ', newItem.selectedColor)
-    console.log('item.productName: ', item.productName)
-    console.log('this.cartitems: ', this.cartItems)
-
-    console.log('cartItem.product.productName értéke: ', this.cartItems)
-
     if (existingItem) {
       if (existingItem.quantity < 5) {
         existingItem.quantity++;
       }
-    } else {
+    }
+    else {
       this.cartItems.push({
         product: item, quantity: 1, selectedPrice: this.selectedSizePrice, size: this.selectedSize || null,
         color: this.selectedColor || null, selectedImage: this.currentImage || null
       });
-      console.log('this.selectedSizePrice: ', this.selectedSizePrice);
-      console.log('this.selectedSize : ', this.selectedSize);
-      console.log('selectedImage , currentImage : ', this.currentImage);
     }
 
     const kosarElem = navbarData.find(item => item.routerLink === 'shopping-cart');
@@ -97,15 +85,15 @@ export class SharedService {
       const cartItemCount = this.cartItems.reduce((sum, item) => sum + item.quantity, 0);
       kosarElem.badge = cartItemCount;
     }
-
-    console.log('Cart items after modification:', this.cartItems);
   }
 
   selectItem(item: any): void {
     this.selectedSize = item.size || null;
     this.selectedSizePrice = item.price || null;
-    console.log('kiválasztott kiszerelés: item.size ', item.size)
-    console.log('kiválasztott ár: item.price ', item.price)
+    this.discount10 = item.discount10 || null;
+    if (item.discount10) {
+      this.selectedSizePrice = this.selectedSizePrice * 0.9
+    }
   }
 
   selectColor(item: any): void {
@@ -115,14 +103,11 @@ export class SharedService {
     if (this.currentImage === undefined) {
       this.currentImage === item.imagePath;
     }
-    console.log('item.selectedimage', item.selectedImage)
-    console.log('shipping image: ', this.shippingImage)
   }
 
 
   changeMainImage(imagePath: string): void {
     this.shippingImage = imagePath;
-    console.log(' this shippingimage = imagePath value: ', this.shippingImage)
   }
 
   getCurrentProduct(item: any) {
@@ -143,9 +128,9 @@ export class SharedService {
   }
 
   getSelectedPrice() {
-    console.log('valami', this.selectedSizePrice);
     return this.selectedSizePrice;
   }
+
   exit() {
     window.location.reload();
   }

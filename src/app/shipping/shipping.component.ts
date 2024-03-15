@@ -10,6 +10,7 @@ import { Firestore, collection, addDoc, } from '@angular/fire/firestore';
 import { take } from 'rxjs';
 import { DocumentReference } from '@firebase/firestore';
 import { AngularFirestore, fromDocRef } from '@angular/fire/compat/firestore';
+import { CallingCodeService } from '../services/calling-code.service';
 
 
 
@@ -24,6 +25,7 @@ export class ShippingComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      callingCode: ['', Validators.required],
       phone: ['', Validators.required],
       address: ['', Validators.required],
     }
@@ -45,6 +47,10 @@ export class ShippingComponent implements OnInit {
     return this.shippingForm.get('lastName');
   }
 
+  get callingCode() {
+    return this.shippingForm.get('phone');
+  }
+
   get phone() {
     return this.shippingForm.get('phone');
   }
@@ -59,36 +65,40 @@ export class ShippingComponent implements OnInit {
     private router: Router,
     private firestore: Firestore,
     private formbuilder: FormBuilder,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public callingCodeService: CallingCodeService,
 
   ) { }
 
   contentLoaded: boolean = false;
   termsChecked: boolean = false;
   orderId: string = '';
+  callingCodes: string[] = [];
 
 
   termsCheck(event: MouseEvent) {
     event.stopPropagation();
     if (event.target !== event.currentTarget) {
-      // A kattintás csak akkor történik meg, ha a mat-checkbox-en kívülre kattintasz
       this.termsChecked = !this.termsChecked;
     }
   }
 
   ngOnInit() {
-    if (this.services.getCartItems().length === -1) {
+    this.callingCodes = this.callingCodeService.getCallingCodes();
+
+    if (this.services.getCartItems().length === 0) {
       this.router.navigateByUrl('/shopping-cart');
     }
     setTimeout(() => {
       this.contentLoaded = true;
-    }, 1000);
+    }, 500);
     this.user$.subscribe(userProfile => {
       if (userProfile) {
         this.shippingForm.patchValue({
           firstName: userProfile.firstName,
           lastName: userProfile.lastName,
           email: userProfile.email,
+          callingCode: userProfile.callingCode,
           phone: userProfile.phone,
           address: userProfile.address,
         });
@@ -105,8 +115,8 @@ export class ShippingComponent implements OnInit {
   orderDate = new Date();
 
   async rendelesFormSubmit(formValue: any) {
-    const { firstName, lastName, email, phone, address } = this.shippingForm.value;
-    if (!this.shippingForm.valid || !firstName || !lastName || !email || !phone || !address) {
+    const { firstName, lastName, email, callingCode, phone, address } = this.shippingForm.value;
+    if (!this.shippingForm.valid || !firstName || !lastName || !email || !callingCode || !phone || !address) {
       return;
     }
     try {

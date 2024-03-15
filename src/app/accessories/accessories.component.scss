@@ -14,11 +14,86 @@
         margin-top: 50px;
         position: absolute;
         user-select: none;
+
+    }
+}
+
+.commercial-watch-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.5s ease;
+
+    img {
+        height: 100%;
+        width: 100%;
+        max-width: 1400px;
+        border-radius: 0.625rem;
+        transition: all 0.5s ease;
+
+    }
+
+    .commercial-watch-text-container {
+        height: 100%;
+        width: 100%;
+        max-width: 1400px;
+        border-radius: 0.625rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        .commercial-watch-text {
+            font-family: oswald, sans-serif;
+            font-size: clamp(20px, 6vw, 50px);
+            line-height: 1.5;
+            padding: 20px;
+            border-radius: 0.625rem;
+            position: absolute;
+            top: 25%;
+            user-select: none;
+
+        }
+
+        p {
+            font-family: oswald, sans-serif;
+            position: absolute;
+            font-size: clamp(14px, 5vw, 32px);
+            top: 46%;
+            padding: 15px;
+            user-select: none;
+
+        }
     }
 }
 
 @media screen and (max-width: 700px) {
     .img-brand {
         width: 200px;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+
+    .commercial-watch-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        img {
+            height: 100%;
+            width: 100%;
+            max-width: 1400px;
+            border-radius: 0rem;
+        }
     }
 }

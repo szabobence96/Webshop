@@ -25,7 +25,7 @@ export const navbarData = [
     {
         routerLink: 'media',
         icon: 'fal fa-camera',
-        label: 'Media',
+        label: 'Közösségi oldalak',
     },
     {
         routerLink: 'user',

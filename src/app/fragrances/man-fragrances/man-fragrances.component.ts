@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-import { ProductService } from 'src/product-modal-helper/product-service';
+import { ProductService } from 'src/app/product-modal-helper/product-service';
 
 @Component({
   selector: 'app-man-fragrances',

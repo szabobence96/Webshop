@@ -1,42 +1,73 @@
 import { Component, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 import { TextService } from '../services/text-service.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Firestore, addDoc, collection, collectionData, getDocs, query, where } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { ProductInterface } from '../products/products.interface';
+import { ProductService } from 'src/app/product-modal-helper/product-service';
+import { DashboardTextService } from './dashboard-text.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss', '../style-helper/product-style-helper.scss'],
+  animations: [
+    trigger('fadeInA', [
+      state('true', style({ opacity: 1 })),
+      state('false', style({ opacity: 0 })),
+      transition('false => true', animate('800ms 1200ms ease-in')),
+    ]),
+    trigger('fadeInADelayed', [
+      state('true', style({ opacity: 1 })),
+      state('false', style({ opacity: 0 })),
+      transition('false => true', animate('800ms 2000ms ease-in')),
+    ]),
+    trigger('fadeInB', [
+      state('true', style({ filter: 'brightness(0.2)' })),
+      state('false', style({ filter: 'brightness(1.0)' })),
+      transition('false => true', animate('800ms ease-in')),
+    ]),
+  ]
 })
+
 export class DashboardComponent implements OnInit {
 
   constructor(
-    public textService: TextService,
     private elementRef: ElementRef,
-    private renderer: Renderer2) {
+    public firestore: Firestore,
+    private renderer: Renderer2,
+    public productService: ProductService,
+    public textService: DashboardTextService
+  ) {
     this.updateImagesBasedOnScreenWidth();
   }
+
+  watchesDiscount$ = collectionData(query(collection(this.firestore, 'watches'), where('discount', '==', true)));
+  screenWidth: number = 0;
   contentLoaded: boolean = false;
+  sectionInView: any = '';
+  opacity: number = 0;
+
   ngOnInit() {
     setTimeout(() => {
       this.contentLoaded = true;
-    }, 1500);
+    }, 1000);
   }
+
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
-    const removeBrightness = this.elementRef.nativeElement.querySelector('#remove-brightness');
-    const firstTextElement = this.elementRef.nativeElement.querySelector('#first-text-animation');
-    const delayedElement = this.elementRef.nativeElement.querySelector('#delayed-element');
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    const sectionOffset = removeBrightness.offsetTop;
-    const screenHeight = window.innerHeight;
+    const sections = ['a'];
 
-    if (scrollPosition + screenHeight >= sectionOffset) {
-      this.renderer.addClass(removeBrightness, 'a-remove-brightness');
-      this.renderer.addClass(firstTextElement, 'a-first-text');
-      this.renderer.addClass(delayedElement, 'a-delayed');
-    }
+    sections.forEach(section => {
+      const el = this.elementRef.nativeElement.querySelector(`#${section}`);
+      const rect = el.getBoundingClientRect();
+
+      if (rect.top >= 10 && rect.bottom <= window.innerHeight) {
+        this.sectionInView = section;
+      }
+    });
   }
 
-  screenWidth: number = 0;
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.updateImagesBasedOnScreenWidth();

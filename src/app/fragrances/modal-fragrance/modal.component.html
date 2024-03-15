@@ -7,8 +7,10 @@
             <img class="modal-image" [src]="modalService.currentImage || product.modalImagePath[0]">
             <div class="modal-image-selection-container">
                 <div *ngFor="let item of product.modalImagePath">
-                    <img class="modal-image-selection" [src]="item" (mouseover)="modalService.changeMainImage(item)"
-                        alt="Image">
+                    <img [style.display]="contentLoaded ? 'flex' : 'none'" class="modal-image-selection" [src]="item"
+                        (mouseover)="modalService.changeMainImage(item)" alt="Image">
+                    <ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line"
+                        [theme]="{ width: '50px', height: '50px', margin: '3px' }"></ngx-skeleton-loader>
                 </div>
             </div>
         </div>
@@ -64,10 +66,10 @@
         " class="mobile-comp-desc-details-container">
             <div class="mobile-comp-desc-details">
                 <p class="mobile-comp-desc-p">{{product.scent}} </p>
-                <p class="mobile-comp-desc-p">Fejillat: {{product.composition.head}} </p>
-                <p class="mobile-comp-desc-p">Szívillat: {{product.composition.hearth}} </p>
-                <p class="mobile-comp-desc-p">Alapillat: {{product.composition.base}} </p>
-                <p class="mobile-comp-desc-p">Illat: {{product.composition.scentType}} </p>
+                <p class="mobile-comp-desc-p"><span>Fejillat: </span> {{product.composition.head}} </p>
+                <p class="mobile-comp-desc-p"><span>Szívillat: </span> {{product.composition.hearth}} </p>
+                <p class="mobile-comp-desc-p"><span>Alapillat: </span> {{product.composition.base}} </p>
+                <p class="mobile-comp-desc-p"><span>Illat: </span> {{product.composition.scentType}} </p>
                 <p class="comp-desc-p">Termékjellemző: </p>
                 {{product.composition.compDescription}}
                 <button class="close-comp-desc-details-btn" (click)="modalService.showDetails()"><i

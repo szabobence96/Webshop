@@ -6,6 +6,7 @@ import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { concatMap, switchMap, tap } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CallingCodeService } from 'src/app/services/calling-code.service';
 import { ImageUploadService } from 'src/app/services/image-upload.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -21,7 +22,9 @@ export class ProfileComponent implements OnInit {
     private imageUploadService: ImageUploadService,
     private toast: HotToastService,
     private usersService: UsersService,
-    private fb: NonNullableFormBuilder
+    private fb: NonNullableFormBuilder,
+    public callingCodeService: CallingCodeService,
+
   ) { }
 
   user$ = this.usersService.currentUserProfile$;
@@ -31,12 +34,15 @@ export class ProfileComponent implements OnInit {
     displayName: [''],
     firstName: [''],
     lastName: [''],
+    callingCode: [''],
     phone: [''],
     address: [''],
   });
+  callingCodes: string[] = [];
 
 
   ngOnInit(): void {
+    this.callingCodes = this.callingCodeService.getCallingCodes();
     this.usersService.currentUserProfile$
       .pipe(untilDestroyed(this), tap(console.log))
       .subscribe((user) => {
@@ -64,5 +70,11 @@ export class ProfileComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+  limitDigits(event: any) {
+    const input = event.target.value;
+    if (input.length > 12) {
+      event.target.value = input.slice(0, 12); // Limit to 12 digits
+    }
   }
 }

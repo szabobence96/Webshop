@@ -1,0 +1,9 @@
+.skeleton-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ngx-skeleton-loader {
+        display: flex;
+    }
+}

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { switchMap } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CallingCodeService } from 'src/app/services/calling-code.service';
 import { UsersService } from 'src/app/services/users.service';
 
 
@@ -40,6 +41,7 @@ export class SignUpComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      callingCode: ['', Validators.required],
       phone: ['', Validators.required],
       address: ['', Validators.required],
       password: ['', Validators.required],
@@ -47,15 +49,19 @@ export class SignUpComponent implements OnInit {
     },
     { validators: passwordsMatchValidator() }
   );
+
   constructor(
+    public callingCodeService: CallingCodeService,
     private authService: AuthenticationService,
     private fb: NonNullableFormBuilder,
     private router: Router,
     private toast: HotToastService,
     private usersService: UsersService,
   ) { }
+
   hide = true;
   termsChecked = false;
+  callingCodes: string[] = [];
 
   termsCheck(event: MouseEvent) {
     event.stopPropagation();
@@ -65,6 +71,7 @@ export class SignUpComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.callingCodes = this.callingCodeService.getCallingCodes();
   }
 
   get email() {
@@ -90,20 +97,22 @@ export class SignUpComponent implements OnInit {
   get lastName() {
     return this.signUpForm.get('lastName');
   }
-
+  get callingCode() {
+    return this.signUpForm.get('callingCode');
+  }
   get phone() {
     return this.signUpForm.get('phone');
   }
 
   submit() {
-    const { lastName, firstName, address, phone, email, password } = this.signUpForm.value;
+    const { lastName, firstName, address, callingCode, phone, email, password } = this.signUpForm.value;
 
-    if (!this.signUpForm.valid || !firstName || !firstName || !password || !email || !address || !phone || this.termsChecked == false) {
+    if (!this.signUpForm.valid || !firstName || !firstName || !password || !email || !address || !callingCode || !phone || this.termsChecked == false) {
       return;
     }
 
     this.authService.signUp(email, password).pipe(
-      switchMap(({ user: { uid } }) => this.usersService.addUser({ uid, email, lastName, firstName, address, phone, displayName: lastName })),
+      switchMap(({ user: { uid } }) => this.usersService.addUser({ uid, email, lastName, firstName, address, callingCode, phone, displayName: lastName })),
       this.toast.observe({
         success: 'Sikeres regisztráció!',
         loading: 'Bejelentkezés',
@@ -112,5 +121,11 @@ export class SignUpComponent implements OnInit {
     ).subscribe(() => {
       this.router.navigate(['/user']);
     })
+  }
+  limitDigits(event: any) {
+    const input = event.target.value;
+    if (input.length > 12) {
+      event.target.value = input.slice(0, 12); // Limit to 12 digits
+    }
   }
 }

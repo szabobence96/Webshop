@@ -4,7 +4,7 @@ import { SlideInOutAnimation } from './animation';
 
 import 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
-import { ProductService } from '../../product-modal-helper/product-service';
+import { ProductService } from '../product-modal-helper/product-service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -19,6 +19,7 @@ export class FragrancesComponent implements OnInit {
   jeanPaulBrandImg: string = './assets/images/commercial/jpg_logo.png';
   diorBrandImg: string = './assets/images/commercial/dior_logo.png';
   lancomeBrandImg: string = './assets/images/commercial/lancome_logo.png'
+  screenWidth: number = 0;
 
   constructor(
     public services: SharedService,
@@ -28,21 +29,17 @@ export class FragrancesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.screenWidth = window.innerWidth;
     setTimeout(() => {
       this.contentLoaded = true;
-    }, 1500);
+    }, 1000);
   }
 
   animationState = 'out';
   toggleShowDiv(divName: string) {
     if (divName === 'divA') {
-      console.log(this.animationState);
       this.animationState = this.animationState === 'out' ? 'in' : 'out';
-      console.log(this.animationState);
     }
   }
-
-
-
 }
 

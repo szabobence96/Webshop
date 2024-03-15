@@ -15,6 +15,14 @@
     width: 650px;
     padding: 30px;
     background-color: white;
+
+    .profile-header {
+        border-bottom: 1px solid #1C202B;
+        padding-bottom: 15px;
+        width: 100%;
+        color: #1C202B;
+        font-size: 26px;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -49,7 +57,23 @@
 
 .row {
     display: flex;
-    gap: 16px;
+    gap: 10px;
+
+}
+
+.row-sec {
+    display: flex;
+    gap: 10px;
+
+    .row-in {
+        display: flex;
+        width: 50%;
+    }
+
+    .row-out {
+        display: flex;
+        width: 50%;
+    }
 }
 
 .save-button {

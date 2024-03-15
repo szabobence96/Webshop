@@ -75,7 +75,7 @@ mat-checkbox {
     border-radius: 20px;
     border: 0 !important;
     outline: 0 !important;
-    background: #061e29;
+    background: #1C202B;
     color: white;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -97,8 +97,8 @@ mat-checkbox {
     margin-left: 1px;
     font-size: 11px;
     text-decoration: underline;
-    text-decoration-color: #061e29;
-    color: #061e29;
+    text-decoration-color: #1C202B;
+    color: #1C202B;
     cursor: pointer;
     font-weight: 800;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -228,5 +228,5 @@ mat-checkbox {
 }
 
 .inputGroup :is(input:focus, input:valid) {
-    border-color: #061e29;
+    border-color: #1C202B;
 }

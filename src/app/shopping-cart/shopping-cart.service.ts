@@ -27,9 +27,9 @@ export class ShoppingCartService {
     const totalPrice = this.getTotalPrice();
 
     if (totalPrice >= 50000) {
-      return this.shippingPrice = 0; // Vonj le a szállítási díjból
+      return this.shippingPrice = 0;
     } else {
-      return this.shippingPrice = 1390; // Alapértelmezett szállítási díj
+      return this.shippingPrice = 1390;
     }
   }
 
@@ -42,12 +42,25 @@ export class ShoppingCartService {
     const giftFee = this.giftIsChecked ? 1590 : 0;
     return giftFee;
   }
+
   calculateTotalPayment(): number {
     const totalPrice = this.calculateShippingPrice() + this.getTotalPrice();
     const insuranceFee = this.calculateInsurance();
     const giftFee = this.calculateGiftFee();
-
     return totalPrice + insuranceFee + giftFee;
   }
 
+
+  removeFromCart(cartItem: any) {
+    const index = this.services.getCartItems().indexOf(cartItem);
+    if (index !== -1) {
+      const numRemoved = cartItem.quantity;
+      this.services.getCartItems().splice(index, 1);
+
+      const kosarElem = this.navbarData.find(item => item.routerLink === 'shopping-cart');
+      if (kosarElem) {
+        kosarElem.badge = Math.max((kosarElem.badge || 0) - numRemoved, 0);
+      }
+    }
+  }
 }

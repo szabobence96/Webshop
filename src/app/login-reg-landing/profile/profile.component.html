@@ -9,27 +9,41 @@
 <div class="contentloaded" [style.display]="contentLoaded ? 'block' : 'none'">
   <app-user-header></app-user-header>
   <div class="form-container mat-elevation-z5 text-center" *ngIf="user$ | async as user">
-    <h1>Profil</h1>
+    <h1 class="profile-header">Személyes adatok</h1>
     <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
       <div class="row">
         <mat-form-field>
           <mat-label>Vezetéknév</mat-label>
-          <input type="text" matInput formControlName="firstName" maxlength="12" />
+          <input type="text" matInput formControlName="firstName" maxlength="14" />
         </mat-form-field>
         <mat-form-field>
           <mat-label>Keresztnév</mat-label>
-          <input type="text" matInput formControlName="lastName" maxlength="12" />
+          <input type="text" matInput formControlName="lastName" maxlength="14" />
         </mat-form-field>
       </div>
-      <div class="row">
-        <mat-form-field>
-          <mat-label>Profilnév</mat-label>
-          <input type="text" matInput formControlName="displayName" maxlength="10" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Telefonszám</mat-label>
-          <input type="number" matInput formControlName="phone" />
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Profilnév</mat-label>
+        <input type="text" matInput formControlName="displayName" maxlength="14" />
+      </mat-form-field>
+      <div class="row-sec">
+        <div class="row-in">
+          <mat-form-field>
+            <mat-label>Hívóazonosító</mat-label>
+            <div class="scrollable-container">
+              <mat-select matNativeControl formControlName="callingCode">
+                <mat-option *ngFor="let code of callingCodes" [value]="code"
+                  [ngClass]="{'bold-text': callingCodeService.first}">{{ code }}
+                </mat-option>
+              </mat-select>
+            </div>
+          </mat-form-field>
+        </div>
+        <div class="row-out">
+          <mat-form-field>
+            <mat-label>Telefonszám</mat-label>
+            <input type="number" matInput formControlName="phone" (input)="limitDigits($event)">
+          </mat-form-field>
+        </div>
       </div>
       <mat-form-field>
         <mat-label>Szállítási cím</mat-label>

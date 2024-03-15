@@ -1,0 +1,14 @@
+<div class="remove-item-container">
+    <div class="remove-item">
+        <h1 class="remove-item-header">Termék eltávolítása a kosárból</h1>
+        <h2 class="remove-item-desc">Valóban eltávolítja a(z) <span class="item-name"> "{{product.product.brand}}
+                {{product.product.brandName}}"</span> terméket a kosárból? </h2>
+        <app-custom-remove-button (click)="cartService.removeFromCart(product)"
+            (click)="modalService.closeModal()"></app-custom-remove-button>
+        <app-custom-keep-button (click)="modalService.closeModal()"></app-custom-keep-button>
+        <img class="product-image" [src]="product.selectedImage || product.product.imagePath">
+        <div class="exit-button" (click)="modalService.closeModal()"><i class="fa fa-window-close"
+                aria-hidden="true"></i>
+        </div>
+    </div>
+</div>

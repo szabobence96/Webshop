@@ -26,7 +26,7 @@
                     <p class="insurance">Küldemény biztosítása: {{ order.insurance ? 'Igen, +500 Ft' : 'Nem' }}</p>
                     <p class="shipping-price">Szállítás díja: {{ order.shippingPrice }} Ft</p>
                     <p class="shipping-price">Rendelési azonosító: {{ order.id }} </p>
-                    <p class="shipping-price">Telefonszám: {{ order.phone }} </p>
+                    <p class="shipping-price">Telefonszám: {{order.callingCode}} {{ order.phone }} </p>
                     <p class="shipping-price">Szállítási cím: {{ order.address }} </p>
 
                     <p class="order-date">Rendelés dátuma: {{ order.orderDate.toDate() | date: 'yyyy-MM-dd' }}</p>

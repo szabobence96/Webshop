@@ -16,7 +16,7 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { FragrancesComponent } from './fragrances/fragrances.component';
 import { JeanPaulGaultierComponent } from './brands/jean-paul-gaultier/jean-paul-gaultier.component';
 import { DiorComponent } from './brands/dior/dior.component';
-import { DiorFragrancesComponent } from './fragrances/dior-fragrances/dior-fragrances/dior-fragrances.component';
+import { DiorFragrancesComponent } from './fragrances/dior-fragrances/dior-fragrances.component';
 import { UserComponent } from './user/user.component';
 import { LancomeComponent } from './brands/lancome/lancome.component';
 import { HawkersComponent } from './brands/hawkers/hawkers.component';

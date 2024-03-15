@@ -1,19 +1,17 @@
-<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line"
-    [theme]="{ width: '100%', height: '100px', 'border-radius':'15px' }">
-</ngx-skeleton-loader>
+<app-skeleton-loader></app-skeleton-loader>
 
-<div *ngIf="contentLoaded" class="brands-container">
+<div [style.display]="contentLoaded ? 'flex' : 'none'" class="brands-container">
     <div class="brands">
-        <img class="brand-img" [routerLink]="['/brand-jeanpaulgaultier']" [src]="jeanPaulBrandImg">
-        <img class="brand-img" [routerLink]="['/brand-dior']" [src]="diorBrandImg">
-        <img class="brand-img" [routerLink]="['/brand-lancome']" [src]="lancomeBrandImg">
+        <img class="brand-img" [src]="jeanPaulBrandImg">
+        <img class="brand-img" [src]="diorBrandImg">
+        <img class="brand-img" [src]="lancomeBrandImg">
     </div>
 </div>
-<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="circle" [theme]="{ width: '80px', height: '80px'}">
-</ngx-skeleton-loader>
 
-<app-settings-button *ngIf="contentLoaded" (click)="toggleShowDiv('divA')"></app-settings-button>
-<div class="fragrance-filter-container" [@slideInOut]="animationState" class="divA">
+<app-settings-button [style.display]="contentLoaded ? 'block' : 'none'"
+    (click)="toggleShowDiv('divA')"></app-settings-button>
+<div [style.display]="contentLoaded ? 'flex' : 'none'" class="fragrance-filter-container" [@slideInOut]="animationState"
+    class="divA">
     <mat-checkbox class="checkbox-all" [(ngModel)]="productService.isAllChecked"
         (change)="productService.onCheckboxChange('isAllChecked')"
         [disabled]="productService.isAllChecked === true">Mindet
@@ -37,45 +35,34 @@
         (change)="productService.onCheckboxChange('isJPGChecked')">Jean
         Paul Gaultier</mat-checkbox>
 </div>
-<div class="skeleton" *ngIf="!contentLoaded">
-    <ng-container *ngFor="let _ of [1,2,3]">
-        <ngx-skeleton-loader appearance="circle" [theme]="{
-            width: '320px',
-            height: '350px',
-            'border-radius': '15px',
-            margin: '10px'
-        }"></ngx-skeleton-loader>
-    </ng-container>
-</div>
+
 <div [style.display]="contentLoaded ? 'flex' : 'none'">
-    <div class="product-card-container" *ngIf="productService.isAllChecked === true">
-        <div class="product-card" *ngFor="let item of productService.fragrances$ | async "
-            (click)="productService.openModal(item)" (mouseover)="productService.mouseOver(item)"
-            (mouseleave)="productService.mouseLeave(item)">
-            <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
-                <p class="scent">{{item.scent}}</p>
-            </div>
-            <div class="main-image-container">
-                <img class="main-image" [src]="item.imagePath">
-            </div>
-            <div class="product-card-price">{{ item.type[0].price }} <p class="tol">Ft-tól</p>
+    <div class="product-container">
+        <div class="product-card-container" style="min-height: 100vh;" *ngIf="productService.isAllChecked === true">
+            <div class="product-card" *ngFor="let item of productService.fragrances$ | async "
+                (click)="productService.openModal(item)" (mouseover)="productService.mouseOver(item)"
+                (mouseleave)="productService.mouseLeave(item)">
+                <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
+                    <p class="scent">{{item.scent}}</p>
+                </div>
+                <div class="main-image-container">
+                    <img class="main-image" [src]="item.imagePath">
+                </div>
+                <div class="product-card-price">{{ item.type[0].price }} <p class="tol">Ft-tól</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<app-man-fragrances></app-man-fragrances>
-<app-woman-fragrances></app-woman-fragrances>
-<app-dior-fragrances></app-dior-fragrances>
-<app-jpg-fragrances></app-jpg-fragrances>
-<app-lancome-fragrances></app-lancome-fragrances>
-
-<!-- <div class="btn--circle-container" *ngIf="(productService.displayItemCount < productService.long) && contentLoaded">
-    <div class="btn--circle" (click)="productService.loadMoreItem()">
-        <span class="btn-stage">+</span>
-        <span class="btn-stage">Több</span>
-    </div>
-</div> -->
+<div *ngIf="!productService.isAllChecked" class="filtered-fragrances-container">
+    <app-man-fragrances></app-man-fragrances>
+    <app-woman-fragrances></app-woman-fragrances>
+    <app-dior-fragrances></app-dior-fragrances>
+    <app-jpg-fragrances></app-jpg-fragrances>
+    <app-lancome-fragrances></app-lancome-fragrances>
+</div>
+<app-footer></app-footer>
 
 <app-modal [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
     *ngIf="productService.isModalOpen"></app-modal>

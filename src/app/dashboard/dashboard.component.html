@@ -1,17 +1,4 @@
-<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line" [theme]="{ width: '100%', height: '500px' }">
-</ngx-skeleton-loader>
-<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line"
-    [theme]="{ width: '100%', height: '20px', marginBottom: '10px' }"></ngx-skeleton-loader>
-<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="circle"
-    [theme]="{ width: '50px', height: '50px', marginRight: '10px' }"></ngx-skeleton-loader>
-<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line"
-    [theme]="{ width: '80%', height: '20px', marginBottom: '10px' }"></ngx-skeleton-loader>
-<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line"
-    [theme]="{ width: '150px', height: '20px', marginBottom: '10px' }"></ngx-skeleton-loader>
-<ngx-skeleton-loader *ngIf="!contentLoaded" appearance="line"
-    [theme]="{ width: '100%', height: '20px', marginBottom: '10px' }"></ngx-skeleton-loader>
-
-
+<app-skeleton-loader></app-skeleton-loader>
 <app-carousel [style.display]="contentLoaded ? 'block' : 'none'" [images]="currentImages"
     [autoSlide]="true"></app-carousel>
 <div class="dashboard-container" [style.display]="contentLoaded ? 'block' : 'none'">
@@ -21,18 +8,22 @@
                 {{textService.ourSunglasses}}
             </div>
             <div class="brands">
-                <img class="hawkers" [routerLink]="['/']" src="./assets/images/commercial/hawkers_logo.png">
+                <img class="hawkers" [routerLink]="['/products']" src="./assets/images/commercial/hawkers_logo.png">
             </div>
         </div>
         <div class="commercial-first">
-            <div class="first-text" id="first-text-animation">{{textService.hawkers}}
-                <button id="delayed-element" routerLink="/products/">{{textService.goToProducts}}</button>
+            <div class="first-text-button-container">
+                <div class="first-text" id="a" [@fadeInA]="sectionInView === 'a'">{{textService.hawkers}}</div>
+                <button id="a" [@fadeInADelayed]="sectionInView === 'a'"
+                    routerLink="/products/">{{textService.goToProducts}}</button>
             </div>
-            <img *ngIf="screenWidth >= 768" class="commercial-img" id="remove-brightness"
-                src="./assets/images/commercial/mainpage_commercial1.jpg" alt="">
-            <img *ngIf="screenWidth < 768 && screenWidth > 512" class="commercial-img" id="remove-brightness"
-                src="./assets/images/commercial/mainpage_commercial_mobile_copy.jpg">
-            <img *ngIf="screenWidth < 512" class="commercial-img" id="remove-brightness"
+            <img *ngIf="screenWidth >= 768" class="commercial-img" id="a" [@fadeInB]="sectionInView === 'a'"
+                src="./assets/images/commercial/mainpage_commercial1.jpg" alt="" id="a">
+
+            <img *ngIf="screenWidth < 768 && screenWidth > 512" class="commercial-img" id="a"
+                [@fadeInB]="sectionInView === 'a'" src="./assets/images/commercial/mainpage_commercial_mobile_copy.jpg">
+
+            <img *ngIf="screenWidth < 512" class="commercial-img" id="a" [@fadeInB]="sectionInView === 'a'"
                 src="./assets/images/commercial/mainpage_commercial_mobile_512.png" alt="">
         </div>
         <div class="brand-container">
@@ -40,9 +31,9 @@
                 {{textService.ourFragrances}}
             </div>
             <div class="brands">
-                <img class="dior" [routerLink]="['/']" src="./assets/images/commercial/dior_logo.png">
-                <img class="jpg" [routerLink]="['/']" src="./assets/images/commercial/jpg_logo.png">
-                <img class="lancome" [routerLink]="['/']" src="./assets/images/commercial/lancome_logo.png">
+                <img class="dior" [routerLink]="['/fragrances']" src="./assets/images/commercial/dior_logo.png">
+                <img class="jpg" [routerLink]="['/fragrances']" src="./assets/images/commercial/jpg_logo.png">
+                <img class="lancome" [routerLink]="['/fragrances']" src="./assets/images/commercial/lancome_logo.png">
             </div>
         </div>
         <div class="commercial-second-container-1">
@@ -66,5 +57,50 @@
                 </div>
             </div>
         </div>
+        <div class="discount-section">
+            <div class="brand-container">
+                <div class="brand-text">
+                    {{textService.discountedWatches}}
+                </div>
+            </div>
+            <div [style.display]="contentLoaded ? 'flex' : 'none'">
+                <div class="product-container">
+                    <div class="product-card-container">
+                        <div class="product-card" (mouseover)="productService.mouseOver(item)"
+                            (mouseleave)="productService.mouseLeave(item)" *ngFor="let item of watchesDiscount$ | async"
+                            (click)="productService.openModal(item)">
+                            <div class="product-card-head"> {{item['brand']}} <p class="brand-name">
+                                    {{item['brandName']}}
+                                </p>
+                                <div *ngIf="item['type'][0].discount10" class="badge">
+                                    <span>- {{item['discountAmount']}}%</span>
+                                </div>
+                            </div>
+                            <div class="main-image-container">
+                                <img class="main-image" [src]="item['imagePath']">
+                            </div>
+                            <div class="price-container">
+                                <div *ngIf="!item['type'][0].discount10" class="product-card-price">{{
+                                    item['type'][0].price}} <p class="tol">Ft
+                                    </p>
+                                </div>
+                                <div *ngIf="item['type'][0].discount10" class="product-card-original-price">
+                                    <div class="original-price">
+                                        {{item['type'][0].price}} <p class="original-tol">Ft-ról</p>
+                                    </div>
+                                    <div class="discount-price">
+                                        {{ item['type'][0].price * 0.9}} <p class="discount-tol">Ft</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<app-modal-dashboard [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
+    *ngIf="productService.isModalOpen"></app-modal-dashboard>
+<app-footer></app-footer>

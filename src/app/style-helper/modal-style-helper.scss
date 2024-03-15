@@ -89,10 +89,7 @@
 
             .composition-container {
 
-                .composition-description:nth-child(1),
-                :nth-child(2),
-                :nth-child(3),
-                :nth-child(4) {
+                .composition-description:nth-child(-n+6) {
                     display: flex;
                     color: white;
                 }
@@ -239,7 +236,7 @@
     z-index: 2;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.8); // Példa hátteret halványító színre
-
+    overflow-y: auto;
 
     .mobile-comp-desc-details {
         background-color: #fff;
@@ -249,6 +246,19 @@
         bottom: 0;
         padding: 15px;
         border-radius: 5px;
+
+        .comp-desc-p {
+            font-weight: 800;
+        }
+
+        .mobile-comp-desc-p {
+            border-bottom: 1px solid #ececec;
+            padding-bottom: 10px;
+
+            span {
+                font-weight: 800;
+            }
+        }
     }
 
     .close-comp-desc-details-btn {
@@ -521,8 +531,8 @@
 
                 .mobile-comp-desc-details {
                     background-color: #fff;
-                    width: 60%;
-                    height: 60%;
+                    width: 70%;
+                    height: 80%;
                     position: relative;
                     top: 50%;
                     left: 50%;
