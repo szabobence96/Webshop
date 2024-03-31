@@ -1,30 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { resetFakeAsyncZone } from '@angular/core/testing';
 
 interface carouselimage {
   imageSrc: string;
   imageAlt: string;
-  caption: string;
-  button: string;
-  routerLink: string;
 }
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  selector: 'app-fragrance-carousel',
+  templateUrl: './fragrance-carousel.component.html',
+  styleUrls: ['./fragrance-carousel.component.scss']
 })
 
-export class CarouselComponent implements OnInit {
+
+export class FragranceCarouselComponent implements OnInit {
   constructor() { }
 
   @Input() images: carouselimage[] = []
   @Input() indicators = true;
   @Input() controls = false;
   @Input() autoSlide = false;
-  slideInterval = 4000;
+  @Input() slideInterval = 4000;
 
-  clicked: boolean = false;
   contentLoaded = false;
   selectedIndex: number = 0;
 
@@ -62,5 +58,4 @@ export class CarouselComponent implements OnInit {
       this.selectedIndex++;
     }
   }
-
 }

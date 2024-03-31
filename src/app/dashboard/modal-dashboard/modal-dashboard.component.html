@@ -63,7 +63,7 @@
             </div>
             <div class="item-color-buttons-container">
                 <div *ngFor="let item of product.colorType" (click)="services.selectColor(item)">
-                    <div class="item-color-buttons" *ngIf="!item.price && !item.belt" tabindex="0"
+                    <div class="item-color-buttons" *ngIf="!item.price && !item.belt && !item.frame" tabindex="0"
                         [class.selected]="services.selectedColor === item">{{
                         item.color }}
                     </div>

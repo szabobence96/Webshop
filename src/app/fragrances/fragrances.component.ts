@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { SlideInOutAnimation } from './animation';
 
@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./fragrances.component.scss', '../style-helper/product-style-helper.scss'],
   animations: [SlideInOutAnimation]
 })
+
 export class FragrancesComponent implements OnInit {
 
   contentLoaded: boolean = false;
@@ -26,7 +27,10 @@ export class FragrancesComponent implements OnInit {
     public firestore: Firestore,
     public productService: ProductService,
     public renderer: Renderer2,
-  ) { }
+  ) {
+    this.updateImagesBasedOnScreenWidth();
+
+  }
 
   ngOnInit() {
     this.screenWidth = window.innerWidth;
@@ -40,6 +44,35 @@ export class FragrancesComponent implements OnInit {
     if (divName === 'divA') {
       this.animationState = this.animationState === 'out' ? 'in' : 'out';
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.updateImagesBasedOnScreenWidth();
+  }
+  images = [
+    {
+      imageSrc: './assets/images/commercial/scandal_commercial_ps_copy.jpg',
+      imageAlt: 'scandal'
+    },
+    {
+      imageSrc: './assets/images/commercial/dior_commercial_ps_copy.jpg',
+      imageAlt: 'sauvage'
+    },
+  ]
+  mobileImages = [
+    {
+      imageSrc: './assets/images/commercial/scandal_commercial_mobile_ps_copy.jpg',
+    },
+    {
+      imageSrc: './assets/images/commercial/dior_commercial_mobile_ps_copy.jpg',
+    },
+  ]
+  currentImages: any[] = this.images; // Kezdetben az eredeti képek lesznek beállítva
+
+  private updateImagesBasedOnScreenWidth() {
+    this.screenWidth = window.innerWidth;
+    this.currentImages = this.screenWidth < 700 ? this.mobileImages : this.images;
   }
 }
 

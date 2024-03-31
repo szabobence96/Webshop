@@ -11,16 +11,21 @@
     padding-bottom: 15px;
 }
 
-mat-checkbox {
-    margin-top: 0px;
-    white-space: nowrap;
-    position: relative;
+.checkbox-with-text {
+    display: flex;
+    align-items: center;
 
-    .terms {
-        display: inline-block;
-        color: #1C202B;
-        text-decoration: underline;
-        cursor: pointer;
+    mat-checkbox {
+        margin-top: 0px;
+        white-space: nowrap;
+        position: relative;
+
+        .terms {
+            display: inline-block;
+            color: #1C202B;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
 }
 
@@ -28,7 +33,7 @@ mat-checkbox {
     position: absolute;
     font-size: 12px;
     margin-left: 14px;
-    bottom: 22%;
+    bottom: 19%;
 
 }
 

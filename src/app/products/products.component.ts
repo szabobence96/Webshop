@@ -13,24 +13,8 @@ import { trigger, state, animate, transition, style } from '@angular/animations'
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss', '../style-helper/product-style-helper.scss'],
-  animations: [
-    trigger('fadeInA', [
-      state('true', style({ opacity: 1 })),
-      state('false', style({ opacity: 0 })),
-      transition('false => true', animate('800ms 1200ms ease-in')),
-    ]),
-    trigger('fadeInADelayed', [
-      state('true', style({ opacity: 1 })),
-      state('false', style({ opacity: 0 })),
-      transition('false => true', animate('800ms 2000ms ease-in')),
-    ]),
-    trigger('fadeInB', [
-      state('true', style({ filter: 'brightness(0.2)' })),
-      state('false', style({ filter: 'brightness(1.0)' })),
-      transition('false => true', animate('800ms ease-in')),
-    ]),
-  ]
 })
+
 export class ProductsComponent implements OnInit {
 
   task$ = collectionData(collection(this.firestore, 'hawkers')) as Observable<ProductInterface[]>;
@@ -39,7 +23,8 @@ export class ProductsComponent implements OnInit {
   videoLoaded: boolean = false;
   screenWidth: number = 0;
   sectionInView: any = '';
-
+  imgPc: string = './assets/images/commercial/sunglasses_background.jpg';
+  imgMobile: string = './assets/images/commercial/sunglasses_background_mobile.jpg';
   constructor(
     public services: SharedService,
     public firestore: Firestore,
@@ -66,14 +51,14 @@ export class ProductsComponent implements OnInit {
       if (imageBlur) {
         imageBlur.classList.add('fade-in');
       }
-    }, 2000);
+    }, 1500);
 
     this.textTimeout = setTimeout(() => {
       const imageBlur = document.querySelector('.commercial-watch-text') as HTMLElement;
       if (imageBlur) {
         imageBlur.classList.add('fade-in');
       }
-    }, 3000);
+    }, 2000);
   }
 
   ngOnDestroy() {

@@ -90,17 +90,18 @@
         <div *ngIf="modalService.showDetailsBox && modalService.screenWidth <= 700
         " class="mobile-comp-desc-details-container">
             <div class="mobile-comp-desc-details">
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.material">Anyaga:
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.material"> <span>Anyaga: </span>
                     {{product.composition.material}}</p>
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.belt">Szíj anyaga:
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.belt"><span>Szíj anyaga: </span>
                     {{product.composition.belt}}</p>
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.frame">Keret:
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.frame"><span>Keret: </span>
                     {{product.composition.frame}} </p>
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.size">Méret:
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.size"><span>Méret: </span>
                     {{product.composition.size}} </p>
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.waterProof">Vízállóság:
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.waterProof"><span>Vízállóság: </span>
                     {{product.composition.waterProof}} </p>
-                <p class="comp-desc-p">Termékjellemző: {{product.description}} </p>
+                <p class="comp-desc-p">Termékjellemző: </p>
+                {{product.description}}
                 <button class="close-comp-desc-details-btn" (click)="modalService.showDetails()"><i
                         class="fal fa-times close-icon"></i></button>
             </div>

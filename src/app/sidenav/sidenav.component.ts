@@ -4,6 +4,7 @@ import { navbarData } from './nav-data';
 import { SharedService } from '../shared.service';
 import { ModalService } from 'src/app/product-modal-helper/modal-service.service';
 import { ProductService } from 'src/app/product-modal-helper/product-service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 interface SideNavToggle {
   screenwidth: number;
@@ -52,6 +53,7 @@ export class SidenavComponent implements OnInit {
   screenwidth = 0;
   navData = navbarData;
   element: HTMLElement | any
+  contentLoaded: boolean = false;
   constructor(public modalService: ModalService, private elementRef: ElementRef, public productService: ProductService) { }
 
   @HostListener('document:click', ['$event'])
@@ -113,6 +115,9 @@ export class SidenavComponent implements OnInit {
       this.closed = true;
       this.onToggleSideNav.emit({ closed: this.closed, collapsed: this.collapsed, screenwidth: this.screenwidth });
     }
+    setTimeout(() => {
+      this.contentLoaded = true;
+    }, 1500);
   }
 
   toggleCollapse(): void {

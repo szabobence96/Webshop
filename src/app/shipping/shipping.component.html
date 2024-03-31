@@ -68,9 +68,15 @@
                     Adja meg a Szállítási címét!
                 </mat-error>
             </mat-form-field>
-            <mat-checkbox *ngIf="!(user$ | async)" (click)="termsCheck($event)">Elfogadom az <div class="terms">ÁSZF
-                </div>-et
-            </mat-checkbox>
+            <!-- <mat-checkbox *ngIf="!(user$ | async)" (click)="termsCheck($event)">Elfogadom az <div class="terms">ÁSZF
+            </div>-et
+        </mat-checkbox> -->
+            <div *ngIf="!(user$ | async)" class="checkbox-with-text">
+                <mat-checkbox (click)="termsCheck($event)"></mat-checkbox>
+                <span>
+                    Elfogadom az <span class="terms">ÁSZF</span>-et
+                </span>
+            </div>
             <div class="button-container">
                 <p class="price">Végösszeg: {{price}} Ft</p>
                 <button class="order-btn" [disabled]="termsChecked == false && !(user$ | async)" type="submit">Rendelés

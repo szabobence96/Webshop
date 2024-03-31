@@ -3,7 +3,8 @@
         <div class="left-section">
             <div class="product-name"> {{product.productName}}</div>
             <!-- <div class="product-description">#</div> -->
-            <div class="product-price">{{product.price}} Ft</div>
+            <div class="product-price">{{ product.discount10 ? services.selectedSizePrice * 0.9 :
+                services.selectedSizePrice }} Ft</div>
             <img class="modal-image" [src]="modalService.currentImage || product.modalImagePath[0]">
             <div class="modal-image-selection-container">
                 <div *ngFor="let item of product.modalImagePath">
@@ -50,9 +51,9 @@
         <div *ngIf="modalService.showDetailsBox && modalService.screenWidth <= 700
         " class="mobile-comp-desc-details-container">
             <div class="mobile-comp-desc-details">
-                <p class="mobile-comp-desc-p">Keret: {{product.composition.frame}}</p>
-                <p class="mobile-comp-desc-p">Lencse: {{product.composition.lens}} </p>
-                <p class="comp-desc-p">Termékjellemző: {{product.description}} </p>
+                <p class="mobile-comp-desc-p"><span>Keret: </span> {{product.composition.frame}}</p>
+                <p class="mobile-comp-desc-p"><span>Lencse: </span> {{product.composition.lens}} </p>
+                <p class="comp-desc-p">Termékjellemző: </p> {{product.description}}
                 <button class="close-comp-desc-details-btn" (click)="modalService.showDetails()"><i
                         class="fal fa-times close-icon"></i></button>
             </div>

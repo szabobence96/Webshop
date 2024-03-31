@@ -1,8 +1,7 @@
 <app-skeleton-loader></app-skeleton-loader>
 <div [style.display]="contentLoaded ? 'flex' : 'none'">
     <div class="commercial-watch-container">
-        <img *ngIf="screenWidth >= 768" src="./assets/images/commercial/commercial_sung_copy_2.jpg" alt="">
-        <img *ngIf="screenWidth < 768" src="./assets/images/commercial/commercial_sung_copy_2_mobile.jpg" alt="">
+        <img [src]="screenWidth >= 768 ? imgPc : imgMobile" alt="">
         <div class="commercial-watch-text-container">
             <div class="commercial-watch-text">
                 HAWKERS
@@ -17,13 +16,25 @@
                 (mouseleave)="productService.mouseLeave(item)" *ngFor="let item of task$ | async"
                 (click)="productService.openModal(item)">
                 <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
+                    <div *ngIf="item.type[0].discount10" class="badge">
+                        <span>- 10%</span>
+                    </div>
                 </div>
                 <div class="main-image-container">
                     <img class="main-image" [src]="item.imagePath">
                 </div>
                 <div class="price-container">
-                    <div class="product-card-price"> {{item.price}}
-                        <p class="tol">Ft</p>
+                    <div *ngIf="!item.type[0].discount10" class="product-card-price">{{ item.type[0].price }} <p
+                            class="tol">Ft
+                        </p>
+                    </div>
+                    <div *ngIf="item.type[0].discount10" class="product-card-original-price">
+                        <div class="original-price">
+                            {{item.type[0].price}} <p class="original-tol">Ft-ról</p>
+                        </div>
+                        <div class="discount-price">
+                            {{ item.type[0].price * 0.9 }} <p class="discount-tol">Ft</p>
+                        </div>
                     </div>
                 </div>
             </div>

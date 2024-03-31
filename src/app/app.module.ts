@@ -49,7 +49,7 @@ import { CustomButtonComponent } from './custom/custom-button/custom-button.comp
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { LancomeComponent } from './brands/lancome/lancome.component';
 import { HawkersComponent } from './brands/hawkers/hawkers.component';
-import { SettingsButtonComponent } from './settings-button/settings-button.component';
+import { SettingsButtonComponent } from './fragrances/settings-button/settings-button.component';
 import { ModalAccessoriesComponent } from './accessories/modal-accessories/modal-accessories.component';
 import { FooterComponent } from './footer/footer.component';
 import { ModalDashboardComponent } from './dashboard/modal-dashboard/modal-dashboard.component';
@@ -58,6 +58,9 @@ import { SkeletonLoaderComponent } from './skeleton/skeleton-loader/skeleton-loa
 import { ShoppingCartModalComponent } from './shopping-cart/shopping-cart-modal/shopping-cart-modal.component';
 import { CustomRemoveButtonComponent } from './custom/custom-remove-button/custom-remove-button.component';
 import { CustomKeepButtonComponent } from './custom/custom-keep-button/custom-keep-button.component';
+import { fragranceCarouselModule } from './fragrances/fragrance-carousel/fragrance-carousel.module';
+import { DiscountedSunglassesComponent } from './dashboard/discounted-products/discounted-sunglasses/discounted-sunglasses.component';
+import { DiscountedWatchesComponent } from './dashboard/discounted-products/discounted-watches/discounted-watches.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -109,6 +112,8 @@ const firebaseConfig = {
     ShoppingCartModalComponent,
     CustomRemoveButtonComponent,
     CustomKeepButtonComponent,
+    DiscountedSunglassesComponent,
+    DiscountedWatchesComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
@@ -125,6 +130,7 @@ const firebaseConfig = {
     NgxSkeletonLoaderModule,
     CommonModule,
     CarouselModule,
+    fragranceCarouselModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),

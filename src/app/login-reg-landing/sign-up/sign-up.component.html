@@ -84,9 +84,12 @@
     <mat-error class="pw-must-match" *ngIf="signUpForm.errors?.['passwordsDontMatch']">
       A jelszónak egyeznie kell!
     </mat-error>
-    <mat-checkbox (click)="termsCheck($event)">Elfogadom az <div class="terms">ÁSZF
-      </div>-et
-    </mat-checkbox>
+    <div class="checkbox-with-text">
+      <mat-checkbox (click)="termsCheck($event)"></mat-checkbox>
+      <span>
+        Elfogadom az <span class="terms">ÁSZF</span>-et
+      </span>
+    </div>
     <div class="login-container">Már rendelkezik fiókkal? <div class="login" routerLink="/user/login/">Jelentkezzen be!
       </div>
     </div>

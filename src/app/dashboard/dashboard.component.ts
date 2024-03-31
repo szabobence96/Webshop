@@ -23,7 +23,7 @@ import { DashboardTextService } from './dashboard-text.service';
       transition('false => true', animate('800ms 2000ms ease-in')),
     ]),
     trigger('fadeInB', [
-      state('true', style({ filter: 'brightness(0.2)' })),
+      state('true', style({ filter: 'brightness(0.4)' })),
       state('false', style({ filter: 'brightness(1.0)' })),
       transition('false => true', animate('800ms ease-in')),
     ]),
@@ -47,7 +47,8 @@ export class DashboardComponent implements OnInit {
   contentLoaded: boolean = false;
   sectionInView: any = '';
   opacity: number = 0;
-
+  imgPc: string = './assets/images/commercial/media_background.jpg';
+  imgMobile: string = './assets/images/commercial/media_background_mobile.jpg';
   ngOnInit() {
     setTimeout(() => {
       this.contentLoaded = true;
@@ -74,20 +75,36 @@ export class DashboardComponent implements OnInit {
   }
   images = [
     {
-      imageSrc: './assets/images/commercial/scandal_commercial_ps_copy.jpg',
-      imageAlt: 'scandal'
+      imageSrc: './assets/images/commercial/commercial_police_watch_ps.webp',
+      imageAlt: 'watch',
+      caption: 'POLICE órák & kiegészítők',
+      button: 'Tovább a kollekciókra!',
+      routerLink: '/accessories/'
     },
     {
-      imageSrc: './assets/images/commercial/dior_commercial_ps_copy.jpg',
-      imageAlt: 'sauvage'
+      imageSrc: './assets/images/commercial/commercial_fragrance_ps.webp',
+      imageAlt: 'fragrance',
+      caption: 'Parfümök széles választéka',
+      button: 'Tovább a parfümökre!',
+      routerLink: '/fragrances/'
     },
+
   ]
   mobileImages = [
+
     {
-      imageSrc: './assets/images/commercial/scandal_commercial_mobile_ps_copy.jpg',
+      imageSrc: './assets/images/commercial/commercial_police_watch_ps_mobile.webp',
+      imageAlt: 'watch',
+      caption: 'POLICE órák & kiegészítők',
+      button: 'Tovább a kollekciókra!',
+      routerLink: '/accessories/'
     },
     {
-      imageSrc: './assets/images/commercial/dior_commercial_mobile_ps_copy.jpg',
+      imageSrc: './assets/images/commercial/commercial_fragrance_ps_mobile.webp',
+      imageAlt: 'fragrance',
+      caption: 'Parfümök széles választéka',
+      button: 'Tovább a parfümökre!',
+      routerLink: '/fragrances/'
     },
   ]
   currentImages: any[] = this.images; // Kezdetben az eredeti képek lesznek beállítva

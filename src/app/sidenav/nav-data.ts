@@ -25,13 +25,12 @@ export const navbarData = [
     {
         routerLink: 'media',
         icon: 'fal fa-camera',
-        label: 'Közösségi oldalak',
+        label: 'Közösség',
     },
     {
         routerLink: 'user',
         icon: 'fal fa-user',
         label: 'Profil',
-
     },
     {
         routerLink: 'shopping-cart',

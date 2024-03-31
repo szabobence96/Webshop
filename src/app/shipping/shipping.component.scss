@@ -25,16 +25,22 @@
     }
 }
 
-mat-checkbox {
-    margin-top: 0px;
-    white-space: nowrap;
-    position: relative;
+.checkbox-with-text {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 
-    .terms {
-        display: inline-block;
-        color: #1C202B;
-        text-decoration: underline;
-        cursor: pointer;
+    mat-checkbox {
+        margin-top: 0px;
+        white-space: nowrap;
+        position: relative;
+
+        .terms {
+            display: inline-block;
+            color: #1C202B;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
 }
 

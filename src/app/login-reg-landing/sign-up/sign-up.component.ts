@@ -64,8 +64,8 @@ export class SignUpComponent implements OnInit {
   callingCodes: string[] = [];
 
   termsCheck(event: MouseEvent) {
-    event.stopPropagation();
     if (event.target !== event.currentTarget) {
+      event.stopPropagation();
       // A kattintás csak akkor történik meg, ha a mat-checkbox-en kívülre kattintasz
       this.termsChecked = !this.termsChecked;
     }

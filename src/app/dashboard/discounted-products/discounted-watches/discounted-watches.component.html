@@ -1,0 +1,34 @@
+<div [style.display]="contentLoaded ? 'flex' : 'none'">
+    <div class="product-container">
+        <div class="product-card-container">
+            <div class="product-card" (mouseover)="productService.mouseOver(item)"
+                (mouseleave)="productService.mouseLeave(item)" *ngFor="let item of watchesDiscount$ | async"
+                (click)="productService.openModal(item)">
+                <div class="product-card-head"> {{item['brand']}} <p class="brand-name">
+                        {{item['brandName']}}
+                    </p>
+                    <div *ngIf="item['type'][0].discount10" class="badge">
+                        <span>- {{item['discountAmount']}}%</span>
+                    </div>
+                </div>
+                <div class="main-image-container">
+                    <img class="main-image" [src]="item['imagePath']">
+                </div>
+                <div class="price-container">
+                    <div *ngIf="!item['type'][0].discount10" class="product-card-price">{{
+                        item['type'][0].price}} <p class="tol">Ft
+                        </p>
+                    </div>
+                    <div *ngIf="item['type'][0].discount10" class="product-card-original-price">
+                        <div class="original-price">
+                            {{item['type'][0].price}} <p class="original-tol">Ft-ról</p>
+                        </div>
+                        <div class="discount-price">
+                            {{ item['type'][0].price * 0.9}} <p class="discount-tol">Ft</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

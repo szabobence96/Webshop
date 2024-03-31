@@ -3,29 +3,38 @@
     [autoSlide]="true"></app-carousel>
 <div class="dashboard-container" [style.display]="contentLoaded ? 'block' : 'none'">
     <div class="commercial-container">
-        <div class="brand-container">
-            <div class="brand-text">
-                {{textService.ourSunglasses}}
-            </div>
-            <div class="brands">
-                <img class="hawkers" [routerLink]="['/products']" src="./assets/images/commercial/hawkers_logo.png">
+        <!---->
+        <div class="discount-section">
+            <div class="brand-container">
+                <div class="brand-text">
+                    {{textService.ourSunglasses}}
+                </div>
+                <div class="brands">
+                    <img class="hawkers" [routerLink]="['/products']" src="./assets/images/commercial/hawkers_logo.png">
+                </div>
             </div>
         </div>
         <div class="commercial-first">
             <div class="first-text-button-container">
                 <div class="first-text" id="a" [@fadeInA]="sectionInView === 'a'">{{textService.hawkers}}</div>
-                <button id="a" [@fadeInADelayed]="sectionInView === 'a'"
-                    routerLink="/products/">{{textService.goToProducts}}</button>
+                <div class="first-text-button" id="a" [@fadeInADelayed]="sectionInView === 'a'" routerLink="/products/">
+                    {{textService.goToProducts}}</div>
             </div>
             <img *ngIf="screenWidth >= 768" class="commercial-img" id="a" [@fadeInB]="sectionInView === 'a'"
-                src="./assets/images/commercial/mainpage_commercial1.jpg" alt="" id="a">
+                src="./assets/images/commercial/sunglasses_commercial_1.jpg" alt="" id="a">
 
-            <img *ngIf="screenWidth < 768 && screenWidth > 512" class="commercial-img" id="a"
-                [@fadeInB]="sectionInView === 'a'" src="./assets/images/commercial/mainpage_commercial_mobile_copy.jpg">
+            <img *ngIf="screenWidth < 768" class="commercial-img" id="a" [@fadeInB]="sectionInView === 'a'"
+                src="./assets/images/commercial/sunglasses_commercial_mobile_ps_1.jpg">
 
-            <img *ngIf="screenWidth < 512" class="commercial-img" id="a" [@fadeInB]="sectionInView === 'a'"
-                src="./assets/images/commercial/mainpage_commercial_mobile_512.png" alt="">
+            <!-- <img *ngIf="screenWidth < 512" class="commercial-img" id="a" [@fadeInB]="sectionInView === 'a'"
+                src="./assets/images/commercial/mainpage_commercial_mobile_512.png" alt=""> -->
         </div>
+        <div class="brand-container">
+            <div class="brand-text">
+                {{textService.discountedSunglasses}}
+            </div>
+        </div>
+        <app-discounted-sunglasses></app-discounted-sunglasses>
         <div class="brand-container">
             <div class="fragrances-text">
                 {{textService.ourFragrances}}
@@ -63,42 +72,10 @@
                     {{textService.discountedWatches}}
                 </div>
             </div>
-            <div [style.display]="contentLoaded ? 'flex' : 'none'">
-                <div class="product-container">
-                    <div class="product-card-container">
-                        <div class="product-card" (mouseover)="productService.mouseOver(item)"
-                            (mouseleave)="productService.mouseLeave(item)" *ngFor="let item of watchesDiscount$ | async"
-                            (click)="productService.openModal(item)">
-                            <div class="product-card-head"> {{item['brand']}} <p class="brand-name">
-                                    {{item['brandName']}}
-                                </p>
-                                <div *ngIf="item['type'][0].discount10" class="badge">
-                                    <span>- {{item['discountAmount']}}%</span>
-                                </div>
-                            </div>
-                            <div class="main-image-container">
-                                <img class="main-image" [src]="item['imagePath']">
-                            </div>
-                            <div class="price-container">
-                                <div *ngIf="!item['type'][0].discount10" class="product-card-price">{{
-                                    item['type'][0].price}} <p class="tol">Ft
-                                    </p>
-                                </div>
-                                <div *ngIf="item['type'][0].discount10" class="product-card-original-price">
-                                    <div class="original-price">
-                                        {{item['type'][0].price}} <p class="original-tol">Ft-ról</p>
-                                    </div>
-                                    <div class="discount-price">
-                                        {{ item['type'][0].price * 0.9}} <p class="discount-tol">Ft</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <app-discounted-watches></app-discounted-watches>
         </div>
     </div>
+
 </div>
 
 <app-modal-dashboard [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"

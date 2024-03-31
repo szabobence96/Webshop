@@ -1,12 +1,7 @@
 <app-skeleton-loader></app-skeleton-loader>
 
-<div [style.display]="contentLoaded ? 'flex' : 'none'" class="brands-container">
-    <div class="brands">
-        <img class="brand-img" [src]="jeanPaulBrandImg">
-        <img class="brand-img" [src]="diorBrandImg">
-        <img class="brand-img" [src]="lancomeBrandImg">
-    </div>
-</div>
+<app-fragrance-carousel [style.display]="contentLoaded ? 'block' : 'none'" [images]="currentImages"
+    [autoSlide]="true"></app-fragrance-carousel>
 
 <app-settings-button [style.display]="contentLoaded ? 'block' : 'none'"
     (click)="toggleShowDiv('divA')"></app-settings-button>

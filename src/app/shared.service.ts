@@ -16,6 +16,7 @@ export class SharedService {
   private currentProduct: any[] = [];
   public selectedSizePrice: any;
   public discount10: boolean = false;
+  public discount20: boolean = false;
   public selectedSize: any;
   public selectedColor: any;
   public currentImage: any;
@@ -91,8 +92,12 @@ export class SharedService {
     this.selectedSize = item.size || null;
     this.selectedSizePrice = item.price || null;
     this.discount10 = item.discount10 || null;
+    this.discount20 = item.discount20 || null;
     if (item.discount10) {
       this.selectedSizePrice = this.selectedSizePrice * 0.9
+    }
+    if (item.discount20) {
+      this.selectedSizePrice = this.selectedSizePrice * 0.8
     }
   }
 
