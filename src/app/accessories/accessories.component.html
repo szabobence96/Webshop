@@ -1,7 +1,7 @@
 <app-skeleton-loader></app-skeleton-loader>
 
 <div [style.display]="contentLoaded ? 'flex' : 'none'" class="img-brand-container">
-    <img class="img-brand" src="./assets/images/commercial/police_logo.svg" alt="">
+    <img class="img-brand" [src]="imgLogo" alt="">
 </div>
 <div [style.display]="contentLoaded ? 'flex' : 'none'">
     <div class="product-container">
@@ -15,7 +15,8 @@
                     <img class="main-image" [src]="item.imagePath">
                 </div>
                 <div class="price-container">
-                    <div class="product-card-price">{{ item.type[0].price }} <p class="tol">Ft-tól</p>
+                    <div class="product-card-price">{{ item.type[0].price }} <p class="tol">{{textService.priceFrom}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -24,15 +25,12 @@
 </div>
 <div [style.display]="contentLoaded ? 'flex' : 'none'">
     <div class="commercial-watch-container">
-        <img *ngIf="screenWidth >= 768" src="./assets/images/commercial/police_watch_commercial.jpg" id="d"
-            [@fadeInB]="sectionInView === 'd'" alt="">
-        <img *ngIf="screenWidth < 768" src="./assets/images/commercial/police_watch_commercial_mobile_copy.jpg" id="d"
-            [@fadeInB]="sectionInView === 'd'" alt="">
+        <img [src]="screenWidth >= 768 ? imgPc : imgMobile" alt="" [@fadeInB]="sectionInView === 'd'">
         <div class="commercial-watch-text-container">
             <div class="commercial-watch-text" id="d" [@fadeInA]="sectionInView === 'd'">
-                10% Kedvezmény
+                {{textService.discountAmount}}
             </div>
-            <p id="d" [@fadeInADelayed]="sectionInView === 'd'">Az akcióban résztvevő órákra!</p>
+            <p id="d" [@fadeInADelayed]="sectionInView === 'd'">{{textService.discountDesc}}</p>
         </div>
     </div>
 </div>
@@ -46,7 +44,7 @@
                 (click)="productService.openModal(item)">
                 <div class="product-card-head"> {{item.brand}} <p class="brand-name">{{item.brandName}}</p>
                     <div *ngIf="item.type[0].discount10" class="badge">
-                        <span>- 10%</span>
+                        <span>{{textService.discountHeader}}</span>
                     </div>
                 </div>
                 <div class="main-image-container">
@@ -54,15 +52,15 @@
                 </div>
                 <div class="price-container">
                     <div *ngIf="!item.type[0].discount10" class="product-card-price">{{ item.type[0].price }} <p
-                            class="tol">Ft
+                            class="tol">{{textService.price}}
                         </p>
                     </div>
                     <div *ngIf="item.type[0].discount10" class="product-card-original-price">
                         <div class="original-price">
-                            {{item.type[0].price}} <p class="original-tol">Ft-ról</p>
+                            {{item.type[0].price}} <p class="original-tol">{{textService.originalPrice}}</p>
                         </div>
                         <div class="discount-price">
-                            {{ item.type[0].price * 0.9 }} <p class="discount-tol">Ft</p>
+                            {{ item.type[0].price * 0.9 }} <p class="discount-tol">{{textService.price}}</p>
                         </div>
                     </div>
                 </div>

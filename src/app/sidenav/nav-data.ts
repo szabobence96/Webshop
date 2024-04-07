@@ -22,11 +22,11 @@ export const navbarData = [
         label: 'Parfümök',
 
     },
-    {
-        routerLink: 'media',
-        icon: 'fal fa-camera',
-        label: 'Közösség',
-    },
+    // {
+    //     routerLink: 'media',
+    //     icon: 'fal fa-camera',
+    //     label: 'Közösség',
+    // },
     {
         routerLink: 'user',
         icon: 'fal fa-user',

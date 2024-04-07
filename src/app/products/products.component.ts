@@ -71,18 +71,7 @@ export class ProductsComponent implements OnInit {
   onResize(event: any) {
     this.screenWidth = window.innerWidth;
   }
-  @HostListener('window:scroll', ['$event'])
-  checkScroll() {
-    const sections = ['d'];
 
-    sections.forEach(section => {
-      const el = this.elementRef.nativeElement.querySelector(`#${section}`);
-      const rect = el.getBoundingClientRect();
-
-      if (rect.top >= 2 && rect.bottom <= window.innerHeight) {
-        this.sectionInView = section;
-      }
-    });
-  }
 }
+
 

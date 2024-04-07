@@ -1,5 +1,4 @@
 @use 'node_modules/@ngneat/hot-toast/src/styles/styles.scss';
-/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import url(https://fonts.googleapis.com/css?family=Oswald:700);
@@ -15,11 +14,11 @@
     user-select: none;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+// input[type=number]::-webkit-inner-spin-button,
+// input[type=number]::-webkit-outer-spin-button {
+//     -webkit-appearance: none;
+//     margin: 0;
+// }
 
 html {
     scroll-behavior: smooth;
@@ -162,92 +161,92 @@ mat-form-field {
 
 //Animations
 
-.a-remove-brightness {
-    animation: removeBrightness 1s ease forwards;
-}
+// .a-remove-brightness {
+//     animation: removeBrightness 1s ease forwards;
+// }
 
-.a-remove-brightness-lite {
-    animation: removeBrightnessLite 1s ease forwards;
-}
+// .a-remove-brightness-lite {
+//     animation: removeBrightnessLite 1s ease forwards;
+// }
 
-.a-delayed {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 1.5s;
-}
+// .a-delayed {
+//     opacity: 0;
+//     animation: fadeIn 1s ease forwards;
+//     animation-delay: 1.5s;
+// }
 
-.a-delayed-slow {
-    opacity: 0;
-    animation: fadeIn 1.3s ease forwards;
-    animation-delay: 2s;
-}
+// .a-delayed-slow {
+//     opacity: 0;
+//     animation: fadeIn 1.3s ease forwards;
+//     animation-delay: 2s;
+// }
 
-.a-first-text {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 1s;
-    pointer-events: none;
-}
+// .a-first-text {
+//     opacity: 0;
+//     animation: fadeIn 1s ease forwards;
+//     animation-delay: 1s;
+//     pointer-events: none;
+// }
 
-.a-first-text-slow {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 1s;
-    pointer-events: none;
-}
+// .a-first-text-slow {
+//     opacity: 0;
+//     animation: fadeIn 1s ease forwards;
+//     animation-delay: 1s;
+//     pointer-events: none;
+// }
 
-.a-second-text {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 2s;
-}
+// .a-second-text {
+//     opacity: 0;
+//     animation: fadeIn 1s ease forwards;
+//     animation-delay: 2s;
+// }
 
-.a-third-text {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 2s;
-}
+// .a-third-text {
+//     opacity: 0;
+//     animation: fadeIn 1s ease forwards;
+//     animation-delay: 2s;
+// }
 
 
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        pointer-events: none;
-    }
+// @keyframes fadeIn {
+//     from {
+//         opacity: 0;
+//         pointer-events: none;
+//     }
 
-    to {
-        pointer-events: auto;
-        opacity: 1;
-    }
-}
+//     to {
+//         pointer-events: auto;
+//         opacity: 1;
+//     }
+// }
 
-@keyframes removeBrightness {
-    from {
-        filter: brightness(90%);
-    }
+// @keyframes removeBrightness {
+//     from {
+//         filter: brightness(90%);
+//     }
 
-    to {
-        filter: brightness(10%);
-    }
-}
+//     to {
+//         filter: brightness(10%);
+//     }
+// }
 
-@keyframes removeBrightnessLite {
-    from {
-        filter: brightness(100%);
-    }
+// @keyframes removeBrightnessLite {
+//     from {
+//         filter: brightness(100%);
+//     }
 
-    to {
-        filter: brightness(50%);
-    }
-}
+//     to {
+//         filter: brightness(50%);
+//     }
+// }
 
-@keyframes addBlur {
-    0% {
-        filter: blur(0px);
-    }
+// @keyframes addBlur {
+//     0% {
+//         filter: blur(0px);
+//     }
 
-    100% {
-        filter: blur(10px);
-    }
-}
+//     100% {
+//         filter: blur(10px);
+//     }
+// }

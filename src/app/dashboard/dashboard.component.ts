@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
-import { TextService } from '../services/text-service.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Firestore, addDoc, collection, collectionData, getDocs, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';

@@ -30,9 +30,7 @@
                     (click)="modalService.showDetails()">
                     <p class="comp-desc-p">Termékjellemző:
                         <i class="mobile-comp-desc-i" *ngIf="modalService.screenWidth <= 700
-                        ">Kattintson a
-                            részletekért!</i>
-
+                        ">Kattintson a részletekért!</i>
                     <div class="comp-desc-p-details" *ngIf="modalService.screenWidth > 700
                         ">
                         {{product.description}}

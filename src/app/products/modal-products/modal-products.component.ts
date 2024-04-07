@@ -6,6 +6,8 @@ import { ProductInterface } from '../../products/products.interface';
 import { navbarData } from '../../sidenav/nav-data';
 import { ProductService } from 'src/app/product-modal-helper/product-service';
 import { ModalService } from 'src/app/product-modal-helper/modal-service.service';
+import { Subscription } from 'rxjs';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-products',
@@ -13,10 +15,18 @@ import { ModalService } from 'src/app/product-modal-helper/modal-service.service
   styleUrls: ['../../style-helper/modal-style-helper.scss']
 })
 export class ModalProductsComponent implements OnInit {
+  public routerSubscription: Subscription;
+
   constructor(
+    private router: Router,
     public productService: ProductService,
     public modalService: ModalService,
     public services: SharedService) {
+    this.routerSubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.modalService.closeModal();
+      }
+    });
   }
   @Input() product: any;
   contentLoaded: boolean = false;

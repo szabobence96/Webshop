@@ -19,33 +19,39 @@
             <div class="composition-container">
                 <div class="composition-description" *ngIf="modalService.screenWidth > 700
                     ">
-                    <p class="comp-desc-p" *ngIf="product.composition.material">Anyaga: {{product.composition.material}}
+                    <p class="comp-desc-p" *ngIf="product.composition.material">{{textService.material}}
+                        {{product.composition.material}}
                     </p>
                 </div>
                 <div class="composition-description" *ngIf="modalService.screenWidth > 700
                     ">
-                    <p class="comp-desc-p" *ngIf="product.composition.belt">Szíj anyaga: {{product.composition.belt}}
+                    <p class="comp-desc-p" *ngIf="product.composition.belt">{{textService.materialBelt}}
+                        {{product.composition.belt}}
                     </p>
                 </div>
                 <div class="composition-description" *ngIf="modalService.screenWidth > 700
                     ">
-                    <p class="comp-desc-p" *ngIf="product.composition.frame">Keret: {{product.composition.frame}} </p>
+                    <p class="comp-desc-p" *ngIf="product.composition.frame">{{textService.frame}}
+                        {{product.composition.frame}}
+                    </p>
                 </div>
                 <div class="composition-description" *ngIf="modalService.screenWidth > 700
                     ">
-                    <p class="comp-desc-p" *ngIf="product.composition.size">Méret: {{product.composition.size}} </p>
+                    <p class="comp-desc-p" *ngIf="product.composition.size">{{textService.size}}
+                        {{product.composition.size}}
+                    </p>
                 </div>
                 <div class="composition-description" *ngIf="modalService.screenWidth > 700
                     ">
-                    <p class="comp-desc-p" *ngIf="product.composition.waterProof">Vízállóság:
-                        {{product.composition.waterProof}} </p>
+                    <p class="comp-desc-p" *ngIf="product.composition.waterProof">{{textService.waterproof}}
+                        {{product.composition.waterProof}}
+                    </p>
                 </div>
                 <div class="composition-description" [ngStyle]="{ 'display': 'block' }"
                     (click)="modalService.showDetails()">
-                    <p class="comp-desc-p">Termékjellemző:
+                    <p class="comp-desc-p">{{textService.productDetails}}
                         <i class="mobile-comp-desc-i" *ngIf="modalService.screenWidth <= 700
-                        ">Kattintson a
-                            részletekért!</i>
+                        ">{{textService.clickForDetails}}</i>
 
                     <div class="comp-desc-p-details" *ngIf="modalService.screenWidth > 700
                         ">
@@ -80,7 +86,7 @@
             </div>
             <div class="cart-btn" *ngIf="modalService.screenWidth > 700
                 " (click)="modalService.addToCart(product)">
-                Hozzáadás a kosárhoz</div>
+                {{textService.addToCart}}</div>
             <div class="cart-btn" *ngIf="modalService.screenWidth <= 700
             " (click)="modalService.addToCart(product)">
                 <i class="fa-solid fa-cart-shopping"></i>
@@ -90,17 +96,21 @@
         <div *ngIf="modalService.showDetailsBox && modalService.screenWidth <= 700
         " class="mobile-comp-desc-details-container">
             <div class="mobile-comp-desc-details">
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.material"> <span>Anyaga: </span>
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.material"> <span>{{textService.material}}
+                    </span>
                     {{product.composition.material}}</p>
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.belt"><span>Szíj anyaga: </span>
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.belt"><span>{{textService.materialBelt}}
+                    </span>
                     {{product.composition.belt}}</p>
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.frame"><span>Keret: </span>
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.frame"><span>{{textService.frame}}</span>
                     {{product.composition.frame}} </p>
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.size"><span>Méret: </span>
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.size"><span>{{textService.size}}</span>
                     {{product.composition.size}} </p>
-                <p class="mobile-comp-desc-p" *ngIf="product.composition.waterProof"><span>Vízállóság: </span>
-                    {{product.composition.waterProof}} </p>
-                <p class="comp-desc-p">Termékjellemző: </p>
+                <p class="mobile-comp-desc-p" *ngIf="product.composition.waterProof">
+                    <span>{{textService.waterproof}}</span>
+                    {{product.composition.waterProof}}
+                </p>
+                <p class="comp-desc-p">{{textService.productDetails}} </p>
                 {{product.description}}
                 <button class="close-comp-desc-details-btn" (click)="modalService.showDetails()"><i
                         class="fal fa-times close-icon"></i></button>

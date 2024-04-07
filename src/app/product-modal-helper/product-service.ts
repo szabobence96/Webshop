@@ -29,7 +29,7 @@ export class ProductService {
   selectedProduct: any;
   isFilterChecked: boolean = false;
   // displayItemCount: number = 6;
-  // long: number = 9;
+
   fragrances$ = collectionData(collection(this.firestore, 'fragrances')) as Observable<ProductInterface[]>;
   manFragrances$ = collectionData(query(collection(this.firestore, 'fragrances'), where('gender', '==', 'man')));
   womanFragrances$ = collectionData(query(collection(this.firestore, 'fragrances'), where('gender', '==', 'woman')));
@@ -39,6 +39,12 @@ export class ProductService {
 
   // loadMoreItem() {
   //   this.displayItemCount += 6;
+  // }
+
+  // length(){
+  //   return this.fragrances$.subscribe(products => {
+  //     console.log('watches$ hossza: ', products.length);
+  //   });
   // }
 
   filterCheck() {

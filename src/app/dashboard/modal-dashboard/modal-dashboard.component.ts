@@ -6,21 +6,34 @@ import { ProductInterface } from '../../products/products.interface';
 import { navbarData } from '../../sidenav/nav-data';
 import { ProductService } from 'src/app/product-modal-helper/product-service';
 import { ModalService } from 'src/app/product-modal-helper/modal-service.service';
+import { Subscription } from 'rxjs';
+import { NavigationStart, Router } from '@angular/router';
+import { ModalTextService } from 'src/app/services/modal-text.service';
 
 @Component({
   selector: 'app-modal-dashboard',
   templateUrl: './modal-dashboard.component.html',
-  styleUrls: ['./../../style-helper/modal-style-helper.scss']
+  styleUrls: ['../../style-helper/modal-style-helper.scss']
 })
 export class ModalDashboardComponent implements OnInit {
+  public routerSubscription: Subscription;
+
   constructor(
+    private router: Router,
+    public textService: ModalTextService,
     public productService: ProductService,
     public modalService: ModalService,
     public services: SharedService) {
+    this.routerSubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.modalService.closeModal();
+      }
+    });
   }
   @Input() product: any;
   contentLoaded: boolean = false;
   ngOnInit(): void {
+
     setTimeout(() => {
       this.contentLoaded = true;
     }, 500);

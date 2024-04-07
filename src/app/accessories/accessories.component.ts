@@ -7,6 +7,7 @@ import { SharedService } from '../shared.service';
 import { ModalService } from 'src/app/product-modal-helper/modal-service.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Router, NavigationEnd } from '@angular/router';
+import { AccessoriesTextService } from './accessories-text.service';
 
 @Component({
   selector: 'app-accessories',
@@ -38,9 +39,8 @@ export class AccessoriesComponent implements OnInit {
     public services: SharedService,
     public firestore: Firestore,
     public modalService: ModalService,
+    public textService: AccessoriesTextService,
     private elementRef: ElementRef,
-    private renderer: Renderer2,
-    private router: Router,
   ) { }
 
   accessories$ = collectionData(collection(this.firestore, 'accessories')) as Observable<ProductInterface[]>;
@@ -48,6 +48,14 @@ export class AccessoriesComponent implements OnInit {
 
   screenWidth: number = 0;
   sectionInView: any = '';
+
+  imgPc: string = './assets/images/commercial/police_watch_commercial.jpg';
+  imgMobile: string = './assets/images/commercial/police_watch_commercial_mobile_copy.jpg';
+  imgLogo: string = './assets/images/commercial/police_logo.svg';
+
+  getDiscountPrice() {
+
+  }
 
   ngOnInit() {
     this.screenWidth = window.innerWidth;

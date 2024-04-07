@@ -45,11 +45,11 @@ const routes: Routes = [
   { path: 'user/profile', component: ProfileComponent, ...canActivate(redirectToLogin) },
 
   //brand routing
-  { path: 'media', component: MediaComponent },
-  { path: 'brand-dior', component: DiorComponent },
-  { path: 'brand-lancome', component: LancomeComponent },
-  { path: 'brand-jeanpaulgaultier', component: JeanPaulGaultierComponent },
-  { path: 'brand-hawkers', component: HawkersComponent },
+  // { path: 'media', component: MediaComponent },
+  // { path: 'brand-dior', component: DiorComponent },
+  // { path: 'brand-lancome', component: LancomeComponent },
+  // { path: 'brand-jeanpaulgaultier', component: JeanPaulGaultierComponent },
+  // { path: 'brand-hawkers', component: HawkersComponent },
 ];
 
 @NgModule({

@@ -61,6 +61,7 @@ import { CustomKeepButtonComponent } from './custom/custom-keep-button/custom-ke
 import { fragranceCarouselModule } from './fragrances/fragrance-carousel/fragrance-carousel.module';
 import { DiscountedSunglassesComponent } from './dashboard/discounted-products/discounted-sunglasses/discounted-sunglasses.component';
 import { DiscountedWatchesComponent } from './dashboard/discounted-products/discounted-watches/discounted-watches.component';
+import { CustomerRewievComponent } from './media/customer-rewiev/customer-rewiev.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -114,6 +115,7 @@ const firebaseConfig = {
     CustomKeepButtonComponent,
     DiscountedSunglassesComponent,
     DiscountedWatchesComponent,
+    CustomerRewievComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),

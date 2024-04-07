@@ -100,6 +100,15 @@
 
                 .comp-desc-p {
                     margin-right: 5px;
+                    color: white;
+
+                    .mobile-comp-desc-i {
+                        color: white;
+                    }
+                }
+
+                .comp-desc-p-details {
+                    color: white;
                 }
             }
 
@@ -248,7 +257,10 @@
 
         .comp-desc-p {
             font-weight: 800;
+
+
         }
+
 
         .mobile-comp-desc-p {
             border-bottom: 1px solid #ececec;

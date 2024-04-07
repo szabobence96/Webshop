@@ -147,17 +147,25 @@ mat-form-field {
             top: 100%;
         }
 
-        mat-checkbox {
-            margin-top: 10px;
-            white-space: wrap;
-            position: relative;
 
-            .terms {
-                display: inline-block;
-                color: #1C202B;
-                text-decoration: underline;
-                cursor: pointer;
+        .checkbox-with-text {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+
+            mat-checkbox {
+                margin-top: 0px;
+                white-space: nowrap;
+                position: relative;
+
+                .terms {
+                    display: inline-block;
+                    color: #1C202B;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
             }
         }
+
     }
 }
