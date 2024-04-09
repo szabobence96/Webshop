@@ -90,14 +90,12 @@ export class SidenavComponent implements OnInit {
     const currentScrollPosition = window.scrollY;
     if (Math.abs(currentScrollPosition - this.lastScrollPosition) > scrollThreshold) {
       if (currentScrollPosition > this.lastScrollPosition) {
-        console.log('Scrolling Down');
         if (this.element) {
           this.element.style.opacity = '0';
           this.element.style.transition = 'opacity 0.2s ease-in-out';
           this.element.style.pointerEvents = 'none';
         }
       } else {
-        console.log('Scrolling Up');
         if (this.element) {
           this.element.style.opacity = '1';
           this.element.style.transition = 'opacity 0.2s ease-in-out';
@@ -126,15 +124,12 @@ export class SidenavComponent implements OnInit {
     if (this.collapsed === false) {
       this.closed = false;
     }
-    console.log('toggle collapsed?: ', this.collapsed)
   }
 
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSideNav.emit({ closed: this.closed, collapsed: this.collapsed, screenwidth: this.screenwidth });
     this.closed = false;
-    console.log('close sidenav collapsed?: ', this.collapsed)
-
   }
 
   toggleOpen(): void {

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { navbarData } from './sidenav/nav-data';
-import { ModalService } from 'src/app/product-modal-helper/modal-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -92,12 +91,8 @@ export class SharedService {
     this.selectedSize = item.size || null;
     this.selectedSizePrice = item.price || null;
     this.discount10 = item.discount10 || null;
-    this.discount20 = item.discount20 || null;
     if (item.discount10) {
       this.selectedSizePrice = this.selectedSizePrice * 0.9
-    }
-    if (item.discount20) {
-      this.selectedSizePrice = this.selectedSizePrice * 0.8
     }
   }
 

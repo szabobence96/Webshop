@@ -61,9 +61,9 @@ export class ShoppingCartComponent implements OnInit {
     const totalPrice = this.getTotalPrice();
 
     if (totalPrice >= 50000) {
-      return this.shippingPrice = 0; // Vonj le a szállítási díjból
+      return this.shippingPrice = 0;
     } else {
-      return this.shippingPrice = 1390; // Alapértelmezett szállítási díj
+      return this.shippingPrice = 1390;
     }
   }
 

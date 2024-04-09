@@ -106,7 +106,7 @@ export class DashboardComponent implements OnInit {
       routerLink: '/fragrances/'
     },
   ]
-  currentImages: any[] = this.images; // Kezdetben az eredeti képek lesznek beállítva
+  currentImages: any[] = this.images;
 
   private updateImagesBasedOnScreenWidth() {
     this.screenWidth = window.innerWidth;

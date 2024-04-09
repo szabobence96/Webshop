@@ -28,7 +28,6 @@ export class ProductService {
   isModalOpen = false;
   selectedProduct: any;
   isFilterChecked: boolean = false;
-  // displayItemCount: number = 6;
 
   fragrances$ = collectionData(collection(this.firestore, 'fragrances')) as Observable<ProductInterface[]>;
   manFragrances$ = collectionData(query(collection(this.firestore, 'fragrances'), where('gender', '==', 'man')));
@@ -37,15 +36,6 @@ export class ProductService {
   lancomeQuery$ = collectionData(query(collection(this.firestore, 'fragrances'), where('brand', '==', 'Lancome')));
   JPGQuery$ = collectionData(query(collection(this.firestore, 'fragrances'), where('brand', '==', 'Jean Paul Gaultier')));
 
-  // loadMoreItem() {
-  //   this.displayItemCount += 6;
-  // }
-
-  // length(){
-  //   return this.fragrances$.subscribe(products => {
-  //     console.log('watches$ hossza: ', products.length);
-  //   });
-  // }
 
   filterCheck() {
     this.isFilterChecked = !this.isFilterChecked;
@@ -112,9 +102,6 @@ export class ProductService {
   openModal(product: ProductInterface | DocumentData) {
     this.selectedProduct = product;
     this.isModalOpen = true;
-
-    console.log('check selectedproduct: ', this.selectedProduct)
-    console.log('Kiválasztott termék:', product);
 
     this.renderer.setStyle(document.body, 'overflow', 'hidden');
     if (product.type && product.type.length > 0) {

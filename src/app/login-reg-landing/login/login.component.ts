@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required],
-    rememberMe: [false] // Kezdetben nem emlékezünk meg
+    rememberMe: [false]
   });
 
   constructor(
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     if (savedCredentials) {
       this.loginForm.patchValue({
         email: savedCredentials.email,
-        password: savedCredentials.password, // Itt hozzáadva a jelszó is
+        password: savedCredentials.password,
         rememberMe: true,
       });
     }

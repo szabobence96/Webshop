@@ -59,7 +59,6 @@ export class AccessoriesComponent implements OnInit {
 
   ngOnInit() {
     this.screenWidth = window.innerWidth;
-    console.log(this.screenWidth)
     setTimeout(() => {
       this.contentLoaded = true;
     }, 1000);

@@ -15,12 +15,10 @@ export class BodyComponent {
     let styleClass = '';
     if (this.collapsed && this.screenWidth > 1080) {
       styleClass = 'body-trimmed';
-      // console.log('styleclass:', styleClass)
     }
     if (this.closed && this.screenWidth <= 1080 && this.screenWidth > 0) {
       styleClass = 'body-md-screen'
       styleClass = 'body-mobile-closed'
-      //  console.log('styleclass:', styleClass)
     }
     return styleClass;
   }

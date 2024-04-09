@@ -1,10 +1,7 @@
-import { ElementRef, EventEmitter, HostListener, Injectable, Input, OnInit, Output, Renderer2, RendererFactory2 } from '@angular/core';
+import { EventEmitter, Injectable, Input, Output, Renderer2, RendererFactory2 } from '@angular/core';
 import { SharedService } from '../shared.service';
-import { AngularFirestoreModule, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import 'firebase/firestore';
-import { Observable, map } from 'rxjs';
-import { DocumentData, Firestore, addDoc, collection, collectionData, getDocs, query, where } from '@angular/fire/firestore';
-import { ProductInterface } from '../products/products.interface';
+import { Firestore, } from '@angular/fire/firestore';
 import { ProductService } from './product-service';
 
 @Injectable({
@@ -47,7 +44,6 @@ export class ModalService {
   }
   changeMainImage(imagePath: string): void {
     this.currentImage = imagePath;
-    console.log('imagePath value: ', imagePath)
   }
 
   closeModal() {
@@ -55,7 +51,6 @@ export class ModalService {
     this.services.selectedSize = null;
     this.services.selectedSizePrice = null;
     this.services.selectedColor = null;
-    console.log('bezárt modal értéke: ', this.services.selectedSize, this.services.selectedSizePrice, this.services.selectedColor)
     this.renderer.removeStyle(document.body, 'overflow');
     this.productService.isModalOpen = false;
     this.showDetailsBox = false;
@@ -66,6 +61,5 @@ export class ModalService {
   addToCart(product: any) {
     this.services.addToCartService(product);
     this.closeModal();
-
   }
 }

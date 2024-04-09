@@ -51,9 +51,6 @@
                 </div>
                 <div class="shopping-cart-price"> {{(cartItem.selectedPrice * cartItem.quantity)}} Ft
                 </div>
-
-                <!-- <button class="removeFromCart" (click)="removeFromCart(cartItem)"><i
-                        class="fal fa-times close-icon"></i></button> -->
                 <button class="removeFromCart" (click)="productService.openModal(cartItem)"><i
                         class="fal fa-times close-icon"></i></button>
             </div>

@@ -39,8 +39,8 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.screenWidth = window.innerWidth;
-    this.task$.subscribe(data => console.log('task$ observable:', data));
-    console.log(this.task$)
+    // this.task$.subscribe(data => console.log('task$ observable:', data));
+    // console.log(this.task$)
 
     setTimeout(() => {
       this.contentLoaded = true;

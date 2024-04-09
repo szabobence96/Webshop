@@ -66,7 +66,6 @@ export class SignUpComponent implements OnInit {
   termsCheck(event: MouseEvent) {
     if (event.target !== event.currentTarget) {
       event.stopPropagation();
-      // A kattintás csak akkor történik meg, ha a mat-checkbox-en kívülre kattintasz
       this.termsChecked = !this.termsChecked;
     }
   }
@@ -125,7 +124,7 @@ export class SignUpComponent implements OnInit {
   limitDigits(event: any) {
     const input = event.target.value;
     if (input.length > 12) {
-      event.target.value = input.slice(0, 12); // Limit to 12 digits
+      event.target.value = input.slice(0, 12);
     }
   }
 }

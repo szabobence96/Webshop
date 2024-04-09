@@ -1,5 +1,4 @@
 .modal-container {
-    /* Modal konténer stílusok */
     background-color: rgba(0, 0, 0, 0.5); // Példa hátteret halványító színre
     display: flex;
     justify-content: center;
@@ -14,7 +13,6 @@
     z-index: 20;
 
     .modal-content {
-        /* Modal tartalom stílusok */
         background-color: white;
         padding: 20px;
         border-radius: 5px;
