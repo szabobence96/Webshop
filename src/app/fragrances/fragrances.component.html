@@ -61,3 +61,5 @@
 
 <app-modal [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
     *ngIf="productService.isModalOpen"></app-modal>
+<app-added-to-cart-alert [product]="productService.selectedProduct"
+    (closeAddedModalEvent)="productService.closeAddedModal()" *ngIf="services.addedToCart"></app-added-to-cart-alert>

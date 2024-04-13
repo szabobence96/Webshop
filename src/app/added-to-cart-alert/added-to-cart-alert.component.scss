@@ -39,7 +39,7 @@
             }
         }
 
-        app-custom-remove-button {
+        app-custom-cart-button {
             position: absolute;
             right: 20px;
             bottom: 20px;
@@ -95,14 +95,13 @@
                 .item-name {
                     color: rgb(78, 78, 78);
                 }
-
             }
 
             .product-image {
                 height: 220px;
             }
 
-            app-custom-remove-button {
+            app-custom-cart-button {
                 right: 10px;
                 bottom: 10px;
             }

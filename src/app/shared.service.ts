@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { navbarData } from './sidenav/nav-data';
+import { ModalService } from './product-modal-helper/modal-service.service';
+import { ProductService } from './product-modal-helper/product-service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,7 @@ export class SharedService {
   public currentImage: any;
   public shippingImage: any;
   placedOrder: boolean = false;
+  addedToCart: boolean = false;
 
   getCollectionData(collectionName: string) {
     let collectionRef = collection(this.fs, collectionName);
@@ -71,13 +74,16 @@ export class SharedService {
     if (existingItem) {
       if (existingItem.quantity < 5) {
         existingItem.quantity++;
+        this.addedToCart = true;
       }
     }
     else {
       this.cartItems.push({
         product: item, quantity: 1, selectedPrice: this.selectedSizePrice, size: this.selectedSize || null,
-        color: this.selectedColor || null, selectedImage: this.currentImage || null
+        color: this.selectedColor || null, selectedImage: this.currentImage || null,
       });
+      this.addedToCart = true;
+      console.log('item: ', item.productName, this.selectedColor, this.selectedSizePrice, this.selectedSize, 'bekerült')
     }
 
     const kosarElem = navbarData.find(item => item.routerLink === 'shopping-cart');

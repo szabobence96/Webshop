@@ -16,6 +16,7 @@ export class ShoppingCartModalComponent implements OnInit {
     public services: SharedService,
     public cartService: ShoppingCartService,) {
   }
+  customKeepText: string = "Vissza"
   @Input() product: any;
   ngOnInit(): void {
 

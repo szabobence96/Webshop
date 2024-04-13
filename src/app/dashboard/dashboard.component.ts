@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ProductInterface } from '../products/products.interface';
 import { ProductService } from 'src/app/product-modal-helper/product-service';
 import { DashboardTextService } from './dashboard-text.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,7 +37,8 @@ export class DashboardComponent implements OnInit {
     public firestore: Firestore,
     private renderer: Renderer2,
     public productService: ProductService,
-    public textService: DashboardTextService
+    public textService: DashboardTextService,
+    public services: SharedService,
   ) {
     this.updateImagesBasedOnScreenWidth();
   }

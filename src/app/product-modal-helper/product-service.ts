@@ -116,4 +116,11 @@ export class ProductService {
     this.renderer.removeStyle(document.body, 'overflow');
     this.isModalOpen = false;
   }
+
+  closeAddedModal() {
+    this.renderer.removeStyle(document.body, 'overflow');
+    this.services.addedToCart = false;
+    this.services.shippingImage = "";
+    console.log('this.services.addedToCart: ', this.services.addedToCart)
+  }
 }

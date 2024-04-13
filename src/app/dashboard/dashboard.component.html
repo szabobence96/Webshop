@@ -80,4 +80,6 @@
 <app-customer-rewiev></app-customer-rewiev>
 <app-modal-dashboard [product]="productService.selectedProduct" (closeModalEvent)="productService.closeModal()"
     *ngIf="productService.isModalOpen"></app-modal-dashboard>
+<app-added-to-cart-alert [product]="productService.selectedProduct"
+    (closeAddedModalEvent)="productService.closeAddedModal()" *ngIf="services.addedToCart"></app-added-to-cart-alert>
 <app-footer></app-footer>

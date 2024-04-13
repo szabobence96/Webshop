@@ -62,6 +62,8 @@ import { fragranceCarouselModule } from './fragrances/fragrance-carousel/fragran
 import { DiscountedSunglassesComponent } from './dashboard/discounted-products/discounted-sunglasses/discounted-sunglasses.component';
 import { DiscountedWatchesComponent } from './dashboard/discounted-products/discounted-watches/discounted-watches.component';
 import { CustomerRewievComponent } from './media/customer-rewiev/customer-rewiev.component';
+import { AddedToCartAlertComponent } from './added-to-cart-alert/added-to-cart-alert.component';
+import { CustomCartButtonComponent } from './custom/custom-cart-button/custom-cart-button.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -116,6 +118,8 @@ const firebaseConfig = {
     DiscountedSunglassesComponent,
     DiscountedWatchesComponent,
     CustomerRewievComponent,
+    AddedToCartAlertComponent,
+    CustomCartButtonComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),

@@ -3,6 +3,7 @@ import { SharedService } from '../shared.service';
 import 'firebase/firestore';
 import { Firestore, } from '@angular/fire/firestore';
 import { ProductService } from './product-service';
+import { ProductAddedService } from './product-added.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,12 @@ export class ModalService {
 
   private renderer: Renderer2;
 
-  constructor(private rendererFactory: RendererFactory2, public services: SharedService,
+  constructor(
+    private rendererFactory: RendererFactory2,
+    public services: SharedService,
     public firestore: Firestore,
-    public productService: ProductService) {
+    public productService: ProductService
+  ) {
     this.renderer = rendererFactory.createRenderer(null, null);
     this.updateScreenWidth();
     window.addEventListener('resize', () => this.updateScreenWidth());
@@ -21,6 +25,7 @@ export class ModalService {
   screenWidthChanged: EventEmitter<number> = new EventEmitter<number>();
 
   @Output() closeModalEvent = new EventEmitter();
+  @Output() closeAddedModalEvent = new EventEmitter();
   @Input() product: any;
   screenWidth: number = 0;
   currentImage: string = '';
