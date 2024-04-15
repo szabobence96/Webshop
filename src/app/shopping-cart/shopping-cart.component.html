@@ -57,16 +57,18 @@
         </div>
     </div>
     <div class="checkout-container">
-        <div class="insurance"><mat-slide-toggle [(ngModel)]="shoppingService.insuranceIsChecked"></mat-slide-toggle>
-            <h3 [ngClass]="{'active': shoppingService.insuranceIsChecked}">500 Ft</h3> Küldemény biztosítása
+        <div class="insurance"><mat-slide-toggle [(ngModel)]="shoppingService.insuranceIsChecked">Küldemény
+                biztosítása</mat-slide-toggle>
+            <h3 [ngClass]="{'active': shoppingService.insuranceIsChecked}">500 Ft</h3>
             <p [ngStyle]="{'opacity' :shoppingService.insuranceIsChecked ? 1 : 0.5  }" class="checkout-container-desc">A
                 küldemény megsérülése vagy elvesztése esetén nem kell várnia a helyzet
                 törvényileg előírt határidőn belüli rendezésére. Elég, ha bejelenti nekünk és dokumentálja a küldemény
                 megsérülését vagy elvesztését, és mi postafordultával teljesen új árut küldünk önnek.
             </p>
         </div>
-        <div class="gift"><mat-slide-toggle [(ngModel)]="shoppingService.giftIsChecked"></mat-slide-toggle>
-            <h3 [ngClass]="{'active': shoppingService.giftIsChecked}">1590 Ft</h3> Luxus csomagolás
+        <div class="gift"><mat-slide-toggle [(ngModel)]="shoppingService.giftIsChecked">Luxus
+                csomagolás</mat-slide-toggle>
+            <h3 [ngClass]="{'active': shoppingService.giftIsChecked}">1590 Ft</h3>
             <p [ngStyle]="{'opacity' :shoppingService.giftIsChecked ? 1 : 0.5  }" class="checkout-container-desc">
                 Szívesen luxus kivitelű ajándékcsomagolásba csomagolunk önnek mindent.
             </p>
