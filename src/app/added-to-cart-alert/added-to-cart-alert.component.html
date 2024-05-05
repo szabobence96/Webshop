@@ -1,15 +1,16 @@
 <div class="remove-item-container">
     <div class="remove-item">
         <h1 class="remove-item-header">Termék hozzáadva a kosárhoz</h1>
-        <h2 class="remove-item-desc"> A(z) "{{product.brand}} {{product.brandName}}
-            "Termék hozzáadva a kosárhoz <span class="item-name"></span></h2>
+        <h2 class="remove-item-desc"> A(z) "{{product.productName}} {{sharedService.selectedColor}}" Termék hozzáadva a
+            kosárhoz <span class="item-name"></span></h2>
         <app-custom-cart-button [text]="checkout" [routerLink]="['/shopping-cart']"
             routerLinkActive="router-link-active"></app-custom-cart-button>
         <app-custom-keep-button [text]="keepShopping"
             (click)="productService.closeAddedModal()"></app-custom-keep-button>
-        <img class="product-image" [src]="sharedService.shippingImage || product.imagePath">
-        <div class="exit-button" (click)="productService.closeAddedModal()"><i class="fa fa-window-close"
+        <img class="product-image" [src]="sharedService.addedToCartImage || product.imagePath">
+        <div class="exit-button" (click)="productService.closeAddedModal()"><i class="fa fa-times"
                 aria-hidden="true"></i>
+
         </div>
     </div>
 </div>

@@ -55,7 +55,7 @@ export class ModalService {
     this.closeModalEvent.emit();
     this.services.selectedSize = null;
     this.services.selectedSizePrice = null;
-    this.services.selectedColor = null;
+    // this.services.selectedColor = null;
     this.renderer.removeStyle(document.body, 'overflow');
     this.productService.isModalOpen = false;
     this.showDetailsBox = false;

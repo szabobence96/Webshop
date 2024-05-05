@@ -110,6 +110,7 @@ export class ProductService {
     if (product.colorType && product.colorType.length > 0) {
       this.services.selectColor(product.colorType[0]);
     }
+
   }
 
   closeModal() {

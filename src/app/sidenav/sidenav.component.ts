@@ -54,7 +54,7 @@ export class SidenavComponent implements OnInit {
   navData = navbarData;
   element: HTMLElement | any
   contentLoaded: boolean = false;
-  constructor(public modalService: ModalService, private elementRef: ElementRef, public productService: ProductService) { }
+  constructor(public modalService: ModalService, private elementRef: ElementRef, public productService: ProductService, public sharedService: SharedService) { }
 
   @HostListener('document:click', ['$event'])
   clickOutside(event: Event) {

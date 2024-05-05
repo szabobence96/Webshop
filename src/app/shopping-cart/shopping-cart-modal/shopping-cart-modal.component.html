@@ -7,8 +7,7 @@
             (click)="modalService.closeModal()"></app-custom-remove-button>
         <app-custom-keep-button [text]="customKeepText" (click)="modalService.closeModal()"></app-custom-keep-button>
         <img class="product-image" [src]="product.selectedImage || product.product.imagePath">
-        <div class="exit-button" (click)="modalService.closeModal()"><i class="fa fa-window-close"
-                aria-hidden="true"></i>
+        <div class="exit-button" (click)="modalService.closeModal()"><i class="fa fa-times" aria-hidden="true"></i>
         </div>
     </div>
 </div>

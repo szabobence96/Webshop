@@ -64,6 +64,7 @@ import { DiscountedWatchesComponent } from './dashboard/discounted-products/disc
 import { CustomerRewievComponent } from './media/customer-rewiev/customer-rewiev.component';
 import { AddedToCartAlertComponent } from './added-to-cart-alert/added-to-cart-alert.component';
 import { CustomCartButtonComponent } from './custom/custom-cart-button/custom-cart-button.component';
+import { CustomSpinnerComponent } from './custom/custom-spinner/custom-spinner.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -120,6 +121,7 @@ const firebaseConfig = {
     CustomerRewievComponent,
     AddedToCartAlertComponent,
     CustomCartButtonComponent,
+    CustomSpinnerComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),

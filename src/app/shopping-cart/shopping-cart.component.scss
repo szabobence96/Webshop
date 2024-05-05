@@ -25,6 +25,7 @@
             margin: 0px 0 0 0;
             min-width: 600px;
             width: auto;
+            height: 170px;
             margin-bottom: 20px;
 
             .pc-screen {
@@ -47,7 +48,7 @@
 
             .img-background {
                 width: 140px;
-                height: 140px;
+                height: 100%;
                 background-color: white;
                 position: absolute;
                 overflow: hidden;
@@ -59,7 +60,7 @@
                 z-index: 3;
                 width: 140px;
                 background-color: white;
-                height: 140px;
+                height: auto;
                 border-radius: 5px;
                 margin-right: 10px;
                 overflow: hidden;
@@ -260,7 +261,7 @@
                     margin-right: 2px;
                     margin-left: 5px;
                     margin-right: 5px;
-                    font-size: 12px;
+                    // font-size: 12px;
                 }
 
                 .img-background {
@@ -405,6 +406,15 @@ h3.active {
 .slide-text {
     font-size: 15px;
     margin-left: 5px;
+}
+
+.common {
+    width: 100%;
+    background-color: blue;
+}
+
+mat-slide-toggle {
+    padding-left: 0px;
 }
 
 .checkout-container {

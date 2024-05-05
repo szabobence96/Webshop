@@ -22,6 +22,7 @@ export class SharedService {
   public selectedColor: any;
   public currentImage: any;
   public shippingImage: any;
+  public addedToCartImage: any;
   placedOrder: boolean = false;
   addedToCart: boolean = false;
 
@@ -106,9 +107,15 @@ export class SharedService {
     this.selectedColor = item.color || null;
     this.currentImage = item.selectedImage || null;
     this.shippingImage = item.selectedImage || null;
+    this.addedToCartImage = item.selectedImage;
     if (this.currentImage === undefined) {
       this.currentImage === item.imagePath;
     }
+    console.log('selectedcolor: ', this.selectedColor)
+    console.log('selectedimage: ', item.selectedImage)
+    console.log('currentimage: ', this.currentImage)
+    console.log('addedtocartimage: ', this.addedToCartImage)
+
   }
 
 
