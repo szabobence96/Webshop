@@ -7,7 +7,7 @@
     <div *ngIf="screenwidth <= 700" class="logo-container">
         <button class="logo" @fadeInOut *ngIf="!closed || opened" (click)="toggleOpen()"><i class="fa fa-bars"
                 aria-hidden="true"></i></button>
-        <div class="logo-text" @fadeInOut *ngIf="opened">Logo</div>
+        <div class="logo-text" @fadeInOut *ngIf="opened">Webshop</div>
         <button class="btn-close" @rotate @fadeInOut *ngIf="opened" (click)="toggleOpen()">
             <i class="fal fa-times close-icon"></i>
         </button>
@@ -15,7 +15,7 @@
     <div *ngIf="screenwidth > 700" class="logo-container">
         <button class="logo" @fadeInOut *ngIf="!closed || collapsed" (click)="toggleCollapse()"><i class="fa fa-bars"
                 aria-hidden="true"></i></button>
-        <div class="logo-text" @fadeInOut *ngIf="collapsed">Logo</div>
+        <div class="logo-text" @fadeInOut *ngIf="collapsed">Webshop</div>
         <button class="btn-close" @rotate @fadeInOut *ngIf="collapsed" (click)="toggleCollapse()">
             <i class="fal fa-times close-icon"></i>
         </button>

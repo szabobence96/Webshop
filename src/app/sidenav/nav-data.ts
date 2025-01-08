@@ -34,7 +34,7 @@ export const navbarData = [
     },
     {
         routerLink: 'shopping-cart',
-        icon: 'fal fa-cart-shopping',
+        icon: 'fa fa-cart-shopping',
         label: 'Kosár',
         badge: 0
     },
