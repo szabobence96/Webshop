@@ -65,6 +65,7 @@ import { CustomerRewievComponent } from './media/customer-rewiev/customer-rewiev
 import { AddedToCartAlertComponent } from './added-to-cart-alert/added-to-cart-alert.component';
 import { CustomCartButtonComponent } from './custom/custom-cart-button/custom-cart-button.component';
 import { CustomSpinnerComponent } from './custom/custom-spinner/custom-spinner.component';
+import { CustomExitButtonComponent } from './custom/custom-exit-button/custom-exit-button.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUhtsLE6mKhnLFA4hrTdgtPRvT9DFPews",
@@ -122,6 +123,7 @@ const firebaseConfig = {
     AddedToCartAlertComponent,
     CustomCartButtonComponent,
     CustomSpinnerComponent,
+    CustomExitButtonComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
